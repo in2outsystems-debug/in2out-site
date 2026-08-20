@@ -370,9 +370,16 @@ img { max-width: 100%; display: block; }
   background: rgba(30, 115, 224, 0.08);
 }
 
+.contato__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .contato__icon {
-  width: 36px;
-  height: 36px;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
   color: var(--azul-claro);
 }
 
