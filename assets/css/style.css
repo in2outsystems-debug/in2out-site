@@ -231,11 +231,14 @@ img { max-width: 100%; display: block; }
   border-top: 1px solid rgba(242,243,245,0.16);
 }
 
-.stat-strip__inner { padding: 28px 24px; }
+.stat-strip__inner {
+  padding: 28px 24px;
+  text-align: center;
+}
 
 .stat-strip p {
   color: var(--branco);
-  margin: 0;
+  margin: 0 auto;
   font-size: 16px;
   max-width: 760px;
 }
