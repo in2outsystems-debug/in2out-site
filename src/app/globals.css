@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * IDENTIDADE VISUAL (provisória)
+ * Para trocar cores, fontes e raios, edite só este bloco.
+ * Cores em formato "R G B" (sem vírgulas) para o Tailwind aplicar transparência.
+ * Tema escuro nas cores da marca. Mantenha contraste mínimo de 4.5:1 entre texto e fundo.
+ */
+:root {
+  --c-fundo: 8 14 28;
+  --c-superficie: 17 26 46;
+  --c-suave: 13 21 38;
+  --c-tinta: 242 244 248;
+  --c-mudo: 170 182 204;
+  --c-linha: 44 58 86;
+
+  /* Cor de ação: botões e links principais (azul claro da marca) */
+  --c-acao: 79 168 240;
+  --c-acao-forte: 130 193 247;
+  --c-sobre-acao: 8 14 28;
+
+  /* Cor de destaque para dados e números */
+  --c-dado: 245 166 66;
+  --c-dado-fundo: 42 32 18;
+
+  /* Faixas ainda mais escuras (rodapé, hero, chamada final) */
+  --c-escuro: 4 8 17;
+  --c-sobre-escuro: 245 247 250;
+
+  --c-erro: 255 138 128;
+  --c-ok: 74 222 128;
+
+  --fonte-texto: var(--next-font-texto), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fonte-titulo: var(--next-font-texto), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --raio: 0.5rem;
+  --raio-grande: 1rem;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  @apply bg-fundo font-sans text-tinta antialiased;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-titulo text-tinta;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
+:focus-visible {
+  outline: 3px solid rgb(var(--c-acao));
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.escuro :focus-visible {
+  outline-color: rgb(var(--c-sobre-escuro));
+}
+
+/* Alvos de toque de pelo menos 44px (WCAG 2.2, critério 2.5.8) */
+.alvo {
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+}
+
+@layer components {
+  .pagina {
+    @apply mx-auto w-full max-w-pagina px-4 sm:px-6 lg:px-8;
+  }
+  .secao {
+    @apply py-14 sm:py-20;
+  }
+  .titulo-1 {
+    @apply text-3xl font-bold sm:text-4xl lg:text-5xl;
+  }
+  .titulo-2 {
+    @apply text-2xl font-bold sm:text-3xl;
+  }
+  .titulo-3 {
+    @apply text-xl font-semibold;
+  }
+  .olho {
+    @apply text-sm font-semibold uppercase tracking-wide text-acao;
+  }
+  .escuro .olho {
+    @apply text-sobre-escuro/80;
+  }
+  .cartao {
+    @apply rounded-marca-lg border border-linha bg-superficie p-6;
+  }
+  .campo {
+    @apply block w-full rounded-marca border border-mudo/60 bg-superficie px-3 py-2.5 text-tinta placeholder:text-mudo/70;
+    min-height: 2.75rem;
+  }
+  .campo[aria-invalid="true"] {
+    @apply border-erro;
+  }
+  .texto-leitura {
+    @apply max-w-leitura;
+  }
+}
+
+/* Prosa dos artigos e páginas legais */
+.prosa h2 {
+  @apply mb-3 mt-10 text-2xl font-bold scroll-mt-24;
+}
+.prosa h3 {
+  @apply mb-2 mt-6 text-xl font-semibold;
+}
+.prosa p {
+  @apply my-4;
+}
+.prosa ul {
+  @apply my-4 list-disc space-y-2 pl-6;
+}
+.prosa ol {
+  @apply my-4 list-decimal space-y-2 pl-6;
+}
+.prosa a {
+  @apply text-acao underline underline-offset-2 hover:text-acao-forte;
+}
+.prosa strong {
+  @apply font-semibold;
+}
+.prosa blockquote {
+  @apply my-6 border-l-4 border-dado pl-4 text-mudo;
+}
