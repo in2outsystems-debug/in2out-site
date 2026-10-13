@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/perguntas-frequentes",
     "/instagram",
     "/privacidade",
+    "/privacidade-gestor-trafego-ia",
     "/termos",
     "/cookies",
   ];

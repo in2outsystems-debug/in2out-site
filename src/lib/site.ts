@@ -46,6 +46,7 @@ export const rodape = {
   ],
   legal: [
     { href: "/privacidade", rotulo: "Privacidade" },
+    { href: "/privacidade-gestor-trafego-ia", rotulo: "Privacidade do Gestor Tráfego IA" },
     { href: "/termos", rotulo: "Termos de uso" },
     { href: "/cookies", rotulo: "Cookies" },
   ],
