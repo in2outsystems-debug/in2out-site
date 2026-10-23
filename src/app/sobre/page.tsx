@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 export const metadata = pageMeta({
-  titulo: "Sobre a In2Out Systems",
+  titulo: "Sobre a WS3 Systems",
   descricao: "Quem somos, no que acreditamos e como trabalhamos com micro e pequenas empresas, MEIs e autônomos.",
   caminho: "/sobre",
 });
@@ -26,7 +26,7 @@ export default function Sobre() {
         texto={`A ${site.nome} nasceu para ajudar micro e pequenas empresas, MEIs e autônomos a organizar o trabalho antes de investir em tecnologia.`}
       />
 
-      <Secao id="historia" titulo="Por que a In2Out existe">
+      <Secao id="historia" titulo="Por que a WS3 existe">
         <div className="grid gap-8 lg:grid-cols-2">
           <div className="prosa max-w-leitura">
             <p>
@@ -35,7 +35,7 @@ export default function Sobre() {
             <p>
               A resposta que o mercado oferece quase sempre é comprar um sistema. Nós preferimos começar pelo processo, porque o sistema só funciona sobre algo que já está claro.
             </p>
-            <p>[inserir história da In2Out: quando começou, o que motivou, primeiros aprendizados]</p>
+            <p>[inserir história da WS3: quando começou, o que motivou, primeiros aprendizados]</p>
           </div>
           <Placeholder rotulo="Foto da equipe ou do escritório [inserir]" />
         </div>
@@ -67,7 +67,7 @@ export default function Sobre() {
         </p>
       </Secao>
 
-      <ChamadaFinal titulo="Quer conversar?" rotulo="Falar com a In2Out" href="/contato" posicao="sobre_final" />
+      <ChamadaFinal titulo="Quer conversar?" rotulo="Falar com a WS3" href="/contato" posicao="sobre_final" />
     </>
   );
 }

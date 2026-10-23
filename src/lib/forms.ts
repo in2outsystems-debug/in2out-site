@@ -173,7 +173,7 @@ export const envioSchema = z.object({
 export type Envio = z.infer<typeof envioSchema>;
 
 const titulos: Record<TipoFormulario, string> = {
-  contato: "Quero falar com a In2Out",
+  contato: "Quero falar com a WS3",
   teste: "Quero testar o rAIptor Atende",
   material: "Quero receber um material gratuito",
   newsletter: "Quero receber os novos artigos",

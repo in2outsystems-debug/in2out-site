@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Cabecalho } from "@/components/Cabecalho";
 import { Rodape } from "@/components/Rodape";
@@ -10,6 +11,7 @@ import { organizationLd, websiteLd } from "@/lib/seo";
 import { SITE_URL, site } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--next-font-texto" });
+const montserrat = localFont({ src: "../fonts/Montserrat.woff2", display: "swap", variable: "--next-font-titulo", weight: "100 900" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -22,11 +24,11 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
-export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#080E1C" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#040B17" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={inter.variable}>
+    <html lang="pt-BR" className={`${inter.variable} ${montserrat.variable}`}>
       <body>
         <a
           href="#conteudo"

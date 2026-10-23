@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { rodape, site, whatsappLink } from "@/lib/site";
 import { AbrirCookies } from "./Consentimento";
+import { NomeMarca } from "./Marca";
 
 function Coluna({ titulo, itens }: { titulo: string; itens: { href: string; rotulo: string }[] }) {
   return (
@@ -59,8 +60,8 @@ export function Rodape() {
       <div className="pagina grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-2">
           <div className="flex items-center gap-2 text-lg font-bold">
-            <Image src="/img/icone.png" alt="" width={40} height={35} className="h-9 w-auto" />
-            <span>{site.nome}</span>
+            <Image src="/img/icone.png" alt="" width={40} height={38} className="h-9 w-auto" />
+            <NomeMarca />
           </div>
           <p className="mt-4 max-w-sm text-sobre-escuro/80">{site.slogan}</p>
         </div>

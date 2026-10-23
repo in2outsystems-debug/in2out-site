@@ -27,13 +27,13 @@ export default function Cookies() {
           </thead>
           <tbody>
             <tr className="border-b border-linha align-top">
-              <td className="py-2 pr-4">in2out-consent</td>
+              <td className="py-2 pr-4">ws3-consent</td>
               <td className="py-2 pr-4">Necessário (armazenamento local)</td>
               <td className="py-2 pr-4">Guarda se você aceitou ou recusou os cookies de medição.</td>
               <td className="py-2">Até você limpar os dados do navegador</td>
             </tr>
             <tr className="border-b border-linha align-top">
-              <td className="py-2 pr-4">in2out-utm</td>
+              <td className="py-2 pr-4">ws3-utm</td>
               <td className="py-2 pr-4">Necessário (armazenamento da sessão)</td>
               <td className="py-2 pr-4">Guarda de qual campanha você veio, para o formulário informar a origem do contato.</td>
               <td className="py-2">Até fechar a aba</td>

@@ -18,9 +18,9 @@ const base =
   "alvo inline-flex items-center justify-center gap-2 rounded-marca px-5 py-3 text-center font-semibold transition-colors";
 
 const variantes = {
-  primario: "bg-acao text-sobre-acao hover:bg-acao-forte",
+  primario: "bg-gradient-to-r from-acao-forte to-acao text-sobre-acao hover:brightness-110",
   secundario: "border-2 border-acao text-acao hover:bg-acao hover:text-sobre-acao",
-  claro: "bg-sobre-escuro text-escuro hover:bg-white",
+  claro: "bg-gradient-to-r from-acao-forte to-acao text-sobre-acao hover:brightness-110",
   "contorno-claro": "border-2 border-sobre-escuro text-sobre-escuro hover:bg-sobre-escuro hover:text-escuro",
 };
 

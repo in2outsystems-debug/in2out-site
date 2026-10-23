@@ -104,7 +104,7 @@ export function Formulario({ tipo, origem, valores = {}, rotuloEnviar, aviso, ao
         const q = new URLSearchParams({ origem: tipo, ...(paramsObrigado ?? {}) });
         if (wa) {
           try {
-            window.sessionStorage.setItem("in2out-wa", wa);
+            window.sessionStorage.setItem("ws3-wa", wa);
           } catch {
             /* sem armazenamento: a página de agradecimento usa o link geral */
           }
@@ -234,7 +234,7 @@ export function Formulario({ tipo, origem, valores = {}, rotuloEnviar, aviso, ao
             className="mt-1 h-6 w-6 flex-shrink-0 accent-[rgb(var(--c-acao))]"
           />
           <label htmlFor={`${uid}-consent`} className="text-base">
-            Autorizo a In2Out Systems a usar meus dados para responder a este contato, conforme a{" "}
+            Autorizo a WS3 Systems a usar meus dados para responder a este contato, conforme a{" "}
             <Link href="/privacidade" className="text-acao underline underline-offset-2">
               política de privacidade
             </Link>{" "}

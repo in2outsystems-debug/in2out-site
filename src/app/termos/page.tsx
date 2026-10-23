@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMeta({
   titulo: "Termos de uso",
-  descricao: "Condições para uso do site e dos conteúdos da In2Out Systems.",
+  descricao: "Condições para uso do site e dos conteúdos da WS3 Systems.",
   caminho: "/termos",
 });
 
@@ -18,7 +18,7 @@ export default function Termos() {
       <h2>2. Conteúdo informativo</h2>
       <p>Os artigos, guias e planilhas têm finalidade educativa. Eles não substituem uma análise do seu caso e não garantem resultados específicos, que dependem de cada empresa.</p>
       <h2>3. Propriedade intelectual</h2>
-      <p>Textos, marcas, imagens e materiais pertencem à In2Out Systems ou são usados com autorização. Você pode usar os materiais gratuitos em sua própria empresa. A cópia e a revenda dependem de autorização por escrito.</p>
+      <p>Textos, marcas, imagens e materiais pertencem à WS3 Systems ou são usados com autorização. Você pode usar os materiais gratuitos em sua própria empresa. A cópia e a revenda dependem de autorização por escrito.</p>
       <h2>4. Serviços e produtos</h2>
       <p>
         As condições de cada serviço, incluindo valores, prazos e responsabilidades, são combinadas em proposta ou contrato próprio. O teste gratuito do rAIptor Atende segue as condições informadas a você antes da ativação, incluindo duração e eventuais custos de serviços de terceiros.

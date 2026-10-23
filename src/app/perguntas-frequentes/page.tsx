@@ -31,7 +31,7 @@ export default function Faq() {
           ))}
         </div>
       </Secao>
-      <ChamadaFinal titulo="Não encontrou a sua dúvida?" rotulo="Falar com a In2Out" href="/contato" posicao="faq_final" />
+      <ChamadaFinal titulo="Não encontrou a sua dúvida?" rotulo="Falar com a WS3" href="/contato" posicao="faq_final" />
     </>
   );
 }

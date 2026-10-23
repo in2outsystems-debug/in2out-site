@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { menu, site } from "@/lib/site";
 import { Botao } from "./Botao";
+import { NomeMarca } from "./Marca";
 
 export function Cabecalho() {
   const [aberto, setAberto] = useState(false);
@@ -32,10 +33,8 @@ export function Cabecalho() {
     <header className="escuro sticky top-0 z-40 border-b border-white/10 bg-escuro text-sobre-escuro">
       <div className="pagina flex h-16 items-center justify-between gap-4">
         <Link href="/" className="alvo flex items-center gap-2 font-bold" aria-label={`${site.nome}, página inicial`}>
-          <Image src="/img/icone.png" alt="" width={40} height={35} priority className="h-9 w-auto" />
-          <span className="text-lg">
-            In2Out <span className="font-medium text-sobre-escuro/75">Systems</span>
-          </span>
+          <Image src="/img/icone.png" alt="" width={40} height={38} priority className="h-9 w-auto" />
+          <NomeMarca className="text-lg" />
         </Link>
 
         <nav aria-label="Principal" className="hidden items-center gap-1 lg:flex">

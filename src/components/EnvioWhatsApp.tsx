@@ -10,7 +10,7 @@ export function EnvioWhatsApp() {
 
   useEffect(() => {
     try {
-      setLink(window.sessionStorage.getItem("in2out-wa") || whatsappLink());
+      setLink(window.sessionStorage.getItem("ws3-wa") || whatsappLink());
     } catch {
       setLink(whatsappLink());
     }

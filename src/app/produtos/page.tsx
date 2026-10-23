@@ -4,7 +4,7 @@ import { produtos } from "@/lib/site";
 
 export const metadata = pageMeta({
   titulo: "Produtos",
-  descricao: "Produtos da In2Out Systems para atendimento e operação de pequenas empresas.",
+  descricao: "Produtos da WS3 Systems para atendimento e operação de pequenas empresas.",
   caminho: "/produtos",
 });
 

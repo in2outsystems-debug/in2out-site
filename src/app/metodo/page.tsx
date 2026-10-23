@@ -7,7 +7,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata = pageMeta({
   titulo: "O método: mapear, padronizar, medir, automatizar e só então usar IA",
   descricao:
-    "Conheça os cinco passos do método In2Out e o teste de 3 perguntas para saber se o seu processo está pronto para automatizar.",
+    "Conheça os cinco passos do método WS3 e o teste de 3 perguntas para saber se o seu processo está pronto para automatizar.",
   caminho: "/metodo",
 });
 
@@ -34,7 +34,7 @@ export default function Metodo() {
     <>
       <TopoPagina
         migalhas={[{ nome: "Método", caminho: "/metodo" }]}
-        olho="O método In2Out"
+        olho="O método WS3"
         titulo="Primeiro o processo, depois a máquina"
         texto="Cinco passos, sempre na mesma ordem. Pular etapas é o que faz projetos de automação e de IA darem errado."
       />

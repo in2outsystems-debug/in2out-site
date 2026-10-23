@@ -1,6 +1,6 @@
 // Rastreamento do lado do navegador. Nada é enviado antes do consentimento.
 
-export const CONSENT_KEY = "in2out-consent";
+export const CONSENT_KEY = "ws3-consent";
 export type Consent = "granted" | "denied" | null;
 
 declare global {
@@ -40,7 +40,7 @@ const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_c
 export function captureUtm() {
   try {
     const url = new URL(window.location.href);
-    const atual: Record<string, string> = JSON.parse(window.sessionStorage.getItem("in2out-utm") || "{}");
+    const atual: Record<string, string> = JSON.parse(window.sessionStorage.getItem("ws3-utm") || "{}");
     let mudou = false;
     for (const k of UTM_KEYS) {
       const v = url.searchParams.get(k);
@@ -49,7 +49,7 @@ export function captureUtm() {
         mudou = true;
       }
     }
-    if (mudou) window.sessionStorage.setItem("in2out-utm", JSON.stringify(atual));
+    if (mudou) window.sessionStorage.setItem("ws3-utm", JSON.stringify(atual));
   } catch {
     /* ignora */
   }
@@ -57,7 +57,7 @@ export function captureUtm() {
 
 export function readUtm(): Record<string, string> {
   try {
-    return JSON.parse(window.sessionStorage.getItem("in2out-utm") || "{}");
+    return JSON.parse(window.sessionStorage.getItem("ws3-utm") || "{}");
   } catch {
     return {};
   }

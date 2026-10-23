@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { captureUtm, readConsent, track, writeConsent, type Consent } from "@/lib/analytics";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
-const EVENTO_ABRIR = "in2out:abrir-cookies";
+const EVENTO_ABRIR = "ws3:abrir-cookies";
 
 /** Botão para reabrir as preferências de cookies (usado no rodapé e na página de cookies). */
 export function AbrirCookies({ className = "" }: { className?: string }) {

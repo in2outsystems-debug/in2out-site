@@ -3,7 +3,7 @@ export type Pergunta = { p: string; r: string; grupo: "Geral" | "Método" | "Ser
 export const perguntas: Pergunta[] = [
   {
     grupo: "Geral",
-    p: "O que a In2Out Systems faz?",
+    p: "O que a WS3 Systems faz?",
     r: "Ajudamos micro e pequenas empresas, MEIs e autônomos a organizar processos, automatizar o que é repetitivo e usar inteligência artificial onde ela realmente ajuda. Também oferecemos o rAIptor Atende, produto de atendimento pelo WhatsApp.",
   },
   {

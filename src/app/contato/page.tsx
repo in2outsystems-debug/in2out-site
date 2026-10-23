@@ -6,7 +6,7 @@ import { site, whatsappLink } from "@/lib/site";
 
 export const metadata = pageMeta({
   titulo: "Contato",
-  descricao: "Fale com a In2Out Systems pelo formulário, WhatsApp ou agende uma conversa de 30 minutos.",
+  descricao: "Fale com a WS3 Systems pelo formulário, WhatsApp ou agende uma conversa de 30 minutos.",
   caminho: "/contato",
 });
 

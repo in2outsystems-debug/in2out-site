@@ -1,4 +1,4 @@
-# In2Out Systems: site institucional
+# WS3 Systems: site institucional
 
 Site em português do Brasil, mobile-first, feito com Next.js (App Router), TypeScript e Tailwind CSS.
 
@@ -79,7 +79,7 @@ Todo número usa o componente `DadoComFonte` (valor, legenda, fonte e data). Em 
 
 ## Analytics e cookies
 
-- O banner oferece "Recusar" e "Aceitar" com o mesmo peso. A escolha fica em `localStorage` (`in2out-consent`). O rodapé tem "Preferências de cookies" para mudar depois.
+- O banner oferece "Recusar" e "Aceitar" com o mesmo peso. A escolha fica em `localStorage` (`ws3-consent`). O rodapé tem "Preferências de cookies" para mudar depois.
 - O GTM só é injetado após o aceite. Nenhum evento é enviado sem consentimento.
 - Eventos enviados ao `dataLayer`: `cta_click` (com `posicao`), `form_start`, `form_submit`, `quiz_start`, `quiz_complete`, `quiz_lead`, `whatsapp_click`, `material_download`, `newsletter_signup`, `faq_open`, `scroll_depth` (25, 50, 75, 90), `busca_conteudo`, `page_view_spa`. Crie os gatilhos correspondentes no GTM e envie ao GA4.
 - UTM: capturadas na primeira visita, em minúsculas, e enviadas junto de cada formulário. Para gerar links de campanha padronizados, use `utmLink()` em `src/lib/analytics.ts`.
@@ -90,7 +90,7 @@ Campo isca invisível, tempo mínimo de preenchimento (2,5 s) e limite de 5 envi
 
 ## Deploy na Vercel
 
-O projeto `in2out-site` já existe na Vercel. Em Settings, Build and Deployment, confira se o Framework Preset está como **Next.js** (antes o site era estático) e cadastre as variáveis de ambiente.
+O projeto `ws3systems` já existe na Vercel. Em Settings, Build and Deployment, confira se o Framework Preset está como **Next.js** (antes o site era estático) e cadastre as variáveis de ambiente.
 
 ## Placeholders pendentes
 
@@ -98,14 +98,14 @@ Procure por `[inserir` no código (`grep -rn "\[inserir" src content`) para ver 
 
 - **Dados da empresa** (`src/lib/site.ts`): razão social, CNPJ, endereço.
 - **Páginas legais**: datas, prazos de retenção, lista de operadores de dados, encarregado (DPO), foro, duração dos cookies do GA4. Os três textos são base e precisam de revisão jurídica.
-- **Sobre**: história da In2Out, nomes, cargos e fotos da equipe.
+- **Sobre**: história da WS3, nomes, cargos e fotos da equipe.
 - **Home**: apresentação e foto da equipe em "Quem está por trás"; captura de tela do rAIptor Atende.
 - **rAIptor Atende**: capturas de tela da caixa de entrada e do CRM.
 - **Contato**: link da agenda (`NEXT_PUBLIC_AGENDA_URL`).
 - **Materiais**: os três arquivos (guia, checklist e planilha) e a automação de envio no n8n.
 - **Perguntas frequentes**: política de preços.
 - **Identidade visual**: cores, fonte e logo definitivos.
-- **Instagram**: o usuário usado no site é `@in2outsystems` (`src/lib/site.ts`). O site anterior apontava para `in2out.systems`; confirme qual é o correto.
+- **Instagram**: o usuário usado no site é `@ws3.systems` (`src/lib/site.ts`). O site anterior apontava para `ws3.systems`; confirme qual é o correto.
 
 ## Artigos de exemplo
 

@@ -15,7 +15,7 @@ import { produtos, servicos, whatsappLink } from "@/lib/site";
 export const metadata = pageMeta({
   titulo: "Organize o processo. Automatize o que faz sentido. Use IA onde ela ajuda de verdade.",
   descricao:
-    "A In2Out Systems ajuda micro e pequenas empresas a mapear, padronizar, medir e só então automatizar. Faça o diagnóstico gratuito.",
+    "A WS3 Systems ajuda micro e pequenas empresas a mapear, padronizar, medir e só então automatizar. Faça o diagnóstico gratuito.",
   caminho: "/",
 });
 
@@ -192,10 +192,10 @@ export default function Home() {
               <Placeholder rotulo="Foto da equipe [inserir]" proporcao="aspect-square" />
             </div>
             <div>
-              <h3 className="text-xl font-bold">A equipe da In2Out</h3>
-              <p className="mt-2 text-mudo">[inserir apresentação: quem são as pessoas, experiência e por que criaram a In2Out]</p>
+              <h3 className="text-xl font-bold">A equipe da WS3</h3>
+              <p className="mt-2 text-mudo">[inserir apresentação: quem são as pessoas, experiência e por que criaram a WS3]</p>
               <Link href="/sobre" className="alvo mt-2 inline-flex items-center font-semibold text-acao underline underline-offset-2">
-                Conhecer a In2Out
+                Conhecer a WS3
               </Link>
             </div>
           </div>

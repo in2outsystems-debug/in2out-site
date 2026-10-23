@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const metadata = pageMeta({
   titulo: "Política de privacidade",
-  descricao: "Como a In2Out Systems coleta, usa e protege os seus dados, conforme a LGPD.",
+  descricao: "Como a WS3 Systems coleta, usa e protege os seus dados, conforme a LGPD.",
   caminho: "/privacidade",
 });
 

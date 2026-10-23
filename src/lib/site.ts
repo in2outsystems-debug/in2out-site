@@ -1,22 +1,22 @@
 // Configuração central do site. Novos produtos entram em `produtos` sem mexer na navegação.
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://in2out-site.vercel.app").replace(/\/$/, "");
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://ws3systems.vercel.app").replace(/\/$/, "");
 
 export const site = {
-  nome: "In2Out Systems",
+  nome: "WS3 Systems",
   slogan: "Organize o processo. Automatize o que faz sentido. Use IA onde ela ajuda de verdade.",
   descricao:
     "Consultoria de gestão de processos, automação e IA para micro e pequenas empresas, MEIs e autônomos. Primeiro organizar, depois automatizar.",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "5599984195490",
-  email: "in2out.systems@gmail.com",
-  instagram: { usuario: "in2outsystems", url: "https://instagram.com/in2outsystems" },
+  email: "ws3.systems@gmail.com",
+  instagram: { usuario: "ws3.systems", url: "https://instagram.com/ws3.systems" },
   agendaUrl: process.env.NEXT_PUBLIC_AGENDA_URL || "",
   razaoSocial: "[inserir razão social]",
   cnpj: "[inserir CNPJ]",
   endereco: "[inserir endereço ou cidade de atuação]",
 };
 
-export function whatsappLink(mensagem = "Olá! Vim pelo site da In2Out Systems e quero conversar sobre o meu negócio.") {
+export function whatsappLink(mensagem = "Olá! Vim pelo site da WS3 Systems e quero conversar sobre o meu negócio.") {
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(mensagem)}`;
 }
 

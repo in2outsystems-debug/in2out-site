@@ -3,7 +3,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   titulo: "Política de privacidade do Gestor Tráfego IA",
-  descricao: "Como a In2Out Systems trata os dados do Google Ads no aplicativo Gestor Tráfego IA.",
+  descricao: "Como a WS3 Systems trata os dados do Google Ads no aplicativo Gestor Tráfego IA.",
   caminho: "/privacidade-gestor-trafego-ia",
 });
 
@@ -16,11 +16,11 @@ export default function PrivacidadeGestorTrafegoIA() {
       rascunho={false}
     >
       <p>
-        Esta política descreve como a <strong>In2Out Systems</strong> (&quot;nós&quot;) trata informações no aplicativo <strong>Gestor Tráfego IA</strong>, uma ferramenta interna de gestão de tráfego pago usada para analisar e gerenciar campanhas de publicidade.
+        Esta política descreve como a <strong>WS3 Systems</strong> (&quot;nós&quot;) trata informações no aplicativo <strong>Gestor Tráfego IA</strong>, uma ferramenta interna de gestão de tráfego pago usada para analisar e gerenciar campanhas de publicidade.
       </p>
       <h2>1. Quem somos</h2>
       <p>
-        A In2Out Systems é a responsável pelo tratamento dos dados descritos aqui. Contato: <a href="mailto:in2out.systems@gmail.com">in2out.systems@gmail.com</a>.
+        A WS3 Systems é a responsável pelo tratamento dos dados descritos aqui. Contato: <a href="mailto:ws3.systems@gmail.com">ws3.systems@gmail.com</a>.
       </p>
       <h2>2. Quais dados acessamos</h2>
       <p>
@@ -49,7 +49,7 @@ export default function PrivacidadeGestorTrafegoIA() {
       <h2>7. Seus direitos e revogação de acesso</h2>
       <p>
         Nos termos da Lei Geral de Proteção de Dados (Lei nº 13.709/2018), você pode solicitar acesso, correção ou exclusão dos seus dados. Também pode revogar a qualquer momento o acesso do aplicativo à sua conta do Google em{" "}
-        <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Para qualquer solicitação, escreva para <a href="mailto:in2out.systems@gmail.com">in2out.systems@gmail.com</a>.
+        <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Para qualquer solicitação, escreva para <a href="mailto:ws3.systems@gmail.com">ws3.systems@gmail.com</a>.
       </p>
       <h2>8. Alterações</h2>
       <p>Podemos atualizar esta política. A data da última atualização aparece no topo desta página.</p>

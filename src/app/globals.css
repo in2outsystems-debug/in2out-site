@@ -3,37 +3,37 @@
 @tailwind utilities;
 
 /*
- * IDENTIDADE VISUAL (provisória)
+ * IDENTIDADE VISUAL (WS3 Systems)
  * Para trocar cores, fontes e raios, edite só este bloco.
  * Cores em formato "R G B" (sem vírgulas) para o Tailwind aplicar transparência.
  * Tema escuro nas cores da marca. Mantenha contraste mínimo de 4.5:1 entre texto e fundo.
  */
 :root {
-  --c-fundo: 8 14 28;
-  --c-superficie: 17 26 46;
-  --c-suave: 13 21 38;
-  --c-tinta: 242 244 248;
-  --c-mudo: 170 182 204;
-  --c-linha: 44 58 86;
+  --c-fundo: 4 11 23;
+  --c-superficie: 9 22 40;
+  --c-suave: 6 16 31;
+  --c-tinta: 242 247 252;
+  --c-mudo: 170 190 212;
+  --c-linha: 16 62 100;
 
-  /* Cor de ação: botões e links principais (azul claro da marca) */
-  --c-acao: 79 168 240;
-  --c-acao-forte: 130 193 247;
-  --c-sobre-acao: 8 14 28;
+  /* Cor de ação: botões e links principais (gradiente azul-ciano do logo WS3 Systems) */
+  --c-acao: 5 175 252;
+  --c-acao-forte: 5 237 252;
+  --c-sobre-acao: 4 11 23;
 
-  /* Cor de destaque para dados e números */
-  --c-dado: 245 166 66;
-  --c-dado-fundo: 42 32 18;
+  /* Cor de destaque para dados e números (ciano da marca) */
+  --c-dado: 5 237 252;
+  --c-dado-fundo: 6 38 56;
 
   /* Faixas ainda mais escuras (rodapé, hero, chamada final) */
-  --c-escuro: 4 8 17;
-  --c-sobre-escuro: 245 247 250;
+  --c-escuro: 2 7 15;
+  --c-sobre-escuro: 245 250 255;
 
   --c-erro: 255 138 128;
   --c-ok: 74 222 128;
 
   --fonte-texto: var(--next-font-texto), system-ui, -apple-system, "Segoe UI", sans-serif;
-  --fonte-titulo: var(--next-font-texto), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fonte-titulo: var(--next-font-titulo), var(--next-font-texto), system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --raio: 0.5rem;
   --raio-grande: 1rem;

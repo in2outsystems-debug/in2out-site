@@ -6,7 +6,7 @@ import { site, whatsappLink } from "@/lib/site";
 
 export const metadata = pageMeta({
   titulo: "Links do Instagram",
-  descricao: "Tudo o que citamos no Instagram da In2Out Systems, em um lugar só.",
+  descricao: "Tudo o que citamos no Instagram da WS3 Systems, em um lugar só.",
   caminho: "/instagram",
 });
 
@@ -15,7 +15,7 @@ export default function Instagram() {
   return (
     <div className="pagina py-12">
       <div className="mx-auto max-w-md text-center">
-        <Image src="/img/icone.png" alt="" width={80} height={70} className="mx-auto h-16 w-auto" />
+        <Image src="/img/icone.png" alt="" width={80} height={76} className="mx-auto h-16 w-auto" />
         <h1 className="titulo-2 mt-4">{site.nome}</h1>
         <p className="mt-2 text-mudo">@{site.instagram.usuario}. Processo, automação e IA para quem tem empresa pequena.</p>
         <ul className="mt-8 space-y-3">
@@ -42,7 +42,7 @@ export default function Instagram() {
             </li>
           )}
           <li>
-            <Botao href={whatsappLink("Olá! Vim pelo Instagram da In2Out Systems.")} variante="secundario" posicao="bio_whatsapp" className="w-full">
+            <Botao href={whatsappLink("Olá! Vim pelo Instagram da WS3 Systems.")} variante="secundario" posicao="bio_whatsapp" className="w-full">
               Falar no WhatsApp
             </Botao>
           </li>
