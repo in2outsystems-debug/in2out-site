@@ -15,7 +15,7 @@ type Props = {
 };
 
 const base =
-  "alvo inline-flex items-center justify-center gap-2 rounded-marca px-5 py-3 text-center font-semibold transition-colors";
+  "alvo prensa inline-flex items-center justify-center gap-2 rounded-marca px-5 py-3 text-center font-semibold transition-colors";
 
 const variantes = {
   primario: "bg-gradient-to-r from-acao-forte to-acao text-sobre-acao hover:brightness-110",

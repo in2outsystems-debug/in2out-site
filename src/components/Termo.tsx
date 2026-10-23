@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { usePresenca } from "./movimento/usePresenca";
 import { glossario, type Termo as TermoNome } from "@/lib/site";
 
 /** Termo técnico com explicação em tooltip. Funciona com mouse, toque e teclado. */
@@ -8,6 +9,7 @@ export function Termo({ nome, children }: { nome: TermoNome; children?: ReactNod
   const [aberto, setAberto] = useState(false);
   const id = useId();
   const raiz = useRef<HTMLSpanElement>(null);
+  const { montado, presenca } = usePresenca(aberto, 140);
 
   useEffect(() => {
     if (!aberto) return;
@@ -41,11 +43,13 @@ export function Termo({ nome, children }: { nome: TermoNome; children?: ReactNod
       >
         {children ?? nome}
       </button>
-      {aberto && (
+      {montado && (
         <span
           role="tooltip"
           id={id}
-          className="absolute left-0 top-full z-20 mt-2 block w-64 rounded-marca border border-linha bg-escuro p-3 text-left text-sm font-normal normal-case leading-snug tracking-normal text-sobre-escuro shadow-lg"
+          data-presenca={presenca}
+          data-anim="pop"
+          className="origin-top-left absolute left-0 top-full z-20 mt-2 block w-64 rounded-marca border border-linha bg-escuro p-3 text-left text-sm font-normal normal-case leading-snug tracking-normal text-sobre-escuro shadow-lg"
         >
           <strong className="block">{nome}</strong>
           {glossario[nome]}

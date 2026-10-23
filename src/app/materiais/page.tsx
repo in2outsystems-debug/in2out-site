@@ -1,6 +1,6 @@
 import { Secao, TopoPagina } from "@/components/Blocos";
-import { Formulario } from "@/components/Formulario";
 import { pageMeta } from "@/lib/seo";
+import { FormularioTardio } from "@/components/movimento/Tardios";
 
 export const metadata = pageMeta({
   titulo: "Materiais gratuitos para organizar seus processos",
@@ -43,7 +43,7 @@ export default function Materiais() {
               <h2 className="titulo-3 mt-1 text-2xl">{m.nome}</h2>
               <p className="mb-6 mt-2 text-mudo">{m.texto}</p>
               <div className="mt-auto border-t border-linha pt-6">
-                <Formulario tipo="material" origem={`material_${m.nome}`} valores={{ material: m.nome }} paramsObrigado={{ material: m.nome }} />
+                <FormularioTardio tipo="material" origem={`material_${m.nome}`} valores={{ material: m.nome }} paramsObrigado={{ material: m.nome }} />
               </div>
             </li>
           ))}

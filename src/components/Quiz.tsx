@@ -152,7 +152,7 @@ export function Quiz() {
           </div>
         </div>
 
-        <div className="max-w-xl rounded-marca-lg border border-linha bg-superficie p-6">
+        <div className="entrada max-w-xl rounded-marca-lg border border-linha bg-superficie p-6">
           <h3 className="titulo-3">Receba a recomendação por e-mail</h3>
           <p className="mb-5 mt-1 text-mudo">Enviamos o resultado e os próximos passos para o seu e-mail.</p>
           <Formulario
@@ -198,11 +198,14 @@ export function Quiz() {
           aria-label="Progresso do diagnóstico"
           className="h-3 overflow-hidden rounded-full bg-linha"
         >
-          <div className="h-full rounded-full bg-acao transition-all" style={{ width: `${pct}%` }} />
+          <div
+            className="h-full origin-left rounded-full bg-gradient-to-r from-acao to-acao-forte transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+            style={{ transform: `scaleX(${pct / 100})` }}
+          />
         </div>
       </div>
 
-      <fieldset aria-describedby={erro ? "quiz-erro" : undefined}>
+      <fieldset key={etapa} aria-describedby={erro ? "quiz-erro" : undefined} className="entrada">
         <legend className="mb-1">
           <span ref={titulo} tabIndex={-1} className="titulo-2 block outline-none">
             {p.titulo}
@@ -210,12 +213,13 @@ export function Quiz() {
         </legend>
         <p className="mb-5 max-w-leitura text-mudo">{p.ajuda}</p>
         <div className="grid gap-3 sm:grid-cols-2">
-          {p.opcoes.map((o) => {
+          {p.opcoes.map((o, i) => {
             const marcado = respostas[p.id] === o.rotulo;
             return (
               <label
                 key={o.rotulo}
-                className={`alvo flex cursor-pointer items-center gap-3 rounded-marca border-2 px-4 py-3 font-medium has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-acao ${
+                style={{ "--i": i + 1 } as React.CSSProperties}
+                className={`entrada alvo prensa flex cursor-pointer items-center gap-3 rounded-marca border-2 px-4 py-3 font-medium has-[:focus-visible]:outline has-[:focus-visible]:outline-[3px] has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-acao ${
                   marcado ? "border-acao bg-suave" : "border-linha bg-superficie hover:border-mudo"
                 }`}
               >
@@ -226,7 +230,7 @@ export function Quiz() {
           })}
         </div>
         {erro && (
-          <p id="quiz-erro" role="alert" className="mt-3 font-medium text-erro">
+          <p id="quiz-erro" role="alert" className="entrada mt-3 font-medium text-erro">
             {erro}
           </p>
         )}
@@ -234,11 +238,11 @@ export function Quiz() {
 
       <div className="mt-8 flex gap-3">
         {etapa > 0 && (
-          <button type="button" onClick={() => { setErro(""); setEtapa(etapa - 1); }} className="alvo rounded-marca border-2 border-acao px-5 py-3 font-semibold text-acao hover:bg-suave">
+          <button type="button" onClick={() => { setErro(""); setEtapa(etapa - 1); }} className="alvo prensa rounded-marca border-2 border-acao px-5 py-3 font-semibold text-acao hover:bg-suave">
             Voltar
           </button>
         )}
-        <button type="button" onClick={avancar} className="alvo rounded-marca bg-acao px-6 py-3 font-semibold text-sobre-acao hover:bg-acao-forte">
+        <button type="button" onClick={avancar} className="alvo prensa rounded-marca bg-acao px-6 py-3 font-semibold text-sobre-acao hover:bg-acao-forte">
           {etapa + 1 === total ? "Ver resultado" : "Próxima"}
         </button>
       </div>

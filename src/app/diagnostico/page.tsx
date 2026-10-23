@@ -1,6 +1,6 @@
 import { Migalhas } from "@/components/Blocos";
-import { Quiz } from "@/components/Quiz";
 import { pageMeta } from "@/lib/seo";
+import { QuizTardio } from "@/components/movimento/Tardios";
 
 export const metadata = pageMeta({
   titulo: "Diagnóstico gratuito: seu processo está pronto para automatizar?",
@@ -18,7 +18,7 @@ export default function Diagnostico() {
         <p className="mb-10 mt-4 max-w-leitura text-xl text-mudo">
           Três perguntas do teste, mais duas sobre o seu negócio. No final você vê o seu nível e a recomendação.
         </p>
-        <Quiz />
+        <QuizTardio />
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 import { Botao } from "@/components/Botao";
 import { Secao, TopoPagina } from "@/components/Blocos";
-import { Formulario } from "@/components/Formulario";
 import { pageMeta } from "@/lib/seo";
 import { site, whatsappLink } from "@/lib/site";
+import { FormularioTardio } from "@/components/movimento/Tardios";
 
 export const metadata = pageMeta({
   titulo: "Contato",
@@ -25,7 +25,7 @@ export default function Contato() {
           <div>
             <h2 className="titulo-2">Envie uma mensagem</h2>
             <div className="mt-6 rounded-marca-lg border border-linha bg-superficie p-6 sm:p-8">
-              <Formulario tipo="contato" origem="contato" />
+              <FormularioTardio tipo="contato" origem="contato" />
             </div>
           </div>
 

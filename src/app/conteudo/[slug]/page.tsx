@@ -6,6 +6,7 @@ import { ChamadaFinal, JsonLd, Lista, Migalhas, CartaoArtigo } from "@/component
 import { formatarData, getArtigo, getTodosArtigos, slugify } from "@/lib/content";
 import { pageMeta } from "@/lib/seo";
 import { SITE_URL, site } from "@/lib/site";
+import { ProgressoLeitura } from "@/components/movimento/ProgressoLeitura";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -67,6 +68,7 @@ export default async function ArtigoPagina({ params }: Props) {
           publisher: { "@type": "Organization", name: site.nome, logo: { "@type": "ImageObject", url: `${SITE_URL}/img/icone.png` } },
         }}
       />
+      <ProgressoLeitura />
       <article className="pagina py-10 sm:py-14">
         <Migalhas
           itens={[

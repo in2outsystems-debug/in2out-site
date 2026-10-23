@@ -1,12 +1,12 @@
 import { Acordeao } from "@/components/Acordeao";
 import { ChamadaFinal, JsonLd, Lista, Secao, TopoPagina } from "@/components/Blocos";
 import { Botao } from "@/components/Botao";
-import { Formulario } from "@/components/Formulario";
 import { CapturaTela } from "@/components/CapturaTela";
 import { Placeholder } from "@/components/Placeholder";
 import { Termo } from "@/components/Termo";
 import { faqLd, pageMeta } from "@/lib/seo";
 import { SITE_URL, site } from "@/lib/site";
+import { FormularioTardio } from "@/components/movimento/Tardios";
 
 export const metadata = pageMeta({
   titulo: "rAIptor Atende: atendimento com IA, CRM e automações no WhatsApp",
@@ -145,7 +145,7 @@ export default function RaiptorAtende() {
 
       <Secao id="teste-gratuito" fundo="suave" olho="Teste gratuito" titulo="Peça o seu teste" intro="Preencha o formulário e entramos em contato pelo WhatsApp para combinar a ativação.">
         <div className="max-w-2xl rounded-marca-lg border border-linha bg-superficie p-6 sm:p-8">
-          <Formulario
+          <FormularioTardio
             tipo="teste"
             origem="raiptor_teste"
             paramsObrigado={{ produto: "raiptor-atende" }}

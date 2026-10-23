@@ -1,4 +1,4 @@
-import { AbrirCookies } from "@/components/Consentimento";
+import { AbrirCookies } from "@/components/AbrirCookies";
 import { PaginaLegal } from "@/components/PaginaLegal";
 import { pageMeta } from "@/lib/seo";
 

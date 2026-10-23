@@ -4,8 +4,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Cabecalho } from "@/components/Cabecalho";
 import { Rodape } from "@/components/Rodape";
-import { WhatsAppFlutuante } from "@/components/WhatsAppFlutuante";
-import { Consentimento } from "@/components/Consentimento";
+import { WhatsAppTardio, ConsentimentoTardio } from "@/components/movimento/TardiosCliente";
+import { TransicaoRota } from "@/components/movimento/TransicaoRota";
+import { RevelarGlobal } from "@/components/movimento/RevelarGlobal";
 import { JsonLd } from "@/components/Blocos";
 import { organizationLd, websiteLd } from "@/lib/seo";
 import { SITE_URL, site } from "@/lib/site";
@@ -36,13 +37,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Ir para o conteúdo
         </a>
+        <TransicaoRota />
         <Cabecalho />
         <main id="conteudo" tabIndex={-1} className="outline-none">
           {children}
         </main>
         <Rodape />
-        <WhatsAppFlutuante />
-        <Consentimento />
+        <RevelarGlobal escopo="footer" />
+        <WhatsAppTardio />
+        <ConsentimentoTardio />
         <JsonLd dados={[organizationLd, websiteLd]} />
       </body>
     </html>

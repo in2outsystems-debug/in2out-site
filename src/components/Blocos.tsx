@@ -105,7 +105,7 @@ export function Secao({
 /** Cartão reutilizável de produto. Basta incluir o produto em src/lib/site.ts. */
 export function CartaoProduto({ produto, posicao }: { produto: Produto; posicao: string }) {
   return (
-    <article className="flex h-full flex-col rounded-marca-lg border border-linha bg-superficie p-6">
+    <article className="eleva flex h-full flex-col rounded-marca-lg border border-linha bg-superficie p-6">
       <p className="olho">Produto</p>
       <h3 className="titulo-3 mt-1 text-2xl">{produto.nome}</h3>
       <p className="mt-2 font-medium">{produto.chamada}</p>
@@ -124,7 +124,7 @@ export function CartaoProduto({ produto, posicao }: { produto: Produto; posicao:
 
 export function CartaoArtigo({ artigo }: { artigo: Artigo }) {
   return (
-    <article className="relative flex h-full flex-col rounded-marca-lg border border-linha bg-superficie p-6 transition-shadow focus-within:ring-2 focus-within:ring-acao hover:shadow-md">
+    <article className="eleva relative flex h-full flex-col rounded-marca-lg border border-linha bg-superficie p-6 focus-within:ring-2 focus-within:ring-acao">
       <p className="olho">{artigo.categoria}</p>
       <h3 className="mt-2 text-xl font-bold">
         <Link href={`/conteudo/${artigo.slug}`} className="after:absolute after:inset-0 focus:outline-none">

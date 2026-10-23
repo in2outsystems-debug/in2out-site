@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { rodape, site, whatsappLink } from "@/lib/site";
-import { AbrirCookies } from "./Consentimento";
+import { AbrirCookies } from "./AbrirCookies";
 import { NomeMarca } from "./Marca";
 
 function Coluna({ titulo, itens }: { titulo: string; itens: { href: string; rotulo: string }[] }) {

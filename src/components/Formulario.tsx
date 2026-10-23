@@ -120,7 +120,7 @@ export function Formulario({ tipo, origem, valores = {}, rotuloEnviar, aviso, ao
 
   if (concluido) {
     return (
-      <div role="status" className="rounded-marca-lg border border-ok bg-superficie p-5">
+      <div role="status" className="entrada rounded-marca-lg border border-ok bg-superficie p-5">
         {linkWa ? (
           <>
             <p className="font-medium text-ok">Falta um passo: envie os dados pelo WhatsApp para a nossa equipe receber.</p>
@@ -129,7 +129,7 @@ export function Formulario({ tipo, origem, valores = {}, rotuloEnviar, aviso, ao
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => track("whatsapp_click", { posicao: "formulario_envio", formulario: tipo })}
-              className="alvo mt-3 inline-flex items-center rounded-marca bg-acao px-5 py-3 font-semibold text-sobre-acao hover:bg-acao-forte"
+              className="alvo prensa mt-3 inline-flex items-center rounded-marca bg-acao px-5 py-3 font-semibold text-sobre-acao hover:bg-acao-forte"
             >
               Enviar pelo WhatsApp<span className="sr-only"> (abre em nova aba)</span>
             </a>
@@ -142,14 +142,14 @@ export function Formulario({ tipo, origem, valores = {}, rotuloEnviar, aviso, ao
   }
 
   return (
-    <form ref={form} onSubmit={enviar} noValidate onFocus={iniciar} className="space-y-5">
+    <form ref={form} onSubmit={enviar} noValidate onFocus={iniciar} aria-busy={enviando} className="space-y-5">
       {Object.keys(erros).filter((k) => erros[k]).length > 0 && (
-        <div role="alert" className="rounded-marca border border-erro bg-superficie p-4 text-erro">
+        <div role="alert" className="entrada rounded-marca border border-erro bg-superficie p-4 text-erro">
           Confira os campos destacados abaixo.
         </div>
       )}
       {erroGeral && (
-        <div role="alert" className="rounded-marca border border-erro bg-superficie p-4 text-erro">
+        <div role="alert" className="entrada rounded-marca border border-erro bg-superficie p-4 text-erro">
           {erroGeral}
         </div>
       )}
@@ -200,7 +200,7 @@ export function Formulario({ tipo, origem, valores = {}, rotuloEnviar, aviso, ao
               />
             )}
             {erros[c.nome] && (
-              <p id={`${id}-erro`} className="mt-1 text-sm font-medium text-erro">
+              <p id={`${id}-erro`} className="entrada mt-1 text-sm font-medium text-erro">
                 {erros[c.nome]}
               </p>
             )}
@@ -242,7 +242,7 @@ export function Formulario({ tipo, origem, valores = {}, rotuloEnviar, aviso, ao
           </label>
         </div>
         {erroConsent && (
-          <p id={`${uid}-consent-erro`} className="mt-1 text-sm font-medium text-erro">
+          <p id={`${uid}-consent-erro`} className="entrada mt-1 text-sm font-medium text-erro">
             {erroConsent}
           </p>
         )}
@@ -251,8 +251,9 @@ export function Formulario({ tipo, origem, valores = {}, rotuloEnviar, aviso, ao
       <button
         type="submit"
         disabled={enviando}
-        className="alvo inline-flex w-full items-center justify-center rounded-marca bg-acao px-6 py-3 text-lg font-semibold text-sobre-acao hover:bg-acao-forte disabled:opacity-70 sm:w-auto"
+        className="alvo prensa inline-flex w-full items-center justify-center gap-2 rounded-marca bg-acao px-6 py-3 text-lg font-semibold text-sobre-acao hover:bg-acao-forte disabled:opacity-70 sm:w-auto"
       >
+        {enviando && <span className="spinner" aria-hidden="true" />}
         {enviando ? "Enviando..." : (rotuloEnviar ?? def.enviar)}
       </button>
     </form>

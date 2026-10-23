@@ -6,12 +6,14 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { menu, site } from "@/lib/site";
 import { Botao } from "./Botao";
+import { usePresenca } from "./movimento/usePresenca";
 import { NomeMarca } from "./Marca";
 
 export function Cabecalho() {
   const [aberto, setAberto] = useState(false);
   const caminho = usePathname();
   const botao = useRef<HTMLButtonElement>(null);
+  const { montado, presenca } = usePresenca(aberto, 170);
 
   useEffect(() => setAberto(false), [caminho]);
 
@@ -59,21 +61,50 @@ export function Cabecalho() {
           <button
             ref={botao}
             type="button"
-            className="alvo inline-flex items-center justify-center rounded-marca border border-white/30 lg:hidden"
+            className="alvo prensa inline-flex items-center justify-center rounded-marca border border-white/30 lg:hidden"
             aria-expanded={aberto}
             aria-controls="menu-movel"
             onClick={() => setAberto((a) => !a)}
           >
             <span className="sr-only">{aberto ? "Fechar menu" : "Abrir menu"}</span>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-              {aberto ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
-            </svg>
+            <span className="relative block h-6 w-6" aria-hidden="true">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                className={`absolute inset-0 transition-[opacity,scale,filter] duration-200 ${aberto ? "scale-50 opacity-0 blur-[2px]" : "scale-100 opacity-100"}`}
+              >
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                className={`absolute inset-0 transition-[opacity,scale,filter] duration-200 ${aberto ? "scale-100 opacity-100" : "scale-50 opacity-0 blur-[2px]"}`}
+              >
+                <path d="M6 6l12 12M18 6L6 18" />
+              </svg>
+            </span>
           </button>
         </div>
       </div>
 
-      {aberto && (
-        <nav id="menu-movel" aria-label="Principal" className="border-t border-white/10 bg-escuro lg:hidden">
+      {montado && (
+        <nav
+          id="menu-movel"
+          aria-label="Principal"
+          data-presenca={presenca}
+          data-anim="topo"
+          className="border-t border-white/10 bg-escuro lg:hidden"
+        >
           <ul className="pagina flex flex-col py-3">
             {menu.map((m) => (
               <li key={m.href}>

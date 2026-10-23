@@ -108,7 +108,7 @@ export default function Home() {
       <Secao id="sinais" fundo="suave" olho="Três sinais" titulo="Como saber se o seu processo precisa de atenção">
         <ul className="grid gap-4 md:grid-cols-3">
           {sinais.map((s) => (
-            <li key={s.slug} className="relative flex flex-col rounded-marca-lg border border-linha bg-superficie p-6 focus-within:ring-2 focus-within:ring-acao hover:shadow-md">
+            <li key={s.slug} className="eleva relative flex flex-col rounded-marca-lg border border-linha bg-superficie p-6 focus-within:ring-2 focus-within:ring-acao hover:shadow-md">
               <h3 className="text-xl font-bold">{s.titulo}</h3>
               <p className="mt-2 flex-1 text-mudo">{s.texto}</p>
               <Link href={`/conteudo/${s.slug}`} className="alvo mt-4 inline-flex items-center gap-1 font-semibold text-acao after:absolute after:inset-0 focus:outline-none">

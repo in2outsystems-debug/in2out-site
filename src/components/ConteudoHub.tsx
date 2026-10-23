@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useId, useMemo, useState } from "react";
+import { useId, useMemo, useState, type ReactNode } from "react";
+import { usePresenca } from "./movimento/usePresenca";
 import { track } from "@/lib/analytics";
 import { categorias } from "@/lib/site";
 
@@ -18,6 +19,21 @@ function normalizar(s: string) {
   return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 }
 
+/** Item da lista: sai com animação ao deixar o filtro e entra com animação ao voltar. */
+function ItemFiltrado({ visivel, children }: { visivel: boolean; children: ReactNode }) {
+  const { montado, presenca } = usePresenca(visivel, 200);
+  if (!montado) return null;
+  return (
+    <li
+      data-presenca={presenca}
+      data-anim="pop"
+      className="eleva relative flex flex-col rounded-marca-lg border border-linha bg-superficie p-6 focus-within:ring-2 focus-within:ring-acao"
+    >
+      {children}
+    </li>
+  );
+}
+
 export function ConteudoHub({ itens }: { itens: ItemHub[] }) {
   const [busca, setBusca] = useState("");
   const [cat, setCat] = useState<string>("Todos");
@@ -31,6 +47,7 @@ export function ConteudoHub({ itens }: { itens: ItemHub[] }) {
         (!q || normalizar(`${i.titulo} ${i.resumo} ${i.categoria}`).includes(q)),
     );
   }, [itens, busca, cat]);
+  const visiveis = useMemo(() => new Set(filtrados.map((i) => i.slug)), [filtrados]);
 
   return (
     <div>
@@ -69,15 +86,15 @@ export function ConteudoHub({ itens }: { itens: ItemHub[] }) {
         </fieldset>
       </div>
 
-      <p role="status" className="mb-4 text-mudo">
+      <p role="status" key={filtrados.length === 0 ? "vazio" : "cheio"} className="entrada mb-4 text-mudo">
         {filtrados.length === 0
           ? "Nenhum artigo encontrado. Tente outra palavra ou categoria."
           : `${filtrados.length} ${filtrados.length === 1 ? "artigo" : "artigos"}`}
       </p>
 
       <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {filtrados.map((a) => (
-          <li key={a.slug} className="relative flex flex-col rounded-marca-lg border border-linha bg-superficie p-6 focus-within:ring-2 focus-within:ring-acao hover:shadow-md">
+        {itens.map((a) => (
+          <ItemFiltrado key={a.slug} visivel={visiveis.has(a.slug)}>
             <p className="olho">{a.categoria}</p>
             <h2 className="mt-2 text-xl font-bold">
               <Link href={`/conteudo/${a.slug}`} className="after:absolute after:inset-0 focus:outline-none">
@@ -88,7 +105,7 @@ export function ConteudoHub({ itens }: { itens: ItemHub[] }) {
             <p className="mt-4 text-sm text-mudo">
               {a.publicado.split("-").reverse().join("/")} · {a.minutos} min de leitura
             </p>
-          </li>
+          </ItemFiltrado>
         ))}
       </ul>
     </div>

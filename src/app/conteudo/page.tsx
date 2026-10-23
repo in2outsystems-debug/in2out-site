@@ -1,8 +1,7 @@
 import { Secao, TopoPagina } from "@/components/Blocos";
-import { ConteudoHub } from "@/components/ConteudoHub";
-import { Formulario } from "@/components/Formulario";
 import { getTodosArtigos } from "@/lib/content";
 import { pageMeta } from "@/lib/seo";
+import { FormularioTardio, ConteudoHubTardio } from "@/components/movimento/Tardios";
 
 export const metadata = pageMeta({
   titulo: "Conteúdo: artigos sobre processos, automação e IA para pequenas empresas",
@@ -29,11 +28,11 @@ export default function Conteudo() {
         texto="Artigos curtos, com a resposta logo no começo e um checklist no final."
       />
       <Secao>
-        <ConteudoHub itens={itens} />
+        <ConteudoHubTardio itens={itens} />
       </Secao>
       <Secao fundo="suave" id="newsletter" olho="Newsletter" titulo="Receba os novos artigos por e-mail" intro="Um e-mail quando houver artigo novo. Você sai quando quiser.">
         <div className="max-w-xl rounded-marca-lg border border-linha bg-superficie p-6">
-          <Formulario tipo="newsletter" origem="conteudo_newsletter" />
+          <FormularioTardio tipo="newsletter" origem="conteudo_newsletter" />
         </div>
       </Secao>
     </>
