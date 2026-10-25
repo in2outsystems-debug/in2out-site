@@ -4,8 +4,8 @@ import { pageMeta } from "@/lib/seo";
 import { servicos } from "@/lib/site";
 
 export const metadata = pageMeta({
-  titulo: "Serviços: gestão de processos, automação e IA aplicada",
-  descricao: "Três serviços na ordem do método: organizar o processo, automatizar o que é repetitivo e aplicar IA com informações autorizadas.",
+  titulo: "Serviços: gestão de processos, automação, IA aplicada e tráfego pago",
+  descricao: "Quatro serviços na ordem do método: organizar o processo, automatizar o que é repetitivo, aplicar IA com informações autorizadas e atrair novos clientes com anúncios no Google e no Meta.",
   caminho: "/servicos",
 });
 
@@ -15,11 +15,11 @@ export default function Servicos() {
       <TopoPagina
         migalhas={[{ nome: "Serviços", caminho: "/servicos" }]}
         olho="Serviços"
-        titulo="Três serviços, na ordem do método"
+        titulo="Quatro serviços, na ordem do método"
         texto="Cada serviço depende do anterior. Por isso começamos pela gestão de processos e só avançamos quando o processo está pronto."
       />
       <Secao>
-        <ol className="grid gap-4 md:grid-cols-3">
+        <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {servicos.map((s, i) => (
             <li key={s.slug} className="cartao flex flex-col">
               <p className="text-sm font-semibold text-dado">Serviço {i + 1}</p>

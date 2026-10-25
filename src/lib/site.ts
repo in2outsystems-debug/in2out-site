@@ -6,7 +6,7 @@ export const site = {
   nome: "WS3 Systems",
   slogan: "Organize o processo. Automatize o que faz sentido. Use IA onde ela ajuda de verdade.",
   descricao:
-    "Consultoria de gestão de processos, automação e IA para micro e pequenas empresas, MEIs e autônomos. Primeiro organizar, depois automatizar.",
+    "Consultoria de gestão de processos, automação, IA e tráfego pago para micro e pequenas empresas, MEIs e autônomos. Primeiro organizar, depois automatizar.",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "5599984195490",
   email: "ws3.systems@gmail.com",
   instagram: { usuario: "ws3.systems", url: "https://instagram.com/ws3.systems" },
@@ -259,6 +259,57 @@ export const servicos: Servico[] = [
       {
         p: "Existe um produto pronto para isso?",
         r: "Sim, o rAIptor Atende, que reúne IA, CRM e automações no WhatsApp. Também montamos soluções sob medida quando faz sentido.",
+      },
+    ],
+  },
+  {
+    slug: "trafego-pago",
+    nome: "Gestão de tráfego pago",
+    curto: "Criamos e acompanhamos anúncios no Google e no Meta (Instagram e Facebook) para trazer novos clientes até o seu atendimento.",
+    dor: "Já tentou impulsionar posts ou rodar anúncios, o dinheiro saiu e ninguém sabe dizer quantos clientes vieram de lá.",
+    paraQuem: [
+      "Negócios com o atendimento já organizado que querem receber mais contatos.",
+      "Comércio local e prestadores de serviço que querem aparecer para quem procura na região.",
+      "Empresas que já anunciam, mas não sabem dizer o que funciona e o que só gasta.",
+    ],
+    condicao:
+      "Anúncio traz gente para o atendimento. Se o atendimento ainda perde contatos ou demora a responder, o investimento vaza. Por isso olhamos primeiro se o processo de atendimento aguenta o volume.",
+    entregamos: [
+      "Plano de campanhas com objetivo, público e verba definidos.",
+      "Criação e configuração das campanhas no Google Ads e no Meta Ads.",
+      "Acompanhamento e ajustes periódicos dos anúncios.",
+      "Relatório mensal com os contatos gerados e o custo de cada um.",
+    ],
+    etapas: [
+      "Conversa para definir objetivo, região e verba.",
+      "Revisar o atendimento e a forma de saber de onde veio cada contato.",
+      "Montar as campanhas e os anúncios.",
+      "Publicar e acompanhar de perto as primeiras semanas.",
+      "Relatório mensal e ajustes.",
+    ],
+    entregaveis: [
+      "Campanhas configuradas nas contas da empresa",
+      "Plano de campanhas documentado",
+      "Relatório mensal de desempenho",
+      "Registro das mudanças feitas nas campanhas",
+    ],
+    limites: [
+      "Atuamos apenas no Google Ads e no Meta Ads.",
+      "A verba dos anúncios é paga direto às plataformas, separada do valor do serviço.",
+      "Não prometemos número de vendas. O resultado depende também da oferta, do preço e do atendimento.",
+    ],
+    faq: [
+      {
+        p: "A conta de anúncios fica no meu nome?",
+        r: "Sim. As campanhas rodam nas contas da sua empresa e você dá acesso à WS3. Se o trabalho terminar, tudo continua com você.",
+      },
+      {
+        p: "Quanto preciso investir em anúncios?",
+        r: "Depende do objetivo e da região. Combinamos a verba antes de começar, e dá para começar pequeno e aumentar conforme os números aparecem.",
+      },
+      {
+        p: "Por que vocês olham o atendimento antes dos anúncios?",
+        r: "Porque anúncio sem atendimento organizado desperdiça verba. Se o contato chega e ninguém responde a tempo, o dinheiro foi embora.",
       },
     ],
   },

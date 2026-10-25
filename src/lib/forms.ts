@@ -71,6 +71,7 @@ export const formularios: Record<TipoFormulario, { campos: CampoDef[]; enviar: s
           "Gestão de processos",
           "Automação",
           "IA aplicada",
+          "Tráfego pago",
           "rAIptor Atende",
           "Outro assunto",
         ],

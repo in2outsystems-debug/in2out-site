@@ -131,8 +131,8 @@ export default function Home() {
       </Secao>
 
       {/* 5. Serviços */}
-      <Secao id="servicos" fundo="suave" olho="Serviços" titulo="Três frentes de trabalho">
-        <ul className="grid gap-4 md:grid-cols-3">
+      <Secao id="servicos" fundo="suave" olho="Serviços" titulo="Quatro frentes de trabalho">
+        <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {servicos.map((s) => (
             <li key={s.slug} className="flex flex-col rounded-marca-lg border border-linha bg-superficie p-6">
               <h3 className="text-xl font-bold">{s.nome}</h3>
