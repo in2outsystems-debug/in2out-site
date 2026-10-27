@@ -14,7 +14,7 @@ export const perguntas: Pergunta[] = [
   {
     grupo: "Geral",
     p: "Quanto custa?",
-    r: "O valor depende do que será feito e é informado na conversa inicial, antes de qualquer contratação.",
+    r: "O valor depende do que será feito e é informado na conversa inicial, antes de qualquer contratação. No WS3 Atendy, o consumo de IA vai direto na conta da sua empresa, pela sua própria chave da OpenAI, sem intermediário.",
   },
   {
     grupo: "Método",
@@ -64,7 +64,12 @@ export const perguntas: Pergunta[] = [
   {
     grupo: "WS3 Atendy",
     p: "Ele faz agendamentos?",
-    r: "Depende da conexão autorizada com a sua agenda e da validação do fluxo. Isso é combinado na ativação.",
+    r: "Sim. Os agentes de IA consultam os horários livres, marcam, remarcam e cancelam pela conversa. A agenda pode ser sincronizada com o Google Agenda e gerar o link do Google Meet.",
+  },
+  {
+    grupo: "WS3 Atendy",
+    p: "Como o WhatsApp é conectado?",
+    r: "Pelo próprio celular: você lê um QR Code ou digita um código de pareamento. O mesmo número passa a servir o atendimento, os follow-ups e os agentes de IA.",
   },
   {
     grupo: "Dados e privacidade",

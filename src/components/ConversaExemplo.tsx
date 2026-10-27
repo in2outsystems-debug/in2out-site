@@ -18,7 +18,11 @@ const conversa: Item[] = [
 
 const autor = { cliente: "Cliente", ia: "IA", equipe: "Equipe" } as const;
 
-export function ConversaExemplo() {
+/** Versão curta para o topo da home: pergunta, resposta da IA, passagem para a equipe. */
+const curta = [0, 1, 4, 5];
+
+export function ConversaExemplo({ compacta = false }: { compacta?: boolean }) {
+  const itens = compacta ? curta.map((i) => conversa[i]) : conversa;
   return (
     <figure className="rounded-marca-lg border border-linha bg-suave p-4 sm:p-6">
       <div className="flex items-center justify-between gap-3 border-b border-linha pb-3 text-sm">
@@ -26,7 +30,7 @@ export function ConversaExemplo() {
         <span className="rounded-full border border-linha px-2.5 py-0.5 text-mudo">Exemplo</span>
       </div>
       <ol className="mt-4 flex flex-col gap-3">
-        {conversa.map((item, i) =>
+        {itens.map((item, i) =>
           item.tipo === "evento" ? (
             <li key={i} className="flex items-baseline gap-2 self-center text-sm text-mudo">
               <span aria-hidden="true" className="h-1.5 w-1.5 flex-shrink-0 -translate-y-0.5 rounded-full bg-dado" />

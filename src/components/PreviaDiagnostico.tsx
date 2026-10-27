@@ -20,7 +20,7 @@ export function PreviaDiagnostico() {
       </ol>
       <div className="mt-6 border-t border-linha pt-4">
         <Botao href="/diagnostico" variante="texto" posicao="home_hero_previa" className="text-acao after:absolute after:inset-0 after:rounded-marca-lg focus:outline-none">
-          Responder no diagnóstico gratuito
+          Fazer o diagnóstico gratuito
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true" className="ml-1">
             <path d="M3 8h10M9 4l4 4-4 4" />
           </svg>
