@@ -7,7 +7,7 @@ export function PreviaDiagnostico() {
   return (
     <div className="relative hidden rounded-marca-lg border border-linha bg-superficie p-6 transition-colors focus-within:ring-2 focus-within:ring-acao hover:border-acao/60 lg:block">
       <p className="font-semibold">O teste de 3 perguntas</p>
-      <p className="mt-1 text-sm text-mudo">É por onde o diagnóstico começa, antes de qualquer automação.</p>
+      <p className="mt-1 text-sm text-mudo">As três primeiras das 5 perguntas do diagnóstico gratuito.</p>
       <ol className="mt-5 flex flex-col gap-4">
         {perguntas.map((p, i) => (
           <li key={p} className="border-t border-linha pt-4 first:border-t-0 first:pt-0">

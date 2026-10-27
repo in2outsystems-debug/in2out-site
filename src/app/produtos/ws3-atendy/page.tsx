@@ -5,7 +5,7 @@ import { Botao } from "@/components/Botao";
 import { ConversaExemplo } from "@/components/ConversaExemplo";
 import { Termo } from "@/components/Termo";
 import { faqLd, pageMeta } from "@/lib/seo";
-import { SITE_URL, demonstracaoLink, site } from "@/lib/site";
+import { SITE_URL, demonstracao, site } from "@/lib/site";
 import { FormularioTardio } from "@/components/movimento/Tardios";
 
 export const metadata = pageMeta({
@@ -151,8 +151,8 @@ export default function Ws3Atendy() {
         intro="Mostramos o atendimento, o CRM e a passagem da conversa para a equipe. Sem compromisso."
       >
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-          <Botao href={demonstracaoLink()} tamanho="grande" posicao="atendy_demonstracao">
-            Agendar demonstração (30 min)
+          <Botao href={demonstracao().href} tamanho="grande" posicao="atendy_demonstracao">
+            {demonstracao().rotulo}
           </Botao>
           <p className="text-mudo">
             Ainda não fez o diagnóstico?{" "}

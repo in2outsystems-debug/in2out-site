@@ -4,10 +4,11 @@ import { Botao } from "@/components/Botao";
 import { ChamadaFinal, JsonLd, Secao } from "@/components/Blocos";
 import { FluxoMetodo } from "@/components/FluxoMetodo";
 import { ConversaExemplo } from "@/components/ConversaExemplo";
+import { Termo } from "@/components/Termo";
 import { PreviaDiagnostico } from "@/components/PreviaDiagnostico";
 import { faqCurto, type Pergunta } from "@/lib/faq";
 import { pageMeta, faqLd } from "@/lib/seo";
-import { demonstracaoLink, produtos, servicos, whatsappLink } from "@/lib/site";
+import { demonstracao, produtos, servicos, whatsappLink } from "@/lib/site";
 
 export const metadata = pageMeta({
   titulo: "Processo antes da IA no atendimento pelo WhatsApp",
@@ -38,9 +39,9 @@ const sinais = [
 ];
 
 const comoAtende = [
-  "A IA responde o que a sua empresa autorizou.",
-  "Contatos e conversas ficam registrados no CRM.",
-  "A equipe assume o que precisa de uma pessoa.",
+  { id: "ia", texto: <>A IA responde o que a sua empresa autorizou.</> },
+  { id: "crm", texto: <>Contatos e conversas ficam registrados no <Termo nome="CRM">CRM</Termo>.</> },
+  { id: "equipe", texto: <>A equipe assume o que precisa de uma pessoa.</> },
 ];
 
 // As objeções mais comuns entram como perguntas, junto das frequentes.
@@ -49,12 +50,13 @@ const perguntasHome: Pergunta[] = [
   {
     grupo: "Método",
     p: "E se eu não tiver tempo para organizar?",
-    r: "Quem não organiza vive apagando incêndio. O tempo que falta hoje é, em boa parte, o tempo gasto refazendo o que deu errado. Por isso o trabalho começa por um processo só, normalmente o atendimento.",
+    r: "Você não para a operação. O trabalho começa por um processo só, normalmente o atendimento, em conversas curtas junto da rotina. E boa parte do tempo que falta hoje vai embora refazendo o que deu errado.",
   },
 ];
 
 export default function Home() {
   const produto = produtos[0];
+  const demo = demonstracao();
 
   return (
     <>
@@ -74,10 +76,11 @@ export default function Home() {
               <Botao href="/diagnostico" tamanho="grande" posicao="home_hero">
                 Fazer o diagnóstico gratuito
               </Botao>
-              <Botao href="/produtos/ws3-atendy" variante="contorno-claro" tamanho="grande" posicao="home_hero_produto">
-                Conhecer o WS3 Atendy
+              <Botao href="#produto" variante="texto" posicao="home_hero_exemplo" className="text-sobre-escuro">
+                Ver um exemplo de atendimento
               </Botao>
             </div>
+            <p className="mt-4 text-sm text-sobre-escuro/80">5 perguntas, resultado na hora, sem cadastro.</p>
           </div>
           <PreviaDiagnostico />
         </div>
@@ -119,20 +122,21 @@ export default function Home() {
             <p className="max-w-leitura text-lg text-mudo">{produto.descricao}</p>
             <ul className="mt-6 flex flex-col gap-3">
               {comoAtende.map((item) => (
-                <li key={item} className="flex items-baseline gap-3">
+                <li key={item.id} className="flex items-baseline gap-3">
                   <span aria-hidden="true" className="h-1.5 w-1.5 flex-shrink-0 -translate-y-0.5 rounded-full bg-dado" />
-                  {item}
+                  <span>{item.texto}</span>
                 </li>
               ))}
             </ul>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Botao href={produto.ctaHref} posicao="home_produto_demonstracao">
-                {produto.cta}
+              <Botao href={demo.href} posicao="home_produto_demonstracao">
+                {demo.rotulo}
               </Botao>
               <Botao href={produto.href} variante="secundario" posicao="home_produto_saiba">
-                Ver o WS3 Atendy
+                Conhecer o WS3 Atendy
               </Botao>
             </div>
+            <p className="mt-4 text-sm text-mudo">Depois da demonstração, você pode testar o WS3 Atendy por 7 dias, gratuitamente.</p>
           </div>
           <ConversaExemplo />
         </div>
@@ -167,22 +171,25 @@ export default function Home() {
 
       <ChamadaFinal
         titulo="Descubra se o seu atendimento está pronto para automatizar"
-        texto="Comece pelo diagnóstico gratuito: 5 perguntas e o resultado na hora. Depois, veja o WS3 Atendy funcionando numa demonstração de 30 minutos."
+        texto="Comece pelo diagnóstico gratuito: 5 perguntas e o resultado na hora. Depois, veja o WS3 Atendy funcionando numa demonstração de 30 minutos e teste por 7 dias."
         rotulo="Fazer o diagnóstico gratuito"
         href="/diagnostico"
         posicao="home_final"
         extra={
-          <Botao href={demonstracaoLink()} variante="contorno-claro" tamanho="grande" posicao="home_final_demonstracao">
-            Agendar demonstração (30 min)
+          <Botao href={demo.href} variante="contorno-claro" tamanho="grande" posicao="home_final_demonstracao">
+            {demo.rotulo}
           </Botao>
         }
         rodape={
-          <>
-            Prefere conversar antes?{" "}
-            <Botao href={whatsappLink()} variante="texto" posicao="home_final_whatsapp">
-              Chame no WhatsApp
-            </Botao>
-          </>
+          // Sem agenda, a demonstração já abre o WhatsApp: a linha seria uma segunda porta para o mesmo lugar.
+          !demo.viaWhatsapp && (
+            <>
+              Prefere conversar antes?{" "}
+              <Botao href={whatsappLink()} variante="texto" posicao="home_final_whatsapp">
+                Chame no WhatsApp
+              </Botao>
+            </>
+          )
         }
       />
     </>

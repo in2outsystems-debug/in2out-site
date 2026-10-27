@@ -20,9 +20,18 @@ export function whatsappLink(mensagem = "Olá! Vim pelo site da WS3 Systems e qu
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(mensagem)}`;
 }
 
-/** Demonstração de 30 minutos: abre a agenda online ou, sem ela, o WhatsApp com o pedido escrito. */
-export function demonstracaoLink() {
-  return site.agendaUrl || whatsappLink("Olá! Vim pelo site da WS3 Systems e quero agendar uma demonstração de 30 minutos do WS3 Atendy.");
+/**
+ * Demonstração de 30 minutos: abre a agenda online ou, sem ela, o WhatsApp com o pedido escrito.
+ * O rótulo diz para onde o botão leva.
+ */
+export function demonstracao() {
+  return site.agendaUrl
+    ? { href: site.agendaUrl, rotulo: "Agendar demonstração (30 min)", viaWhatsapp: false }
+    : {
+        href: whatsappLink("Olá! Vim pelo site da WS3 Systems e quero agendar uma demonstração de 30 minutos do WS3 Atendy."),
+        rotulo: "Pedir demonstração pelo WhatsApp",
+        viaWhatsapp: true,
+      };
 }
 
 export const menu = [
@@ -339,8 +348,8 @@ export const produtos: Produto[] = [
     descricao:
       "Atenda novos interessados e clientes atuais pelo WhatsApp, organize as informações e dê continuidade às conversas. A equipe fica no controle do que precisa de atenção humana.",
     href: "/produtos/ws3-atendy",
-    cta: "Agendar demonstração",
-    ctaHref: "/produtos/ws3-atendy#demonstracao",
+    cta: demonstracao().rotulo,
+    ctaHref: demonstracao().href,
   },
 ];
 
