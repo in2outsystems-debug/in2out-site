@@ -1,27 +1,20 @@
 import { Botao } from "./Botao";
 
-/** Prévia do teste de 3 perguntas no topo da home (só em telas largas). O cartão inteiro leva ao diagnóstico. */
+/** Prévia do teste de 3 perguntas no topo da home. O cartão inteiro leva ao diagnóstico. */
 const perguntas = ["Existe um processo definido?", "Ele está padronizado?", "Alguém mede o resultado?"];
 
 export function PreviaDiagnostico() {
   return (
-    <div className="relative hidden rounded-marca-lg border border-linha bg-superficie p-6 transition-colors focus-within:ring-2 focus-within:ring-acao hover:border-acao/60 lg:block">
+    <div className="relative rounded-marca-lg border border-linha bg-superficie p-5 transition-colors focus-within:ring-2 focus-within:ring-acao hover:border-acao/60 sm:p-6">
       <p className="font-semibold">O teste de 3 perguntas</p>
-      <p className="mt-1 text-sm text-mudo">As três primeiras das 5 perguntas do diagnóstico gratuito.</p>
-      <ol className="mt-5 flex flex-col gap-4">
+      <p className="mt-1 text-sm text-mudo">As três primeiras das 5 perguntas do diagnóstico. Você responde sim, em parte ou não.</p>
+      <ol className="mt-4 flex flex-col gap-3 sm:mt-5 sm:gap-4">
         {perguntas.map((p, i) => (
-          <li key={p} className="border-t border-linha pt-4 first:border-t-0 first:pt-0">
+          <li key={p} className="border-t border-linha pt-3 first:border-t-0 first:pt-0 sm:pt-4">
             <p className="flex gap-3 font-medium">
               <span className="text-dado tabular-nums">{i + 1}.</span>
               {p}
             </p>
-            <div aria-hidden="true" className="mt-2.5 flex gap-2 pl-6 text-sm text-mudo">
-              {["Sim", "Em parte", "Não"].map((o) => (
-                <span key={o} className="rounded-full border border-linha px-3 py-1">
-                  {o}
-                </span>
-              ))}
-            </div>
           </li>
         ))}
       </ol>

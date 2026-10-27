@@ -21,20 +21,14 @@ const sinais = [
   {
     titulo: "O cliente chama no WhatsApp e fica esperando",
     texto: "As conversas se espalham entre celulares, ninguém sabe quem já respondeu e o retorno depende da memória de quem atendeu.",
-    href: "/diagnostico",
-    rotulo: "Fazer o diagnóstico",
   },
   {
     titulo: "O mesmo erro se repete todo mês",
     texto: "Cobrança duplicada, pedido esquecido, cliente sem resposta. Corrige-se na hora e o erro volta no mês seguinte.",
-    href: "/conteudo/mesmo-erro-todo-mes",
-    rotulo: "Ler o artigo",
   },
   {
     titulo: "Cada pessoa resolve a tarefa do seu jeito",
     texto: "O resultado depende de quem atendeu. O cliente percebe e a equipe também.",
-    href: "/conteudo/cada-pessoa-faz-do-seu-jeito",
-    rotulo: "Ler o artigo",
   },
 ];
 
@@ -72,15 +66,15 @@ export default function Home() {
             <p className="mt-6 max-w-leitura text-xl text-sobre-escuro/85">
               Para empresas que atendem clientes pelo WhatsApp: mapeamos como o atendimento acontece hoje, padronizamos o jeito de responder e só então automatizamos o que se repete.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Botao href="/diagnostico" tamanho="grande" posicao="home_hero">
+            <div className="mt-8">
+              <Botao href="/diagnostico" tamanho="grande" posicao="home_hero" className="w-full sm:w-auto">
                 Fazer o diagnóstico gratuito
               </Botao>
-              <Botao href="#produto" variante="texto" posicao="home_hero_exemplo" className="text-sobre-escuro">
-                Ver um exemplo de atendimento
-              </Botao>
+              <p className="mt-3 text-sm text-sobre-escuro/80">5 perguntas, resultado na hora, sem cadastro.</p>
             </div>
-            <p className="mt-4 text-sm text-sobre-escuro/80">5 perguntas, resultado na hora, sem cadastro.</p>
+            <Botao href="#produto" variante="texto" posicao="home_hero_exemplo" className="mt-4 text-sobre-escuro">
+              Ver um exemplo de atendimento
+            </Botao>
           </div>
           <PreviaDiagnostico />
         </div>
@@ -90,16 +84,18 @@ export default function Home() {
       <Secao id="sinais" fundo="suave" titulo="Como saber se o seu atendimento precisa de processo">
         <ul className="grid gap-4 md:grid-cols-3">
           {sinais.map((s) => (
-            <li key={s.titulo} className="eleva relative flex flex-col rounded-marca-lg border border-linha bg-superficie p-6 focus-within:ring-2 focus-within:ring-acao hover:shadow-md">
+            <li key={s.titulo} className="rounded-marca-lg border border-linha bg-superficie p-6">
               <h3 className="text-xl font-bold">{s.titulo}</h3>
-              <p className="mt-2 flex-1 text-mudo">{s.texto}</p>
-              <Link href={s.href} className="alvo mt-4 inline-flex items-center gap-1 font-semibold text-acao after:absolute after:inset-0 focus:outline-none">
-                {s.rotulo}
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
-              </Link>
+              <p className="mt-2 text-mudo">{s.texto}</p>
             </li>
           ))}
         </ul>
+        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <Botao href="/diagnostico" posicao="home_sinais_diagnostico">
+            Ver se é o seu caso
+          </Botao>
+          <p className="text-mudo">O diagnóstico mostra em qual passo o seu atendimento está.</p>
+        </div>
       </Secao>
 
       {/* 3. Método, com o diagnóstico como primeiro passo */}
@@ -117,8 +113,8 @@ export default function Home() {
 
       {/* 4. Produto */}
       <Secao id="produto" fundo="suave" titulo="WS3 Atendy: atendimento com IA no WhatsApp">
-        <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div>
+        <div className="grid items-start gap-10 lg:grid-cols-2">
+          <div className="lg:pt-2">
             <p className="max-w-leitura text-lg text-mudo">{produto.descricao}</p>
             <ul className="mt-6 flex flex-col gap-3">
               {comoAtende.map((item) => (
@@ -138,7 +134,9 @@ export default function Home() {
             </div>
             <p className="mt-4 text-sm text-mudo">Depois da demonstração, você pode testar o WS3 Atendy por 7 dias, gratuitamente.</p>
           </div>
-          <ConversaExemplo />
+          <div className="order-first lg:order-none">
+            <ConversaExemplo />
+          </div>
         </div>
       </Secao>
 
