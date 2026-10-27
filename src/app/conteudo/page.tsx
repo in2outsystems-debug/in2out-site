@@ -23,14 +23,13 @@ export default function Conteudo() {
     <>
       <TopoPagina
         migalhas={[{ nome: "Conteúdo", caminho: "/conteudo" }]}
-        olho="Conteúdo"
         titulo="Aprenda a organizar o seu negócio"
         texto="Artigos curtos, com a resposta logo no começo e um checklist no final."
       />
       <Secao>
         <ConteudoHubTardio itens={itens} />
       </Secao>
-      <Secao fundo="suave" id="newsletter" olho="Newsletter" titulo="Receba os novos artigos por e-mail" intro="Um e-mail quando houver artigo novo. Você sai quando quiser.">
+      <Secao fundo="suave" id="newsletter" titulo="Receba os novos artigos por e-mail" intro="Um e-mail quando houver artigo novo. Você sai quando quiser.">
         <div className="max-w-xl rounded-marca-lg border border-linha bg-superficie p-6">
           <FormularioTardio tipo="newsletter" origem="conteudo_newsletter" />
         </div>

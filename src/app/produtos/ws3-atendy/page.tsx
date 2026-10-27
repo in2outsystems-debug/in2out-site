@@ -81,7 +81,6 @@ export default function Ws3Atendy() {
           { nome: "Produtos", caminho: "/produtos" },
           { nome: "WS3 Atendy", caminho: "/produtos/ws3-atendy" },
         ]}
-        olho="WS3 Atendy"
         titulo="Automatize o atendimento. Organize sua operação. Mantenha cada conversa em movimento."
         texto={
           <>
@@ -99,14 +98,14 @@ export default function Ws3Atendy() {
         </div>
       </TopoPagina>
 
-      <Secao id="problema" olho="O problema" titulo="Onde o atendimento se perde">
+      <Secao id="problema" titulo="Onde o atendimento se perde">
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <Lista itens={problemas} marcador="x" />
           <ConversaExemplo />
         </div>
       </Secao>
 
-      <Secao id="como-funciona" fundo="suave" olho="Como funciona" titulo="Em cinco passos">
+      <Secao id="como-funciona" fundo="suave" titulo="Em cinco passos">
         <ol className="grid gap-4 md:grid-cols-5">
           {passos.map((p, i) => (
             <li key={p} className="cartao">
@@ -118,7 +117,7 @@ export default function Ws3Atendy() {
         <p className="mt-6 max-w-leitura text-mudo">O que a IA faz em cada conversa depende da configuração e das informações autorizadas pela sua empresa.</p>
       </Secao>
 
-      <Secao id="funcionalidades" olho="Funcionalidades" titulo="11 recursos no mesmo lugar">
+      <Secao id="funcionalidades" titulo="11 recursos no mesmo lugar">
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {funcionalidades.map((f) => (
             <li key={f} className="cartao !p-4 font-medium">
@@ -128,7 +127,7 @@ export default function Ws3Atendy() {
         </ul>
       </Secao>
 
-      <Secao id="aplicacoes" fundo="suave" olho="Aplicações" titulo="Onde costuma ajudar">
+      <Secao id="aplicacoes" fundo="suave" titulo="Onde costuma ajudar">
         <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {aplicacoes.map((a) => (
             <li key={a.nome} className="cartao">
@@ -139,7 +138,7 @@ export default function Ws3Atendy() {
         </ul>
       </Secao>
 
-      <Secao id="faq" olho="Perguntas frequentes" titulo="Dúvidas sobre o WS3 Atendy">
+      <Secao id="faq" titulo="Dúvidas sobre o WS3 Atendy">
         <div className="max-w-3xl">
           <Acordeao itens={faq.map((f) => ({ p: f.p, r: <p>{f.r}</p> }))} origem="atendy" />
         </div>
@@ -148,7 +147,6 @@ export default function Ws3Atendy() {
       <Secao
         id="demonstracao"
         fundo="suave"
-        olho="Demonstração"
         titulo="Veja o WS3 Atendy funcionando em 30 minutos"
         intro="Mostramos o atendimento, o CRM e a passagem da conversa para a equipe. Sem compromisso."
       >
@@ -168,7 +166,6 @@ export default function Ws3Atendy() {
 
       <Secao
         id="teste-gratuito"
-        olho="Teste gratuito"
         titulo="Depois da demonstração, teste por 7 dias"
         intro="Preencha o formulário e entramos em contato pelo WhatsApp para combinar a ativação."
       >

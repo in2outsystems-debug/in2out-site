@@ -14,7 +14,6 @@ export default function Servicos() {
     <>
       <TopoPagina
         migalhas={[{ nome: "Serviços", caminho: "/servicos" }]}
-        olho="Serviços"
         titulo="Quatro serviços, na ordem do método"
         texto="Cada serviço depende do anterior. Por isso começamos pela gestão de processos e só avançamos quando o processo está pronto."
       />

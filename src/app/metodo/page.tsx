@@ -34,7 +34,6 @@ export default function Metodo() {
     <>
       <TopoPagina
         migalhas={[{ nome: "Método", caminho: "/metodo" }]}
-        olho="O método WS3"
         titulo="Primeiro o processo, depois a máquina"
         texto="Cinco passos, sempre na mesma ordem. Pular etapas é o que faz projetos de automação e de IA darem errado."
       />
@@ -46,7 +45,6 @@ export default function Metodo() {
       <Secao
         id="indicadores"
         fundo="suave"
-        olho="Medir"
         titulo="Três indicadores simples"
         intro={<>Um <Termo nome="indicador">indicador</Termo> é um número que mostra se o <Termo nome="processo">processo</Termo> está indo bem. Comece com três.</>}
       >
@@ -60,7 +58,7 @@ export default function Metodo() {
         </ul>
       </Secao>
 
-      <Secao id="erros" olho="Erros comuns" titulo="Três jeitos de desperdiçar o esforço">
+      <Secao id="erros" titulo="Três jeitos de desperdiçar o esforço">
         <ul className="grid gap-4 md:grid-cols-3">
           {erros.map((e) => (
             <li key={e.nome} className="cartao">
@@ -71,7 +69,7 @@ export default function Metodo() {
         </ul>
       </Secao>
 
-      <Secao id="teste" fundo="suave" olho="Antes de automatizar" titulo="O teste de 3 perguntas" intro="Responda sobre o processo que você pensa em automatizar. Se alguma resposta for não, volte ao passo correspondente antes de gastar com automação.">
+      <Secao id="teste" fundo="suave" titulo="O teste de 3 perguntas" intro="Responda sobre o processo que você pensa em automatizar. Se alguma resposta for não, volte ao passo correspondente antes de gastar com automação.">
         <ol className="grid gap-4 md:grid-cols-3">
           {teste.map((t, i) => (
             <li key={t.p} className="cartao">

@@ -16,7 +16,6 @@ export default function Faq() {
       <JsonLd dados={faqLd(perguntas)} />
       <TopoPagina
         migalhas={[{ nome: "Perguntas frequentes", caminho: "/perguntas-frequentes" }]}
-        olho="Perguntas frequentes"
         titulo="Respostas diretas para as dúvidas mais comuns"
       />
       <Secao>

@@ -84,7 +84,7 @@ export default function Home() {
       </section>
 
       {/* 2. Três sinais */}
-      <Secao id="sinais" fundo="suave" olho="Três sinais" titulo="Como saber se o seu atendimento precisa de processo">
+      <Secao id="sinais" fundo="suave" titulo="Como saber se o seu atendimento precisa de processo">
         <ul className="grid gap-4 md:grid-cols-3">
           {sinais.map((s) => (
             <li key={s.titulo} className="eleva relative flex flex-col rounded-marca-lg border border-linha bg-superficie p-6 focus-within:ring-2 focus-within:ring-acao hover:shadow-md">
@@ -100,7 +100,7 @@ export default function Home() {
       </Secao>
 
       {/* 3. Método, com o diagnóstico como primeiro passo */}
-      <Secao id="metodo" olho="O método" titulo="Cinco passos, sempre nesta ordem" intro="A ordem importa. Automatizar uma bagunça só faz o erro acontecer mais rápido.">
+      <Secao id="metodo" titulo="Cinco passos, sempre nesta ordem" intro="A ordem importa. Automatizar uma bagunça só faz o erro acontecer mais rápido.">
         <FluxoMetodo />
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
           <Botao href="/diagnostico" posicao="home_metodo_diagnostico">
@@ -113,7 +113,7 @@ export default function Home() {
       </Secao>
 
       {/* 4. Produto */}
-      <Secao id="produto" fundo="suave" olho="Produto" titulo="WS3 Atendy: atendimento com IA no WhatsApp">
+      <Secao id="produto" fundo="suave" titulo="WS3 Atendy: atendimento com IA no WhatsApp">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div>
             <p className="max-w-leitura text-lg text-mudo">{produto.descricao}</p>
@@ -139,7 +139,7 @@ export default function Home() {
       </Secao>
 
       {/* 5. Serviços */}
-      <Secao id="servicos" olho="Serviços" titulo="Quatro frentes de trabalho">
+      <Secao id="servicos" titulo="Quatro frentes de trabalho">
         <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {servicos.map((s) => (
             <li key={s.slug} className="flex flex-col rounded-marca-lg border border-linha bg-superficie p-6">
@@ -154,7 +154,7 @@ export default function Home() {
       </Secao>
 
       {/* 6. Perguntas e chamada final */}
-      <Secao id="faq" fundo="suave" olho="Perguntas frequentes" titulo="O que costumam perguntar">
+      <Secao id="faq" fundo="suave" titulo="O que costumam perguntar">
         <div className="max-w-3xl">
           <Acordeao itens={perguntasHome.map((f) => ({ p: f.p, r: <p>{f.r}</p> }))} origem="home_faq" />
           <p className="mt-6">

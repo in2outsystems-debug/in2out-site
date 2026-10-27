@@ -53,8 +53,7 @@ export default async function Obrigado({ searchParams }: Props) {
   return (
     <div className="pagina py-16">
       <div className="mx-auto max-w-2xl">
-        <p className="olho">Obrigado</p>
-        <h1 className="titulo-1 mt-2">{porWhatsapp ? "Quase lá" : t.titulo}</h1>
+        <h1 className="titulo-1">{porWhatsapp ? "Quase lá" : t.titulo}</h1>
         {material && <p className="mt-3 text-lg text-mudo">Material: {material}</p>}
         {porWhatsapp && <EnvioWhatsApp />}
         <h2 className="titulo-3 mt-8">{porWhatsapp ? "O que acontece depois" : "Próximos passos"}</h2>

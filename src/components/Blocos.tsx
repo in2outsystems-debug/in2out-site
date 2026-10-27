@@ -46,13 +46,11 @@ export function Migalhas({ itens }: { itens: { nome: string; caminho: string }[]
 /** Abertura padrão das páginas internas. */
 export function TopoPagina({
   migalhas,
-  olho,
   titulo,
   texto,
   children,
 }: {
   migalhas: { nome: string; caminho: string }[];
-  olho?: string;
   titulo: string;
   texto?: ReactNode;
   children?: ReactNode;
@@ -61,8 +59,7 @@ export function TopoPagina({
     <section className="border-b border-linha bg-suave">
       <div className="pagina py-10 sm:py-14">
         <Migalhas itens={migalhas} />
-        {olho && <p className="olho mt-6">{olho}</p>}
-        <h1 className={`titulo-1 max-w-4xl ${olho ? "mt-2" : "mt-6"}`}>{titulo}</h1>
+        <h1 className="titulo-1 mt-6 max-w-4xl">{titulo}</h1>
         {texto && <p className="mt-4 max-w-leitura text-xl text-mudo">{texto}</p>}
         {children && <div className="mt-6">{children}</div>}
       </div>
@@ -73,14 +70,12 @@ export function TopoPagina({
 export function Secao({
   id,
   titulo,
-  olho,
   intro,
   children,
   fundo = "normal",
 }: {
   id?: string;
   titulo?: string;
-  olho?: string;
   intro?: ReactNode;
   children: ReactNode;
   fundo?: "normal" | "suave" | "escuro";
@@ -89,9 +84,8 @@ export function Secao({
   return (
     <section id={id} className={`secao ${cls}`} aria-labelledby={titulo && id ? `${id}-t` : undefined}>
       <div className="pagina">
-        {olho && <p className="olho">{olho}</p>}
         {titulo && (
-          <h2 id={id ? `${id}-t` : undefined} className={`titulo-2 max-w-3xl ${fundo === "escuro" ? "!text-sobre-escuro" : ""} ${olho ? "mt-2" : ""}`}>
+          <h2 id={id ? `${id}-t` : undefined} className={`titulo-2 max-w-3xl ${fundo === "escuro" ? "!text-sobre-escuro" : ""}`}>
             {titulo}
           </h2>
         )}
@@ -106,8 +100,7 @@ export function Secao({
 export function CartaoProduto({ produto, posicao }: { produto: Produto; posicao: string }) {
   return (
     <article className="eleva flex h-full flex-col rounded-marca-lg border border-linha bg-superficie p-6">
-      <p className="olho">Produto</p>
-      <h3 className="titulo-3 mt-1 text-2xl">{produto.nome}</h3>
+      <h3 className="titulo-3 text-2xl">{produto.nome}</h3>
       <p className="mt-2 font-medium">{produto.chamada}</p>
       <p className="mt-3 flex-1 text-mudo">{produto.descricao}</p>
       <div className="mt-6 flex flex-wrap gap-3">
