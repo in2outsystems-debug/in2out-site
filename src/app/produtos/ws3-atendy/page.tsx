@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Acordeao } from "@/components/Acordeao";
 import { ChamadaFinal, JsonLd, Lista, Secao, TopoPagina } from "@/components/Blocos";
 import { Botao } from "@/components/Botao";
@@ -5,14 +6,14 @@ import { CapturaTela } from "@/components/CapturaTela";
 import { Placeholder } from "@/components/Placeholder";
 import { Termo } from "@/components/Termo";
 import { faqLd, pageMeta } from "@/lib/seo";
-import { SITE_URL, site } from "@/lib/site";
+import { SITE_URL, demonstracaoLink, site } from "@/lib/site";
 import { FormularioTardio } from "@/components/movimento/Tardios";
 
 export const metadata = pageMeta({
-  titulo: "rAIptor Atende: atendimento com IA, CRM e automações no WhatsApp",
+  titulo: "WS3 Atendy: atendimento com IA, CRM e automações no WhatsApp",
   descricao:
-    "Atenda novos interessados e clientes atuais pelo WhatsApp, organize as informações e dê continuidade às conversas. Peça um teste gratuito.",
-  caminho: "/produtos/raiptor-atende",
+    "Atenda novos interessados e clientes atuais pelo WhatsApp, organize as informações e dê continuidade às conversas. Agende uma demonstração de 30 minutos.",
+  caminho: "/produtos/ws3-atendy",
 });
 
 const problemas = [
@@ -51,13 +52,13 @@ const aplicacoes = [
 ];
 
 const faq = [
-  { p: "O rAIptor Atende substitui funcionários?", r: "Não. Ele combina automação e atendimento humano. A equipe fica no controle do que precisa de atenção humana." },
+  { p: "O WS3 Atendy substitui funcionários?", r: "Não. Ele combina automação e atendimento humano. A equipe fica no controle do que precisa de atenção humana." },
   { p: "A IA responde qualquer pergunta?", r: "Não. As respostas dependem da configuração e das informações autorizadas pela empresa." },
   { p: "Tem CRM?", r: "Sim. O CRM registra contatos, conversas e o andamento de cada cliente." },
   { p: "Faz agendamento?", r: "Depende da conexão autorizada com a agenda e da validação do fluxo." },
 ];
 
-export default function RaiptorAtende() {
+export default function Ws3Atendy() {
   return (
     <>
       <JsonLd
@@ -66,12 +67,12 @@ export default function RaiptorAtende() {
           {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            name: "rAIptor Atende",
+            name: "WS3 Atendy",
             applicationCategory: "BusinessApplication",
             operatingSystem: "Web",
             description:
               "Atendimento com IA, CRM e automações no WhatsApp para atender interessados e clientes, organizar informações e dar continuidade às conversas.",
-            url: `${SITE_URL}/produtos/raiptor-atende`,
+            url: `${SITE_URL}/produtos/ws3-atendy`,
             publisher: { "@type": "Organization", name: site.nome, url: SITE_URL },
           },
         ]}
@@ -79,19 +80,24 @@ export default function RaiptorAtende() {
       <TopoPagina
         migalhas={[
           { nome: "Produtos", caminho: "/produtos" },
-          { nome: "rAIptor Atende", caminho: "/produtos/raiptor-atende" },
+          { nome: "WS3 Atendy", caminho: "/produtos/ws3-atendy" },
         ]}
-        olho="rAIptor Atende"
+        olho="WS3 Atendy"
         titulo="Automatize o atendimento. Organize sua operação. Mantenha cada conversa em movimento."
         texto={
           <>
-            O rAIptor Atende reúne IA, <Termo nome="CRM">CRM</Termo> e automações para atender novos interessados e clientes atuais pelo WhatsApp, entender necessidades, organizar informações e dar continuidade às conversas. Automatize o que faz sentido. A equipe fica no controle do que precisa de atenção humana.
+            O WS3 Atendy reúne IA, <Termo nome="CRM">CRM</Termo> e automações para atender novos interessados e clientes atuais pelo WhatsApp, entender necessidades, organizar informações e dar continuidade às conversas. Automatize o que faz sentido. A equipe fica no controle do que precisa de atenção humana.
           </>
         }
       >
-        <Botao href="#teste-gratuito" tamanho="grande" posicao="raiptor_topo">
-          Começar teste gratuito
-        </Botao>
+        <div className="flex flex-wrap gap-3">
+          <Botao href="#demonstracao" tamanho="grande" posicao="atendy_topo">
+            Agendar demonstração
+          </Botao>
+          <Botao href="/diagnostico" variante="secundario" tamanho="grande" posicao="atendy_topo_diagnostico">
+            Fazer o diagnóstico antes
+          </Botao>
+        </div>
       </TopoPagina>
 
       <Secao id="problema" olho="O problema" titulo="Onde o atendimento se perde">
@@ -122,7 +128,7 @@ export default function RaiptorAtende() {
           ))}
         </ul>
         <div className="mt-8">
-          <CapturaTela src="/img/raiptor-painel.png" alt="Painel do rAIptor Atende com faturamento, conversão, novos leads, gráfico de desempenho e funil de conversão." largura={1917} altura={771} />
+          <CapturaTela src="/img/raiptor-painel.png" alt="Painel do WS3 Atendy com faturamento, conversão, novos leads, gráfico de desempenho e funil de conversão." largura={1917} altura={771} />
         </div>
       </Secao>
 
@@ -137,21 +143,47 @@ export default function RaiptorAtende() {
         </ul>
       </Secao>
 
-      <Secao id="faq" olho="Perguntas frequentes" titulo="Dúvidas sobre o rAIptor Atende">
+      <Secao id="faq" olho="Perguntas frequentes" titulo="Dúvidas sobre o WS3 Atendy">
         <div className="max-w-3xl">
-          <Acordeao itens={faq.map((f) => ({ p: f.p, r: <p>{f.r}</p> }))} origem="raiptor" />
+          <Acordeao itens={faq.map((f) => ({ p: f.p, r: <p>{f.r}</p> }))} origem="atendy" />
         </div>
       </Secao>
 
-      <Secao id="teste-gratuito" fundo="suave" olho="Teste gratuito" titulo="Peça o seu teste" intro="Preencha o formulário e entramos em contato pelo WhatsApp para combinar a ativação.">
+      <Secao
+        id="demonstracao"
+        fundo="suave"
+        olho="Demonstração"
+        titulo="Veja o WS3 Atendy funcionando em 30 minutos"
+        intro="Mostramos o atendimento, o CRM e a passagem da conversa para a equipe. Sem compromisso."
+      >
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <Botao href={demonstracaoLink()} tamanho="grande" posicao="atendy_demonstracao">
+            Agendar demonstração (30 min)
+          </Botao>
+          <p className="text-mudo">
+            Ainda não fez o diagnóstico?{" "}
+            <Link href="/diagnostico" className="font-semibold text-acao underline underline-offset-2">
+              Comece por ele
+            </Link>
+            : 5 perguntas mostram se o seu atendimento está pronto para automatizar.
+          </p>
+        </div>
+      </Secao>
+
+      <Secao
+        id="teste-gratuito"
+        olho="Teste gratuito"
+        titulo="Depois da demonstração, teste por 7 dias"
+        intro="Preencha o formulário e entramos em contato pelo WhatsApp para combinar a ativação."
+      >
         <div className="max-w-2xl rounded-marca-lg border border-linha bg-superficie p-6 sm:p-8">
           <FormularioTardio
             tipo="teste"
-            origem="raiptor_teste"
-            paramsObrigado={{ produto: "raiptor-atende" }}
+            origem="atendy_teste"
+            paramsObrigado={{ produto: "ws3-atendy" }}
             aviso={
               <p>
-                <strong>Antes de ativar:</strong> as condições do teste, a duração e eventuais custos de serviços externos (como a conexão com o WhatsApp) são informados a você antes da ativação. Nada é cobrado sem o seu aceite.
+                <strong>Antes de ativar:</strong> as condições do teste e eventuais custos de serviços externos (como a conexão com o WhatsApp) são informados a você antes da ativação. Nada é cobrado sem o seu aceite.
               </p>
             }
           />
@@ -159,11 +191,11 @@ export default function RaiptorAtende() {
       </Secao>
 
       <ChamadaFinal
-        titulo="Prefere conversar primeiro?"
-        texto="Tire suas dúvidas com a nossa equipe antes de pedir o teste."
-        rotulo="Agendar conversa"
-        href="/contato#agendar"
-        posicao="raiptor_final"
+        titulo="Ainda não sabe se é hora de automatizar?"
+        texto="Faça o diagnóstico gratuito: 5 perguntas mostram se o seu atendimento está pronto para a IA."
+        rotulo="Fazer o diagnóstico gratuito"
+        href="/diagnostico"
+        posicao="atendy_final"
       />
     </>
   );

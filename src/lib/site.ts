@@ -20,6 +20,11 @@ export function whatsappLink(mensagem = "Olá! Vim pelo site da WS3 Systems e qu
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(mensagem)}`;
 }
 
+/** Demonstração de 30 minutos: abre a agenda online ou, sem ela, o WhatsApp com o pedido escrito. */
+export function demonstracaoLink() {
+  return site.agendaUrl || whatsappLink("Olá! Vim pelo site da WS3 Systems e quero agendar uma demonstração de 30 minutos do WS3 Atendy.");
+}
+
 export const menu = [
   { href: "/metodo", rotulo: "Método" },
   { href: "/servicos", rotulo: "Serviços" },
@@ -258,7 +263,7 @@ export const servicos: Servico[] = [
       },
       {
         p: "Existe um produto pronto para isso?",
-        r: "Sim, o rAIptor Atende, que reúne IA, CRM e automações no WhatsApp. Também montamos soluções sob medida quando faz sentido.",
+        r: "Sim, o WS3 Atendy, que reúne IA, CRM e automações no WhatsApp. Também montamos soluções sob medida quando faz sentido.",
       },
     ],
   },
@@ -328,14 +333,14 @@ export type Produto = {
 // Para adicionar um produto novo: inclua um item aqui e crie a página em src/app/produtos/<slug>.
 export const produtos: Produto[] = [
   {
-    slug: "raiptor-atende",
-    nome: "rAIptor Atende",
+    slug: "ws3-atendy",
+    nome: "WS3 Atendy",
     chamada: "Atendimento com IA, CRM e automações no WhatsApp.",
     descricao:
       "Atenda novos interessados e clientes atuais pelo WhatsApp, organize as informações e dê continuidade às conversas. A equipe fica no controle do que precisa de atenção humana.",
-    href: "/produtos/raiptor-atende",
-    cta: "Começar teste gratuito",
-    ctaHref: "/produtos/raiptor-atende#teste-gratuito",
+    href: "/produtos/ws3-atendy",
+    cta: "Agendar demonstração",
+    ctaHref: "/produtos/ws3-atendy#demonstracao",
   },
 ];
 

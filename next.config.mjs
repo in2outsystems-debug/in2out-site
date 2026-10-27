@@ -3,6 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   images: { formats: ["image/avif", "image/webp"] },
+  async redirects() {
+    return [{ source: "/produtos/raiptor-atende", destination: "/produtos/ws3-atendy", permanent: true }];
+  },
   async headers() {
     return [
       {

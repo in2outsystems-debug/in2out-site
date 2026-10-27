@@ -10,24 +10,19 @@ import { Termo } from "@/components/Termo";
 import { getTodosArtigos } from "@/lib/content";
 import { faqCurto } from "@/lib/faq";
 import { pageMeta, faqLd } from "@/lib/seo";
-import { produtos, servicos, whatsappLink } from "@/lib/site";
+import { demonstracaoLink, produtos, servicos, whatsappLink } from "@/lib/site";
 
 export const metadata = pageMeta({
-  titulo: "Organize o processo. Automatize o que faz sentido. Use IA onde ela ajuda de verdade.",
+  titulo: "Processo antes da IA no atendimento pelo WhatsApp",
   descricao:
-    "A WS3 Systems ajuda micro e pequenas empresas a mapear, padronizar, medir e só então automatizar. Faça o diagnóstico gratuito.",
+    "A WS3 Systems ajuda pequenas e médias empresas que atendem pelo WhatsApp a organizar o atendimento antes de automatizar. Faça o diagnóstico gratuito.",
   caminho: "/",
 });
 
 const sinais = [
   {
-    titulo: "A margem some sem explicação",
-    texto: "Vende, entra dinheiro, e no fim do mês sobra menos do que deveria. Ninguém sabe dizer onde foi parar.",
-    slug: "margem-some-sem-explicacao",
-  },
-  {
-    titulo: "O mesmo erro se repete todo mês",
-    texto: "Cobrança duplicada, pedido esquecido, cliente sem resposta. Corrige-se na hora e o erro volta no mês seguinte.",
+    titulo: "O cliente chama no WhatsApp e fica esperando",
+    texto: "As conversas se espalham entre celulares, ninguém sabe quem já respondeu e o retorno depende da memória de quem atendeu.",
     slug: "mesmo-erro-todo-mes",
   },
   {
@@ -72,19 +67,18 @@ export default function Home() {
       {/* 1. Hero */}
       <section className="escuro bg-escuro text-sobre-escuro">
         <div className="pagina py-16 sm:py-24">
-          <p className="olho">Para empresas que querem escalar</p>
-          <h1 className="titulo-1 mt-3 max-w-4xl !text-sobre-escuro">
-            Organize o processo. Automatize o que faz sentido. Use IA onde ela ajuda de verdade.
+          <h1 className="titulo-1 max-w-4xl !text-sobre-escuro">
+            Primeiro o processo. Depois a IA no seu WhatsApp.
           </h1>
           <p className="mt-6 max-w-leitura text-xl text-sobre-escuro/85">
-            Crescer com a casa em ordem: primeiro entender como o trabalho acontece, depois passar para a máquina o que se repete.
+            Para empresas que atendem clientes pelo WhatsApp: mapeamos como o atendimento acontece hoje, padronizamos o jeito de responder e só então automatizamos o que se repete.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Botao href="/diagnostico" variante="claro" tamanho="grande" posicao="home_hero">
               Fazer o diagnóstico gratuito
             </Botao>
-            <Botao href="/produtos/raiptor-atende" variante="contorno-claro" tamanho="grande" posicao="home_hero_produto">
-              Conhecer o rAIptor Atende
+            <Botao href="/produtos/ws3-atendy" variante="contorno-claro" tamanho="grande" posicao="home_hero_produto">
+              Conhecer o WS3 Atendy
             </Botao>
           </div>
         </div>
@@ -105,7 +99,7 @@ export default function Home() {
       </Secao>
 
       {/* 3. Três sinais */}
-      <Secao id="sinais" fundo="suave" olho="Três sinais" titulo="Como saber se o seu processo precisa de atenção">
+      <Secao id="sinais" fundo="suave" olho="Três sinais" titulo="Como saber se o seu atendimento precisa de processo">
         <ul className="grid gap-4 md:grid-cols-3">
           {sinais.map((s) => (
             <li key={s.slug} className="eleva relative flex flex-col rounded-marca-lg border border-linha bg-superficie p-6 focus-within:ring-2 focus-within:ring-acao hover:shadow-md">
@@ -146,10 +140,10 @@ export default function Home() {
       </Secao>
 
       {/* 6. Produto em destaque */}
-      <Secao id="produto" olho="Produto em destaque" titulo="rAIptor Atende" intro={<>Reúne IA, <Termo nome="CRM">CRM</Termo> e automações para atender pelo WhatsApp. Você configura o que a IA responde e a equipe assume o que precisa de uma pessoa.</>}>
+      <Secao id="produto" olho="Produto" titulo="WS3 Atendy: atendimento com IA no WhatsApp" intro={<>Reúne IA, <Termo nome="CRM">CRM</Termo> e automações para atender pelo WhatsApp. Você configura o que a IA responde e a equipe assume o que precisa de uma pessoa.</>}>
         <div className="grid items-stretch gap-6 lg:grid-cols-2">
           <CartaoProduto produto={produto} posicao="home_produto" />
-          <CapturaTela src="/img/raiptor-painel.png" alt="Painel do rAIptor Atende com faturamento, conversão, novos leads, gráfico de desempenho e funil de conversão." largura={1917} altura={771} />
+          <CapturaTela src="/img/raiptor-painel.png" alt="Painel do WS3 Atendy com faturamento, conversão, novos leads, gráfico de desempenho e funil de conversão." largura={1917} altura={771} />
         </div>
       </Secao>
 
@@ -215,15 +209,23 @@ export default function Home() {
       </Secao>
 
       <ChamadaFinal
-        titulo="Descubra se o seu processo está pronto para automatizar"
-        texto="O diagnóstico é gratuito e leva poucas perguntas. Se preferir conversar, chame no WhatsApp."
+        titulo="Descubra se o seu atendimento está pronto para automatizar"
+        texto="Comece pelo diagnóstico gratuito: 5 perguntas e o resultado na hora. Depois, veja o WS3 Atendy funcionando numa demonstração de 30 minutos."
         rotulo="Fazer o diagnóstico gratuito"
         href="/diagnostico"
         posicao="home_final"
         extra={
-          <Botao href={whatsappLink()} variante="contorno-claro" tamanho="grande" posicao="home_final_whatsapp">
-            Falar no WhatsApp
+          <Botao href={demonstracaoLink()} variante="contorno-claro" tamanho="grande" posicao="home_final_demonstracao">
+            Agendar demonstração (30 min)
           </Botao>
+        }
+        rodape={
+          <>
+            Prefere conversar antes?{" "}
+            <Botao href={whatsappLink()} variante="texto" posicao="home_final_whatsapp">
+              Chame no WhatsApp
+            </Botao>
+          </>
         }
       />
     </>

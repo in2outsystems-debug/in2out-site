@@ -21,7 +21,7 @@ export default function Termos() {
       <p>Textos, marcas, imagens e materiais pertencem à WS3 Systems ou são usados com autorização. Você pode usar os materiais gratuitos em sua própria empresa. A cópia e a revenda dependem de autorização por escrito.</p>
       <h2>4. Serviços e produtos</h2>
       <p>
-        As condições de cada serviço, incluindo valores, prazos e responsabilidades, são combinadas em proposta ou contrato próprio. O teste gratuito do rAIptor Atende segue as condições informadas a você antes da ativação, incluindo duração e eventuais custos de serviços de terceiros.
+        As condições de cada serviço, incluindo valores, prazos e responsabilidades, são combinadas em proposta ou contrato próprio. O teste gratuito de 7 dias do WS3 Atendy segue as condições informadas a você antes da ativação, incluindo duração e eventuais custos de serviços de terceiros.
       </p>
       <h2>5. Links externos</h2>
       <p>O site pode apontar para páginas de terceiros. Não controlamos o conteúdo delas.</p>

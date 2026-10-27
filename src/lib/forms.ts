@@ -72,7 +72,7 @@ export const formularios: Record<TipoFormulario, { campos: CampoDef[]; enviar: s
           "Automação",
           "IA aplicada",
           "Tráfego pago",
-          "rAIptor Atende",
+          "WS3 Atendy",
           "Outro assunto",
         ],
       },
@@ -80,7 +80,7 @@ export const formularios: Record<TipoFormulario, { campos: CampoDef[]; enviar: s
     ],
   },
   teste: {
-    enviar: "Pedir teste gratuito",
+    enviar: "Pedir teste gratuito de 7 dias",
     campos: [
       nome,
       email,
@@ -175,7 +175,7 @@ export type Envio = z.infer<typeof envioSchema>;
 
 const titulos: Record<TipoFormulario, string> = {
   contato: "Quero falar com a WS3",
-  teste: "Quero testar o rAIptor Atende",
+  teste: "Quero testar o WS3 Atendy por 7 dias",
   material: "Quero receber um material gratuito",
   newsletter: "Quero receber os novos artigos",
   diagnostico: "Fiz o diagnóstico no site",

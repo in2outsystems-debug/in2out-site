@@ -20,13 +20,13 @@ const textos: Record<string, { titulo: string; passos: string[]; cta: { href: st
     cta: { href: "/conteudo", rotulo: "Ler artigos enquanto espera" },
   },
   teste: {
-    titulo: "Recebemos o seu pedido de teste do rAIptor Atende",
+    titulo: "Recebemos o seu pedido de teste gratuito do WS3 Atendy",
     passos: [
       "Entramos em contato pelo WhatsApp para entender como você atende hoje.",
-      "Informamos as condições do teste, a duração e eventuais custos de serviços externos antes de ativar.",
+      "Informamos as condições do teste de 7 dias e eventuais custos de serviços externos antes de ativar.",
       "Com o seu aceite, configuramos o teste junto com você.",
     ],
-    cta: { href: "/produtos/raiptor-atende", rotulo: "Voltar ao rAIptor Atende" },
+    cta: { href: "/produtos/ws3-atendy", rotulo: "Voltar ao WS3 Atendy" },
   },
   material: {
     titulo: "O material está a caminho",

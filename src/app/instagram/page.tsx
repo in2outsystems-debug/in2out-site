@@ -30,8 +30,8 @@ export default function Instagram() {
             </Botao>
           </li>
           <li>
-            <Botao href="/produtos/raiptor-atende#teste-gratuito" variante="secundario" posicao="bio_teste" className="w-full">
-              Testar o rAIptor Atende
+            <Botao href="/produtos/ws3-atendy#demonstracao" variante="secundario" posicao="bio_demonstracao" className="w-full">
+              Agendar demonstração do WS3 Atendy
             </Botao>
           </li>
           {recente && (

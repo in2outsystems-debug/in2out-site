@@ -101,8 +101,8 @@ export default async function Servico({ params }: Props) {
         {s.slug === "ia-aplicada" && (
           <p className="mt-6">
             Quer algo pronto?{" "}
-            <Link href="/produtos/raiptor-atende" className="font-semibold text-acao underline underline-offset-2">
-              Conheça o rAIptor Atende
+            <Link href="/produtos/ws3-atendy" className="font-semibold text-acao underline underline-offset-2">
+              Conheça o WS3 Atendy
             </Link>
             .
           </p>

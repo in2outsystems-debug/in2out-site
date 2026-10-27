@@ -1,10 +1,10 @@
-export type Pergunta = { p: string; r: string; grupo: "Geral" | "Método" | "Serviços" | "rAIptor Atende" | "Dados e privacidade" };
+export type Pergunta = { p: string; r: string; grupo: "Geral" | "Método" | "Serviços" | "WS3 Atendy" | "Dados e privacidade" };
 
 export const perguntas: Pergunta[] = [
   {
     grupo: "Geral",
     p: "O que a WS3 Systems faz?",
-    r: "Ajudamos micro e pequenas empresas, MEIs e autônomos a organizar processos, automatizar o que é repetitivo e usar inteligência artificial onde ela realmente ajuda. Também oferecemos o rAIptor Atende, produto de atendimento pelo WhatsApp.",
+    r: "Ajudamos micro e pequenas empresas, MEIs e autônomos a organizar processos, automatizar o que é repetitivo e usar inteligência artificial onde ela realmente ajuda. Também oferecemos o WS3 Atendy, produto de atendimento pelo WhatsApp.",
   },
   {
     grupo: "Geral",
@@ -47,22 +47,22 @@ export const perguntas: Pergunta[] = [
     r: "São poucas perguntas sobre o seu negócio. Ao final você vê em qual de três níveis está (pronto, quase pronto ou organizar antes) e recebe uma recomendação.",
   },
   {
-    grupo: "rAIptor Atende",
-    p: "O rAIptor Atende substitui funcionários?",
+    grupo: "WS3 Atendy",
+    p: "O WS3 Atendy substitui funcionários?",
     r: "Não. Ele combina automação e atendimento humano. A equipe continua cuidando do que precisa de atenção humana.",
   },
   {
-    grupo: "rAIptor Atende",
+    grupo: "WS3 Atendy",
     p: "A IA responde qualquer pergunta?",
     r: "Não. As respostas dependem da configuração e das informações autorizadas pela empresa. O que ficar fora disso pode ser passado para uma pessoa.",
   },
   {
-    grupo: "rAIptor Atende",
-    p: "O rAIptor Atende tem CRM?",
+    grupo: "WS3 Atendy",
+    p: "O WS3 Atendy tem CRM?",
     r: "Sim. O CRM registra contatos, conversas e o andamento de cada cliente, e já vem junto com a IA e as automações.",
   },
   {
-    grupo: "rAIptor Atende",
+    grupo: "WS3 Atendy",
     p: "Ele faz agendamentos?",
     r: "Depende da conexão autorizada com a sua agenda e da validação do fluxo. Isso é combinado na ativação.",
   },

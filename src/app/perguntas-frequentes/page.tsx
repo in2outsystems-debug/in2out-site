@@ -5,7 +5,7 @@ import { faqLd, pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   titulo: "Perguntas frequentes",
-  descricao: "Respostas diretas sobre o método, os serviços, o rAIptor Atende e o uso dos seus dados.",
+  descricao: "Respostas diretas sobre o método, os serviços, o WS3 Atendy e o uso dos seus dados.",
   caminho: "/perguntas-frequentes",
 });
 

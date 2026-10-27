@@ -9,7 +9,7 @@ type Props = {
   children: ReactNode;
   /** Onde o botão está na página, para a análise de cliques. Exemplo: "home_hero". */
   posicao: string;
-  variante?: "primario" | "secundario" | "claro" | "contorno-claro";
+  variante?: "primario" | "secundario" | "claro" | "contorno-claro" | "texto";
   tamanho?: "normal" | "grande";
   className?: string;
 };
@@ -22,12 +22,13 @@ const variantes = {
   secundario: "border-2 border-acao text-acao hover:bg-acao hover:text-sobre-acao",
   claro: "bg-gradient-to-r from-acao-forte to-acao text-sobre-acao hover:brightness-110",
   "contorno-claro": "border-2 border-sobre-escuro text-sobre-escuro hover:bg-sobre-escuro hover:text-escuro",
+  texto: "font-semibold underline underline-offset-2",
 };
 
 export function Botao({ href, children, posicao, variante = "primario", tamanho = "normal", className = "" }: Props) {
   const externo = /^(https?:|mailto:|tel:)/.test(href);
   const whatsapp = href.includes("wa.me");
-  const classes = `${base} ${variantes[variante]} ${tamanho === "grande" ? "px-7 py-4 text-lg" : ""} ${className}`;
+  const classes = `${variante === "texto" ? "alvo inline-flex items-center" : base} ${variantes[variante]} ${tamanho === "grande" ? "px-7 py-4 text-lg" : ""} ${className}`;
 
   const aoClicar = () => {
     if (whatsapp) track("whatsapp_click", { posicao });

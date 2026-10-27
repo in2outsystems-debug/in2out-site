@@ -65,9 +65,9 @@ const resultados: Record<Nivel, { titulo: string; texto: string; href: string; c
   pronto: {
     titulo: "Pronto para automatizar",
     texto:
-      "Seu processo passa no teste de 3 perguntas. Já existe um jeito definido, ele é seguido e alguém acompanha o resultado. O próximo passo é escolher o que automatizar primeiro, começando pelo que mais consome tempo da equipe.",
-    href: "/servicos/automacao",
-    cta: "Ver o serviço de automação",
+      "Seu processo passa no teste de 3 perguntas. Já existe um jeito definido, ele é seguido e alguém acompanha o resultado. O próximo passo é ver, numa demonstração de 30 minutos, como automatizar o atendimento sem tirar a equipe do controle.",
+    href: "/produtos/ws3-atendy#demonstracao",
+    cta: "Agendar demonstração do WS3 Atendy",
   },
   quase: {
     titulo: "Quase pronto",

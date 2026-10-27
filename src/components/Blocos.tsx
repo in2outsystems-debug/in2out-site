@@ -147,6 +147,7 @@ export function ChamadaFinal({
   href,
   posicao,
   extra,
+  rodape,
 }: {
   titulo: string;
   texto?: string;
@@ -154,6 +155,8 @@ export function ChamadaFinal({
   href: string;
   posicao: string;
   extra?: ReactNode;
+  /** Linha de texto abaixo dos botões, para uma alternativa de menor peso. */
+  rodape?: ReactNode;
 }) {
   return (
     <section className="escuro bg-escuro py-16 text-sobre-escuro">
@@ -166,6 +169,7 @@ export function ChamadaFinal({
           </Botao>
           {extra}
         </div>
+        {rodape && <p className="mt-6 text-sobre-escuro/85">{rodape}</p>}
       </div>
     </section>
   );

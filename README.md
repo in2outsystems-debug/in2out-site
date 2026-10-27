@@ -65,7 +65,7 @@ content/artigos/    artigos em MDX
 ### Adicionar um produto
 
 1. Inclua um item em `produtos` em `src/lib/site.ts`. Ele aparece sozinho na Home e em `/produtos`.
-2. Crie a página em `src/app/produtos/<slug>/page.tsx` (use `raiptor-atende` como modelo).
+2. Crie a página em `src/app/produtos/<slug>/page.tsx` (use `ws3-atendy` como modelo).
 
 ### Adicionar um artigo
 
@@ -99,8 +99,8 @@ Procure por `[inserir` no código (`grep -rn "\[inserir" src content`) para ver 
 - **Dados da empresa** (`src/lib/site.ts`): razão social, CNPJ, endereço.
 - **Páginas legais**: datas, prazos de retenção, lista de operadores de dados, encarregado (DPO), foro, duração dos cookies do GA4. Os três textos são base e precisam de revisão jurídica.
 - **Sobre**: história da WS3, nomes, cargos e fotos da equipe.
-- **Home**: apresentação e foto da equipe em "Quem está por trás"; captura de tela do rAIptor Atende.
-- **rAIptor Atende**: capturas de tela da caixa de entrada e do CRM.
+- **Home**: apresentação e foto da equipe em "Quem está por trás"; captura de tela do WS3 Atendy.
+- **WS3 Atendy**: capturas de tela da caixa de entrada e do CRM.
 - **Contato**: link da agenda (`NEXT_PUBLIC_AGENDA_URL`).
 - **Materiais**: os três arquivos (guia, checklist e planilha) e a automação de envio no n8n.
 - **Perguntas frequentes**: política de preços.
