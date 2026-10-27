@@ -9,7 +9,7 @@ type Props = {
   children: ReactNode;
   /** Onde o botão está na página, para a análise de cliques. Exemplo: "home_hero". */
   posicao: string;
-  variante?: "primario" | "secundario" | "claro" | "contorno-claro" | "texto";
+  variante?: "primario" | "secundario" | "contorno-claro" | "texto";
   tamanho?: "normal" | "grande";
   className?: string;
 };
@@ -20,7 +20,6 @@ const base =
 const variantes = {
   primario: "bg-gradient-to-r from-acao-forte to-acao text-sobre-acao hover:brightness-110",
   secundario: "border-2 border-acao text-acao hover:bg-acao hover:text-sobre-acao",
-  claro: "bg-gradient-to-r from-acao-forte to-acao text-sobre-acao hover:brightness-110",
   "contorno-claro": "border-2 border-sobre-escuro text-sobre-escuro hover:bg-sobre-escuro hover:text-escuro",
   texto: "font-semibold underline underline-offset-2",
 };

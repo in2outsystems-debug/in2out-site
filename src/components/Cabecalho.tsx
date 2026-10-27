@@ -55,7 +55,7 @@ export function Cabecalho() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Botao href="/diagnostico" variante="claro" posicao="cabecalho" className="!px-4 !py-2">
+          <Botao href="/diagnostico" posicao="cabecalho" className="!px-4 !py-2">
             <span className="sm:hidden">Diagnóstico</span>
             <span className="hidden sm:inline">Fazer diagnóstico</span>
           </Botao>
@@ -119,7 +119,7 @@ export function Cabecalho() {
               </li>
             ))}
             <li className="pt-3">
-              <Botao href="/diagnostico" variante="claro" posicao="menu_movel" className="w-full">
+              <Botao href="/diagnostico" posicao="menu_movel" className="w-full">
                 Fazer diagnóstico
               </Botao>
             </li>

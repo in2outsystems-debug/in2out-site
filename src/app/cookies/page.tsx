@@ -50,7 +50,7 @@ export default function Cookies() {
       <h2>Como recusar ou mudar a escolha</h2>
       <p>Você pode recusar no aviso que aparece na primeira visita. Para mudar de ideia a qualquer momento, use o botão abaixo.</p>
       <p>
-        <AbrirCookies className="!text-acao" />
+        <AbrirCookies className="!text-acao underline" />
       </p>
       <p>Também é possível apagar cookies nas configurações do navegador.</p>
     </PaginaLegal>

@@ -7,7 +7,7 @@ export function AbrirCookies({ className = "" }: { className?: string }) {
   return (
     <button
       type="button"
-      className={`alvo inline-flex items-center underline underline-offset-2 ${className}`}
+      className={`alvo inline-flex items-center underline-offset-2 ${className}`}
       onClick={() => window.dispatchEvent(new Event(EVENTO_ABRIR_COOKIES))}
     >
       Preferências de cookies

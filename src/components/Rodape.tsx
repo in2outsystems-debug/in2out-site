@@ -102,7 +102,7 @@ export function Rodape() {
               </li>
             ))}
             <li>
-              <AbrirCookies className="hover:text-white" />
+              <AbrirCookies className="hover:text-white hover:underline" />
             </li>
           </ul>
         </div>

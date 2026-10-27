@@ -49,26 +49,28 @@ function coletar(raiz: Element): HTMLElement[] {
   });
 }
 
+/** Estado escondido e estado final da revelação. */
+const QUADROS: Keyframe[] = [
+  { opacity: 0, translate: "0 10px", filter: "blur(3px)" },
+  { opacity: 1, translate: "0 0", filter: "blur(0)" },
+];
+
 /**
  * Revela os blocos da página quando entram na tela: opacidade + 10px + desfoque leve, em sequência.
  * Só esconde o que está abaixo da dobra, então não há "piscada" no que já está visível.
+ * Usa a Web Animations API em vez de atributos no HTML, para não divergir do que o React hidrata.
  * Com prefers-reduced-motion, não faz nada: tudo aparece de uma vez.
  */
 export function RevelarGlobal({ escopo }: { escopo: string }) {
   useLayoutSeguro(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (!("IntersectionObserver" in window)) return;
+    if (!("IntersectionObserver" in window) || !("animate" in Element.prototype)) return;
     const raiz = document.querySelector(escopo);
     if (!raiz) return;
 
     const limite = window.innerHeight * 0.92;
     const alvos = coletar(raiz).filter((el) => el.getBoundingClientRect().top > limite);
-    const timers: number[] = [];
-
-    const concluir = (el: HTMLElement) => {
-      el.removeAttribute("data-r");
-      el.style.removeProperty("--atraso");
-    };
+    const animacoes = new Map<Element, Animation>();
 
     const io = new IntersectionObserver(
       (entradas) => {
@@ -76,26 +78,28 @@ export function RevelarGlobal({ escopo }: { escopo: string }) {
           .filter((e) => e.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left);
         aparecendo.forEach((e, i) => {
-          const el = e.target as HTMLElement;
-          const atraso = Math.min(i, 5) * 70;
-          el.style.setProperty("--atraso", `${atraso}ms`);
-          el.dataset.r = "1";
-          io.unobserve(el);
-          timers.push(window.setTimeout(() => concluir(el), 480 + atraso + 120));
+          const anim = animacoes.get(e.target);
+          io.unobserve(e.target);
+          if (!anim) return;
+          anim.effect?.updateTiming({ delay: Math.min(i, 5) * 70 });
+          anim.onfinish = () => anim.cancel();
+          anim.play();
         });
       },
-      { rootMargin: "0px 0px -6% 0px", threshold: 0.06 },
+      { threshold: 0.06 },
     );
 
     alvos.forEach((el) => {
-      el.dataset.r = "0";
+      // Parada no primeiro quadro, o elemento fica escondido até entrar na tela.
+      const anim = el.animate(QUADROS, { duration: 480, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "both" });
+      anim.pause();
+      animacoes.set(el, anim);
       io.observe(el);
     });
 
     return () => {
       io.disconnect();
-      timers.forEach((t) => window.clearTimeout(t));
-      alvos.forEach(concluir);
+      animacoes.forEach((anim) => anim.cancel());
     };
   }, [escopo]);
 

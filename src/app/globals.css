@@ -311,19 +311,6 @@ main > article.pagina:first-of-type > :nth-child(1) { --i: 0; }
 main > article.pagina:first-of-type > :nth-child(2) { --i: 1; }
 main > article.pagina:first-of-type > :nth-child(n + 3) { --i: 2; }
 
-/* Revelação ao rolar (RevelarGlobal). 0 = escondido, 1 = revelando. Ao terminar, o atributo sai. */
-[data-r="0"] {
-  opacity: 0;
-  translate: 0 10px;
-  filter: blur(3px);
-}
-[data-r="1"] {
-  transition:
-    opacity var(--t-lento) var(--ease-entrada) var(--atraso, 0ms),
-    translate var(--t-lento) var(--ease-entrada) var(--atraso, 0ms),
-    filter var(--t-lento) var(--ease-entrada) var(--atraso, 0ms);
-}
-
 /* Saída da página antes de navegar (TransicaoRota) */
 main {
   transition:

@@ -71,7 +71,7 @@ export default function Home() {
               Para empresas que atendem clientes pelo WhatsApp: mapeamos como o atendimento acontece hoje, padronizamos o jeito de responder e só então automatizamos o que se repete.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Botao href="/diagnostico" variante="claro" tamanho="grande" posicao="home_hero">
+              <Botao href="/diagnostico" tamanho="grande" posicao="home_hero">
                 Fazer o diagnóstico gratuito
               </Botao>
               <Botao href="/produtos/ws3-atendy" variante="contorno-claro" tamanho="grande" posicao="home_hero_produto">
