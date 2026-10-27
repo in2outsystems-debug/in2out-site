@@ -4,6 +4,7 @@ import { Botao } from "@/components/Botao";
 import { ChamadaFinal, JsonLd, Secao } from "@/components/Blocos";
 import { FluxoMetodo } from "@/components/FluxoMetodo";
 import { ConversaExemplo } from "@/components/ConversaExemplo";
+import { PreviaDiagnostico } from "@/components/PreviaDiagnostico";
 import { faqCurto, type Pergunta } from "@/lib/faq";
 import { pageMeta, faqLd } from "@/lib/seo";
 import { demonstracaoLink, produtos, servicos, whatsappLink } from "@/lib/site";
@@ -61,21 +62,24 @@ export default function Home() {
 
       {/* 1. Hero */}
       <section className="escuro bg-escuro text-sobre-escuro">
-        <div className="pagina py-16 sm:py-24">
-          <h1 className="titulo-1 max-w-4xl !text-sobre-escuro">
-            Primeiro o processo. Depois a IA no seu WhatsApp.
-          </h1>
-          <p className="mt-6 max-w-leitura text-xl text-sobre-escuro/85">
-            Para empresas que atendem clientes pelo WhatsApp: mapeamos como o atendimento acontece hoje, padronizamos o jeito de responder e só então automatizamos o que se repete.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Botao href="/diagnostico" variante="claro" tamanho="grande" posicao="home_hero">
-              Fazer o diagnóstico gratuito
-            </Botao>
-            <Botao href="/produtos/ws3-atendy" variante="contorno-claro" tamanho="grande" posicao="home_hero_produto">
-              Conhecer o WS3 Atendy
-            </Botao>
+        <div className="pagina grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-[minmax(0,1fr)_24rem]">
+          <div>
+            <h1 className="titulo-1 max-w-4xl !text-sobre-escuro">
+              Primeiro o processo. Depois a IA no seu WhatsApp.
+            </h1>
+            <p className="mt-6 max-w-leitura text-xl text-sobre-escuro/85">
+              Para empresas que atendem clientes pelo WhatsApp: mapeamos como o atendimento acontece hoje, padronizamos o jeito de responder e só então automatizamos o que se repete.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Botao href="/diagnostico" variante="claro" tamanho="grande" posicao="home_hero">
+                Fazer o diagnóstico gratuito
+              </Botao>
+              <Botao href="/produtos/ws3-atendy" variante="contorno-claro" tamanho="grande" posicao="home_hero_produto">
+                Conhecer o WS3 Atendy
+              </Botao>
+            </div>
           </div>
+          <PreviaDiagnostico />
         </div>
       </section>
 

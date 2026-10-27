@@ -83,23 +83,22 @@ j.src='https://www.googletagmanager.com/gtm.js?id=${GTM_ID}';f.parentNode.insert
           data-anim="base"
           aria-labelledby="cookies-titulo"
           aria-describedby="cookies-texto"
-          className="fixed inset-x-0 bottom-0 z-50 border-t border-linha bg-superficie p-4 shadow-[0_-8px_24px_rgba(0,0,0,0.12)]"
+          className="fixed inset-x-0 bottom-0 z-50 border-t border-linha bg-superficie px-4 py-3 shadow-[0_-8px_24px_rgba(0,0,0,0.12)] sm:py-4"
         >
-          <div className="pagina flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+          <div className="pagina flex flex-col gap-3 md:flex-row md:items-center md:justify-between md:gap-4">
             <div className="max-w-3xl">
-              <h2 id="cookies-titulo" ref={titulo} tabIndex={-1} className="text-lg font-semibold">
+              <h2 id="cookies-titulo" ref={titulo} tabIndex={-1} className="font-semibold sm:text-lg">
                 Sua privacidade
               </h2>
-              <p id="cookies-texto" className="text-base text-mudo">
-                Usamos cookies de medição (Google Analytics) para entender quais páginas ajudam mais. Eles só são ativados se você aceitar.
-                Veja os detalhes na{" "}
+              <p id="cookies-texto" className="text-sm text-mudo sm:text-base">
+                Usamos cookies de medição (Google Analytics) para entender quais páginas ajudam mais, só se você aceitar. Detalhes na{" "}
                 <Link href="/cookies" className="text-acao underline underline-offset-2">
                   política de cookies
                 </Link>
                 .
               </p>
             </div>
-            <div className="flex flex-shrink-0 gap-3">
+            <div className="flex flex-shrink-0 gap-3 [&>button]:flex-1 md:[&>button]:flex-none">
               <button
                 type="button"
                 onClick={() => escolher("denied")}

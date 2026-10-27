@@ -36,7 +36,7 @@ export function Cabecalho() {
       <div className="pagina flex h-16 items-center justify-between gap-4">
         <Link href="/" className="alvo flex items-center gap-2 font-bold" aria-label={`${site.nome}, página inicial`}>
           <Image src="/img/icone.png" alt="" width={40} height={38} priority className="h-9 w-auto" />
-          <NomeMarca className="text-lg" />
+          <NomeMarca className="hidden whitespace-nowrap text-lg min-[420px]:inline" />
         </Link>
 
         <nav aria-label="Principal" className="hidden items-center gap-1 lg:flex">
@@ -55,8 +55,9 @@ export function Cabecalho() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Botao href="/diagnostico" variante="claro" posicao="cabecalho" className="hidden !px-4 !py-2 sm:inline-flex">
-            Fazer diagnóstico
+          <Botao href="/diagnostico" variante="claro" posicao="cabecalho" className="!px-4 !py-2">
+            <span className="sm:hidden">Diagnóstico</span>
+            <span className="hidden sm:inline">Fazer diagnóstico</span>
           </Botao>
           <button
             ref={botao}
