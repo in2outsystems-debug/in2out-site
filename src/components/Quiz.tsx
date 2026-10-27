@@ -131,8 +131,9 @@ export function Quiz() {
     return (
       <div className="space-y-8">
         <div>
-          <h2 ref={titulo} tabIndex={-1} className="titulo-2 outline-none">
-            Seu resultado: {r.titulo}
+          <p className="olho">Seu resultado</p>
+          <h2 ref={titulo} tabIndex={-1} className="titulo-2 mt-2 outline-none">
+            {r.titulo}
           </h2>
           <p className="mt-3 max-w-leitura text-lg">{r.texto}</p>
           <ul className="mt-4 space-y-1 text-mudo">

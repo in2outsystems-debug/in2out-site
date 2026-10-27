@@ -31,6 +31,7 @@ export default function Materiais() {
     <>
       <TopoPagina
         migalhas={[{ nome: "Materiais", caminho: "/materiais" }]}
+        olho="Materiais gratuitos"
         titulo="Ferramentas prontas para usar hoje"
         texto="Preencha nome e e-mail e peça o material. Por enquanto, a entrega é feita pelo WhatsApp ou e-mail da nossa equipe."
       />

@@ -45,11 +45,12 @@ export default async function Servico({ params }: Props) {
           { nome: "Serviços", caminho: "/servicos" },
           { nome: s.nome, caminho: `/servicos/${s.slug}` },
         ]}
+        olho="Serviço"
         titulo={s.nome}
         texto={s.curto}
       />
 
-      <Secao id="dor" titulo="O que costuma acontecer">
+      <Secao id="dor" olho="A dor" titulo="O que costuma acontecer">
         <p className="texto-leitura text-xl">{s.dor}</p>
         {s.condicao && (
           <p className="mt-6 max-w-leitura rounded-marca-lg bg-dado-fundo p-5">
@@ -58,19 +59,19 @@ export default async function Servico({ params }: Props) {
         )}
       </Secao>
 
-      <Secao id="para-quem" fundo="suave" titulo="Quando este serviço faz sentido">
+      <Secao id="para-quem" fundo="suave" olho="Para quem é" titulo="Quando este serviço faz sentido">
         <div className="max-w-leitura">
           <Lista itens={s.paraQuem} />
         </div>
       </Secao>
 
-      <Secao id="entregamos" titulo="O trabalho em si">
+      <Secao id="entregamos" olho="O que entregamos" titulo="O trabalho em si">
         <div className="max-w-leitura">
           <Lista itens={s.entregamos} />
         </div>
       </Secao>
 
-      <Secao id="etapas" fundo="suave" titulo="Como o trabalho acontece">
+      <Secao id="etapas" fundo="suave" olho="Etapas" titulo="Como o trabalho acontece">
         <ol className="grid gap-4 md:grid-cols-5">
           {s.etapas.map((e, i) => (
             <li key={e} className="cartao">
@@ -81,19 +82,19 @@ export default async function Servico({ params }: Props) {
         </ol>
       </Secao>
 
-      <Secao id="entregaveis" titulo="O que você recebe no final">
+      <Secao id="entregaveis" olho="Entregáveis" titulo="O que você recebe no final">
         <div className="max-w-leitura">
           <Lista itens={s.entregaveis} />
         </div>
       </Secao>
 
-      <Secao id="limites" fundo="suave" titulo="O que este serviço não faz">
+      <Secao id="limites" fundo="suave" olho="Limites" titulo="O que este serviço não faz">
         <div className="max-w-leitura">
           <Lista itens={s.limites} marcador="x" />
         </div>
       </Secao>
 
-      <Secao id="faq" titulo={`Dúvidas sobre ${s.nome.toLowerCase()}`}>
+      <Secao id="faq" olho="Perguntas frequentes" titulo={`Dúvidas sobre ${s.nome.toLowerCase()}`}>
         <div className="max-w-3xl">
           <Acordeao itens={s.faq.map((f) => ({ p: f.p, r: <p>{f.r}</p> }))} origem={`servico_${s.slug}`} />
         </div>

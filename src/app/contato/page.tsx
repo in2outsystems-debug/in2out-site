@@ -15,6 +15,7 @@ export default function Contato() {
     <>
       <TopoPagina
         migalhas={[{ nome: "Contato", caminho: "/contato" }]}
+        olho="Contato"
         titulo="Vamos conversar sobre o seu processo"
         texto="Escolha o canal que for mais fácil para você. Respondemos em horário comercial."
       />

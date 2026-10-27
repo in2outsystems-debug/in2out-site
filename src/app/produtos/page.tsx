@@ -13,6 +13,7 @@ export default function Produtos() {
     <>
       <TopoPagina
         migalhas={[{ nome: "Produtos", caminho: "/produtos" }]}
+        olho="Produtos"
         titulo="Ferramentas prontas, no mesmo método"
         texto="Cada produto nasce de um problema que vimos se repetir nos clientes. Novos produtos entram aqui."
       />
