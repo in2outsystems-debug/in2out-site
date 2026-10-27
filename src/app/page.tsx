@@ -4,8 +4,7 @@ import { Botao } from "@/components/Botao";
 import { CartaoArtigo, CartaoProduto, ChamadaFinal, JsonLd, Secao } from "@/components/Blocos";
 import { DadoComFonte } from "@/components/DadoComFonte";
 import { FluxoMetodo } from "@/components/FluxoMetodo";
-import { CapturaTela } from "@/components/CapturaTela";
-import { Placeholder } from "@/components/Placeholder";
+import { ConversaExemplo } from "@/components/ConversaExemplo";
 import { Termo } from "@/components/Termo";
 import { getTodosArtigos } from "@/lib/content";
 import { faqCurto } from "@/lib/faq";
@@ -143,7 +142,7 @@ export default function Home() {
       <Secao id="produto" olho="Produto" titulo="WS3 Atendy: atendimento com IA no WhatsApp" intro={<>Reúne IA, <Termo nome="CRM">CRM</Termo> e automações para atender pelo WhatsApp. Você configura o que a IA responde e a equipe assume o que precisa de uma pessoa.</>}>
         <div className="grid items-stretch gap-6 lg:grid-cols-2">
           <CartaoProduto produto={produto} posicao="home_produto" />
-          <CapturaTela src="/img/raiptor-painel.png" alt="Painel do WS3 Atendy com faturamento, conversão, novos leads, gráfico de desempenho e funil de conversão." largura={1917} altura={771} />
+          <ConversaExemplo />
         </div>
       </Secao>
 
@@ -170,30 +169,16 @@ export default function Home() {
         </p>
       </Secao>
 
-      {/* 9. Autoridade */}
-      <Secao id="autoridade" fundo="suave" olho="Quem está por trás">
-        <div className="grid gap-8 lg:grid-cols-2">
-          <figure className="rounded-marca-lg border-l-4 border-dado bg-superficie p-6">
-            <blockquote className="text-2xl font-semibold leading-snug">
-              “O sintoma mais comum do caos é quando a empresa depende 100% do dono para funcionar. Se ele sai, a empresa para.”
-            </blockquote>
-            <figcaption className="mt-4 text-mudo">
-              Marcelo Germano, consultor de gestão. RCN67, 21/05/2026.
-            </figcaption>
-          </figure>
-          <div className="flex gap-5">
-            <div className="w-32 flex-shrink-0">
-              <Placeholder rotulo="Foto da equipe [inserir]" proporcao="aspect-square" />
-            </div>
-            <div>
-              <h3 className="text-xl font-bold">A equipe da WS3</h3>
-              <p className="mt-2 text-mudo">[inserir apresentação: quem são as pessoas, experiência e por que criaram a WS3]</p>
-              <Link href="/sobre" className="alvo mt-2 inline-flex items-center font-semibold text-acao underline underline-offset-2">
-                Conhecer a WS3
-              </Link>
-            </div>
-          </div>
-        </div>
+      {/* 9. Citação externa. O bloco da equipe volta quando houver apresentação e foto reais. */}
+      <Secao id="citacao" fundo="suave">
+        <figure className="max-w-3xl">
+          <blockquote className="titulo-3 text-2xl leading-snug sm:text-3xl">
+            “O sintoma mais comum do caos é quando a empresa depende 100% do dono para funcionar. Se ele sai, a empresa para.”
+          </blockquote>
+          <figcaption className="mt-4 text-mudo">
+            Marcelo Germano, consultor de gestão, no RCN67 (21/05/2026). Citação de um especialista de fora da WS3.
+          </figcaption>
+        </figure>
       </Secao>
 
       {/* 10. FAQ e CTA final */}

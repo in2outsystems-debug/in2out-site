@@ -48,7 +48,6 @@ export default function Materiais() {
             </li>
           ))}
         </ul>
-        <p className="mt-8 text-sm text-mudo">[inserir: arquivos dos três materiais. Enquanto não houver automação, a equipe envia manualmente]</p>
       </Secao>
     </>
   );

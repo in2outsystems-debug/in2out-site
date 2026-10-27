@@ -48,18 +48,17 @@ export default function Contato() {
             <div id="agendar" className="scroll-mt-24 rounded-marca-lg border border-linha bg-superficie p-6">
               <h2 className="titulo-3">Conversa de 30 minutos</h2>
               <p className="mt-1 text-mudo">Escolha um horário para falarmos sobre o seu caso, sem compromisso.</p>
-              {site.agendaUrl ? (
-                <div className="mt-4">
+              <div className="mt-4">
+                {site.agendaUrl ? (
                   <Botao href={site.agendaUrl} posicao="contato_agenda">
                     Agendar conversa
                   </Botao>
-                </div>
-              ) : (
-                <p className="mt-4 rounded-marca border-2 border-dashed border-mudo/50 bg-suave p-4 text-center text-mudo">
-                  <strong className="block text-tinta">[Placeholder]</strong>
-                  Agenda online [inserir link em NEXT_PUBLIC_AGENDA_URL]. Enquanto isso, combine o horário pelo WhatsApp.
-                </p>
-              )}
+                ) : (
+                  <Botao href={whatsappLink("Olá! Vim pelo site da WS3 Systems e quero agendar uma conversa de 30 minutos.")} posicao="contato_agenda_whatsapp">
+                    Combinar horário pelo WhatsApp
+                  </Botao>
+                )}
+              </div>
             </div>
           </aside>
         </div>

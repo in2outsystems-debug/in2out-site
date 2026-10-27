@@ -14,7 +14,7 @@ export const perguntas: Pergunta[] = [
   {
     grupo: "Geral",
     p: "Quanto custa?",
-    r: "O valor depende do que será feito e é informado na conversa inicial, antes de qualquer contratação. [inserir política de preços]",
+    r: "O valor depende do que será feito e é informado na conversa inicial, antes de qualquer contratação.",
   },
   {
     grupo: "Método",

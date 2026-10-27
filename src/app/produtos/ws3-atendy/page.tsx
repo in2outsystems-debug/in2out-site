@@ -2,8 +2,7 @@ import Link from "next/link";
 import { Acordeao } from "@/components/Acordeao";
 import { ChamadaFinal, JsonLd, Lista, Secao, TopoPagina } from "@/components/Blocos";
 import { Botao } from "@/components/Botao";
-import { CapturaTela } from "@/components/CapturaTela";
-import { Placeholder } from "@/components/Placeholder";
+import { ConversaExemplo } from "@/components/ConversaExemplo";
 import { Termo } from "@/components/Termo";
 import { faqLd, pageMeta } from "@/lib/seo";
 import { SITE_URL, demonstracaoLink, site } from "@/lib/site";
@@ -103,7 +102,7 @@ export default function Ws3Atendy() {
       <Secao id="problema" olho="O problema" titulo="Onde o atendimento se perde">
         <div className="grid items-center gap-8 lg:grid-cols-2">
           <Lista itens={problemas} marcador="x" />
-          <Placeholder rotulo="Captura de tela: caixa de entrada centralizada [inserir]" />
+          <ConversaExemplo />
         </div>
       </Secao>
 
@@ -127,9 +126,6 @@ export default function Ws3Atendy() {
             </li>
           ))}
         </ul>
-        <div className="mt-8">
-          <CapturaTela src="/img/raiptor-painel.png" alt="Painel do WS3 Atendy com faturamento, conversão, novos leads, gráfico de desempenho e funil de conversão." largura={1917} altura={771} />
-        </div>
       </Secao>
 
       <Secao id="aplicacoes" fundo="suave" olho="Aplicações" titulo="Onde costuma ajudar">
