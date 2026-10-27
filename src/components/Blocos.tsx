@@ -152,7 +152,7 @@ export function ChamadaFinal({
   rodape?: ReactNode;
 }) {
   return (
-    <section className="escuro bg-escuro py-16 text-sobre-escuro">
+    <section className="escuro bg-profundo py-16 text-sobre-escuro">
       <div className="pagina text-center">
         <h2 className="titulo-2 mx-auto max-w-2xl !text-sobre-escuro">{titulo}</h2>
         {texto && <p className="mx-auto mt-3 max-w-xl text-lg text-sobre-escuro/85">{texto}</p>}

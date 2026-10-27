@@ -19,7 +19,7 @@ export default function OpenGraph() {
           color: "#F5F7FA",
         }}
       >
-        <div style={{ fontSize: 34, fontWeight: 700, color: "#05EDFC" }}>WS3 Systems</div>
+        <div style={{ fontSize: 34, fontWeight: 700, color: "#00D6F0" }}>WS3 Systems</div>
         <div style={{ fontSize: 68, fontWeight: 800, marginTop: 24, lineHeight: 1.1 }}>
           Organize o processo. Automatize o que faz sentido.
         </div>

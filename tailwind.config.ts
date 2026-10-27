@@ -19,6 +19,7 @@ const config: Config = {
         dado: "rgb(var(--c-dado) / <alpha-value>)",
         "dado-fundo": "rgb(var(--c-dado-fundo) / <alpha-value>)",
         escuro: "rgb(var(--c-escuro) / <alpha-value>)",
+        profundo: "rgb(var(--c-profundo) / <alpha-value>)",
         "sobre-escuro": "rgb(var(--c-sobre-escuro) / <alpha-value>)",
         "marca-azul": "rgb(var(--c-marca-azul) / <alpha-value>)",
         "marca-ciano": "rgb(var(--c-marca-ciano) / <alpha-value>)",
