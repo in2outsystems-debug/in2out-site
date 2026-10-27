@@ -34,14 +34,14 @@ export function ConversaExemplo() {
             </li>
           ) : (
             <li key={i} className={`flex max-w-[85%] flex-col gap-1 ${item.tipo === "cliente" ? "self-start" : "self-end items-end"}`}>
-              <span className={`text-xs font-semibold ${item.tipo === "cliente" ? "text-mudo" : "text-dado"}`}>{autor[item.tipo]}</span>
+              <span className={`text-xs font-semibold ${item.tipo === "cliente" ? "text-mudo" : item.tipo === "ia" ? "text-dado" : "text-acao"}`}>{autor[item.tipo]}</span>
               <p
                 className={`rounded-marca-lg px-4 py-2.5 ${
                   item.tipo === "cliente"
                     ? "rounded-tl-sm bg-superficie"
                     : item.tipo === "ia"
                       ? "rounded-tr-sm bg-dado-fundo"
-                      : "rounded-tr-sm border border-dado/40 bg-dado-fundo"
+                      : "rounded-tr-sm border border-acao/50 bg-acao/15"
                 }`}
               >
                 {item.texto}

@@ -126,7 +126,7 @@ li {
     @apply text-3xl font-bold sm:text-4xl lg:text-5xl;
   }
   .titulo-2 {
-    @apply text-2xl font-bold sm:text-3xl;
+    @apply text-[1.75rem] font-bold sm:text-3xl;
   }
   .titulo-3 {
     @apply text-xl font-semibold;

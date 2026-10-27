@@ -4,11 +4,11 @@ import { rodape, site, whatsappLink } from "@/lib/site";
 import { AbrirCookies } from "./AbrirCookies";
 import { NomeMarca } from "./Marca";
 
-function Coluna({ titulo, itens }: { titulo: string; itens: { href: string; rotulo: string }[] }) {
+function Coluna({ titulo, itens, duasNoCelular = false }: { titulo: string; itens: { href: string; rotulo: string }[]; duasNoCelular?: boolean }) {
   return (
     <div>
       <h2 className="mb-3 text-base font-semibold text-sobre-escuro">{titulo}</h2>
-      <ul className="space-y-1">
+      <ul className={duasNoCelular ? "grid grid-cols-2 gap-x-4 gap-y-1 md:block md:space-y-1" : "space-y-1"}>
         {itens.map((i) => (
           <li key={i.href}>
             <Link href={i.href} className="alvo inline-flex items-center text-sobre-escuro/80 underline-offset-2 hover:text-white hover:underline">
@@ -65,7 +65,7 @@ export function Rodape() {
           </div>
           <p className="mt-4 max-w-sm text-sobre-escuro/80">{site.slogan}</p>
         </div>
-        <Coluna titulo="Mapa do site" itens={rodape.site} />
+        <Coluna titulo="Mapa do site" itens={rodape.site} duasNoCelular />
         <Coluna titulo="Materiais" itens={rodape.materiais} />
         <div>
           <h2 className="mb-3 text-base font-semibold">Contato</h2>
