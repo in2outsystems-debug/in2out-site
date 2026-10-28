@@ -45,6 +45,10 @@ export default function Privacidade() {
       <p>
         Os detalhes estão na <a href="/cookies">política de cookies</a>.
       </p>
+      <p>
+        O aplicativo Gestor Tráfego IA tem uma política própria:{" "}
+        <a href="/privacidade-gestor-trafego-ia">privacidade do Gestor Tráfego IA</a>.
+      </p>
       <h2>9. Encarregado de dados</h2>
       <p>[inserir nome e contato do encarregado, se aplicável]</p>
       <h2>10. Mudanças</h2>

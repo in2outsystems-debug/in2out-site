@@ -4,7 +4,7 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://ws3systems
 
 export const site = {
   nome: "WS3 Systems",
-  slogan: "Organize o processo. Automatize o que faz sentido. Use IA onde ela ajuda de verdade.",
+  slogan: "Atendimento no WhatsApp com IA, CRM e a sua equipe no controle.",
   descricao:
     "Consultoria de gestão de processos, automação, IA e tráfego pago para micro e pequenas empresas, MEIs e autônomos. Primeiro organizar, depois automatizar.",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "5599984195490",
@@ -19,6 +19,15 @@ export const site = {
 export function whatsappLink(mensagem = "Olá! Vim pelo site da WS3 Systems e quero conversar sobre o meu negócio.") {
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(mensagem)}`;
 }
+
+/** Número do WhatsApp para leitura: "5599984195490" vira "(99) 98419-5490". */
+export function whatsappFormatado(numero = site.whatsapp) {
+  const m = numero.replace(/\D/g, "").replace(/^55/, "").match(/^(\d{2})(\d{4,5})(\d{4})$/);
+  return m ? `(${m[1]}) ${m[2]}-${m[3]}` : numero;
+}
+
+/** Dados da empresa só aparecem quando deixarem de ser placeholders. */
+export const dadoPreenchido = (valor: string) => !valor.startsWith("[");
 
 /**
  * Demonstração de 30 minutos: abre a agenda online ou, sem ela, o WhatsApp com o pedido escrito.
@@ -42,27 +51,29 @@ export const menu = [
   { href: "/sobre", rotulo: "Sobre" },
 ];
 
+// Rodapé agrupado pelo que o visitante quer fazer, não pela estrutura do site.
 export const rodape = {
-  site: [
-    { href: "/", rotulo: "Início" },
+  comece: [
+    { href: "/diagnostico", rotulo: "Diagnóstico gratuito" },
+    { href: "/produtos/ws3-atendy#demonstracao", rotulo: "Demonstração" },
+    { href: "/produtos/ws3-atendy#teste-gratuito", rotulo: "Teste de 7 dias" },
+    { href: "/contato", rotulo: "Contato" },
+  ],
+  conheca: [
+    { href: "/produtos/ws3-atendy", rotulo: "WS3 Atendy" },
     { href: "/metodo", rotulo: "Método" },
     { href: "/servicos", rotulo: "Serviços" },
-    { href: "/produtos", rotulo: "Produtos" },
-    { href: "/diagnostico", rotulo: "Diagnóstico gratuito" },
     { href: "/sobre", rotulo: "Sobre" },
-    { href: "/contato", rotulo: "Contato" },
-    { href: "/perguntas-frequentes", rotulo: "Perguntas frequentes" },
   ],
-  materiais: [
+  aprenda: [
+    { href: "/conteudo", rotulo: "Conteúdo" },
     { href: "/materiais", rotulo: "Materiais gratuitos" },
-    { href: "/conteudo", rotulo: "Artigos" },
-    { href: "/rss.xml", rotulo: "RSS" },
+    { href: "/perguntas-frequentes", rotulo: "Perguntas frequentes" },
   ],
   legal: [
     { href: "/privacidade", rotulo: "Privacidade" },
-    { href: "/privacidade-gestor-trafego-ia", rotulo: "Privacidade do Gestor Tráfego IA" },
     { href: "/termos", rotulo: "Termos de uso" },
-    { href: "/cookies", rotulo: "Cookies" },
+    { href: "/rss.xml", rotulo: "RSS" },
   ],
 };
 

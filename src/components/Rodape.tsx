@@ -1,14 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import { rodape, site, whatsappLink } from "@/lib/site";
+import { dadoPreenchido, rodape, site, whatsappFormatado, whatsappLink } from "@/lib/site";
+import { Botao } from "./Botao";
 import { AbrirCookies } from "./AbrirCookies";
 import { NomeMarca } from "./Marca";
 
-function Coluna({ titulo, itens, duasNoCelular = false }: { titulo: string; itens: { href: string; rotulo: string }[]; duasNoCelular?: boolean }) {
+function Coluna({ titulo, itens }: { titulo: string; itens: { href: string; rotulo: string }[] }) {
   return (
     <div>
-      <h2 className="mb-3 text-base font-semibold text-sobre-escuro">{titulo}</h2>
-      <ul className={duasNoCelular ? "grid grid-cols-2 gap-x-4 gap-y-1 md:block md:space-y-1" : "space-y-1"}>
+      <h2 className="olho mb-3">{titulo}</h2>
+      <ul className="space-y-1">
         {itens.map((i) => (
           <li key={i.href}>
             <Link href={i.href} className="alvo inline-flex items-center text-sobre-escuro/80 underline-offset-2 hover:text-white hover:underline">
@@ -21,10 +22,7 @@ function Coluna({ titulo, itens, duasNoCelular = false }: { titulo: string; iten
   );
 }
 
-const iconeLink =
-  "alvo inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-sobre-escuro/80 transition-colors hover:border-white hover:text-white";
-
-const svgProps = { width: 22, height: 22, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": true } as const;
+const svgProps = { width: 20, height: 20, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round", strokeLinejoin: "round", "aria-hidden": true } as const;
 
 function IconeWhatsApp() {
   return (
@@ -55,48 +53,64 @@ function IconeInstagram() {
 }
 
 export function Rodape() {
+  const identidade = [site.razaoSocial, site.cnpj && dadoPreenchido(site.cnpj) ? `CNPJ ${site.cnpj}` : "", site.endereco].filter(dadoPreenchido).filter(Boolean);
+
   return (
     <footer className="escuro bg-escuro text-sobre-escuro">
-      <div className="pagina grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-5">
-        <div className="lg:col-span-2">
+      <div className="pagina grid gap-12 py-14 lg:grid-cols-12 lg:gap-8">
+        {/* Marca, promessa e contato: a última chance de falar com alguém */}
+        <div className="lg:col-span-5">
           <div className="flex items-center gap-2 text-lg font-bold">
             <Image src="/img/icone.png" alt="" width={40} height={38} className="h-9 w-auto" />
             <NomeMarca />
           </div>
-          <p className="mt-4 max-w-sm text-sobre-escuro/80">{site.slogan}</p>
+          <p className="mt-4 max-w-sm text-lg text-sobre-escuro/85">{site.slogan}</p>
+          <Link href="/produtos/ws3-atendy" className="alvo inline-flex items-center gap-1 font-semibold text-acao underline-offset-2 hover:underline">
+            Conheça o WS3 Atendy
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+          </Link>
+
+          <div className="mt-8 border-t border-white/10 pt-6">
+            <h2 className="olho">Fale com a gente</h2>
+            <Botao href={whatsappLink()} posicao="rodape_whatsapp" className="mt-4 w-full sm:w-auto">
+              <IconeWhatsApp />
+              WhatsApp {whatsappFormatado()}
+            </Botao>
+            <ul className="mt-4 flex flex-col gap-1 text-sobre-escuro/80">
+              <li>
+                <a href={`mailto:${site.email}`} className="alvo inline-flex items-center gap-2 underline-offset-2 hover:text-white hover:underline">
+                  <IconeEmail />
+                  {site.email}
+                </a>
+              </li>
+              <li>
+                <a href={site.instagram.url} target="_blank" rel="noopener noreferrer" className="alvo inline-flex items-center gap-2 underline-offset-2 hover:text-white hover:underline">
+                  <IconeInstagram />
+                  @{site.instagram.usuario}
+                  <span className="sr-only"> no Instagram (abre em nova aba)</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <Coluna titulo="Mapa do site" itens={rodape.site} duasNoCelular />
-        <Coluna titulo="Materiais" itens={rodape.materiais} />
-        <div>
-          <h2 className="mb-3 text-base font-semibold">Contato</h2>
-          <ul className="flex gap-3">
-            <li>
-              <a className={iconeLink} href={whatsappLink()} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp (abre em nova aba)" title="WhatsApp">
-                <IconeWhatsApp />
-              </a>
-            </li>
-            <li>
-              <a className={iconeLink} href={`mailto:${site.email}`} aria-label={`E-mail: ${site.email}`} title={site.email}>
-                <IconeEmail />
-              </a>
-            </li>
-            <li>
-              <a className={iconeLink} href={site.instagram.url} target="_blank" rel="noopener noreferrer" aria-label={`Instagram @${site.instagram.usuario} (abre em nova aba)`} title={`@${site.instagram.usuario}`}>
-                <IconeInstagram />
-              </a>
-            </li>
-          </ul>
-        </div>
+
+        <nav aria-label="Rodapé" className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:col-span-7 lg:pt-1">
+          <Coluna titulo="Comece aqui" itens={rodape.comece} />
+          <Coluna titulo="Conheça" itens={rodape.conheca} />
+          <Coluna titulo="Aprenda" itens={rodape.aprenda} />
+        </nav>
       </div>
+
       <div className="border-t border-white/15">
-        <div className="pagina flex flex-col gap-3 py-6 text-sm text-sobre-escuro/80 sm:flex-row sm:items-center sm:justify-between">
+        <div className="pagina flex flex-col gap-3 py-6 text-sm text-sobre-escuro/80 lg:flex-row lg:items-center lg:justify-between">
           <p>
-            © {new Date().getFullYear()} {site.nome}. Todos os direitos reservados.
+            © {new Date().getFullYear()} {site.nome}
+            {identidade.length > 0 && <> · {identidade.join(" · ")}</>}
           </p>
           <ul className="flex flex-wrap gap-x-4">
             {rodape.legal.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="alvo inline-flex items-center underline-offset-2 hover:text-white hover:underline">
+                <Link href={l.href} className="alvo inline-flex items-center justify-center underline-offset-2 hover:text-white hover:underline">
                   {l.rotulo}
                 </Link>
               </li>

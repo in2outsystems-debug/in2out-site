@@ -162,7 +162,7 @@ export default function Home() {
             <ol className="mt-5 flex flex-col gap-4">
               {jornada.map((passo, i) => (
                 <li key={passo} className="flex gap-4">
-                  <span aria-hidden="true" className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-acao/15 text-sm font-semibold tabular-nums text-acao">
+                  <span aria-hidden="true" className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-acao/25 text-sm font-semibold tabular-nums text-tinta">
                     {i + 1}
                   </span>
                   <span className="pt-0.5">{passo}</span>
