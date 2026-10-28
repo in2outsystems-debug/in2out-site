@@ -159,17 +159,19 @@ export function ChamadaFinal({
   rodape?: ReactNode;
 }) {
   return (
-    <section className="escuro bg-profundo py-16 text-sobre-escuro">
-      <div className="pagina text-center">
+    <section className="escuro py-14 text-sobre-escuro sm:py-20">
+      <div className="pagina">
+       <div className="brilho relative overflow-hidden rounded-[2rem] border border-white/10 bg-profundo px-6 py-14 text-center sm:px-12 sm:py-20">
         <h2 className="titulo-2 mx-auto max-w-2xl !text-sobre-escuro">{titulo}</h2>
         {texto && <p className="mx-auto mt-3 max-w-xl text-lg text-sobre-escuro/85">{texto}</p>}
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Botao href={href} tamanho="grande" posicao={posicao} className="w-full sm:w-auto">
+          <Botao href={href} tamanho="grande" posicao={posicao} seta className="w-full sm:w-auto">
             {rotulo}
           </Botao>
           {extra}
         </div>
         {rodape && <p className="mt-6 text-sobre-escuro/85">{rodape}</p>}
+       </div>
       </div>
     </section>
   );

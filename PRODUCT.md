@@ -55,7 +55,8 @@ Processo antes de IA. A WS3 não implanta IA em cima de bagunça: o caminho é M
 
 - Nome: WS3 Systems. Produto: WS3 Atendy.
 - Tom: tecnológico, direto, confiável. Frases curtas, verbo na frente, sem jargão, sem travessão.
-- Identidade vinculante: preto, azul #0453F1, ciano #00D6F0, Montserrat. Logo em `public/img/logo.png` e `public/img/icone.png`.
+- Identidade vinculante: preto, azul #0453F1, ciano #00D6F0. Montserrat fica no logo; títulos podem usar outra face. Logo em `public/img/logo.png` e `public/img/icone.png`. Fundo escuro é fixo.
+- Referência de acabamento escolhida pelo dono (out/2026): o padrão da categoria executado no nível do gptmaker.ai (fundo quase preto com brilho de cor, títulos grandes e justos, botões em pílula, conversas do produto como prova visual). Usar como régua de qualidade e de organização, nunca copiar textos, imagens ou marca. Evitar cara de startup gringa e de agência criativa.
 
 ## Evidence on Hand
 

@@ -6,9 +6,9 @@ import { track } from "@/lib/analytics";
 export type ItemAcordeao = { p: string; r: ReactNode };
 
 /** Perguntas e respostas com <details>, acessível sem JavaScript. */
-export function Acordeao({ itens, origem }: { itens: ItemAcordeao[]; origem: string }) {
+export function Acordeao({ itens, origem, solto = false }: { itens: ItemAcordeao[]; origem: string; solto?: boolean }) {
   return (
-    <div className="divide-y divide-linha rounded-marca-lg border border-linha bg-superficie">
+    <div className={solto ? "divide-y divide-white/[0.12]" : "painel divide-y divide-white/[0.08]"}>
       {itens.map((item) => (
         <details
           key={item.p}
@@ -17,7 +17,7 @@ export function Acordeao({ itens, origem }: { itens: ItemAcordeao[]; origem: str
             if ((e.currentTarget as HTMLDetailsElement).open) track("faq_open", { pergunta: item.p, origem });
           }}
         >
-          <summary className="alvo flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-lg font-semibold [&::-webkit-details-marker]:hidden">
+          <summary className={`alvo flex cursor-pointer list-none items-center justify-between gap-4 py-4 text-base font-semibold sm:text-lg [&::-webkit-details-marker]:hidden ${solto ? "" : "px-5"}`}>
             {item.p}
             <svg
               width="20"
@@ -33,7 +33,7 @@ export function Acordeao({ itens, origem }: { itens: ItemAcordeao[]; origem: str
               <path d="M5 8l5 5 5-5" />
             </svg>
           </summary>
-          <div className="px-5 pb-5 text-mudo">{item.r}</div>
+          <div className={`pb-5 text-mudo ${solto ? "" : "px-5"}`}>{item.r}</div>
         </details>
       ))}
     </div>

@@ -53,10 +53,10 @@ export function ConversaExemplo({ compacta = false }: { compacta?: boolean }) {
   const animada = compacta;
 
   return (
-    <figure className="rounded-marca-lg border border-linha bg-suave p-4 sm:p-6">
-      <div className="flex items-center justify-between gap-3 border-b border-linha pb-3 text-sm">
+    <figure className="painel bg-superficie/80 p-4 backdrop-blur-sm sm:p-6">
+      <div className="flex items-center justify-between gap-3 border-b border-white/[0.08] pb-3 text-sm">
         <span className="font-semibold">Atendimento no WhatsApp</span>
-        <span className="rounded-full border border-linha px-2.5 py-0.5 text-mudo">Exemplo</span>
+        <span className="rounded-full border border-white/15 px-2.5 py-0.5 text-mudo">Exemplo</span>
       </div>
       <ol className="mt-4 flex flex-col gap-3">
         {itens.map((item, i) => {
@@ -84,12 +84,12 @@ export function ConversaExemplo({ compacta = false }: { compacta?: boolean }) {
               {/* O "digitando…" ocupa o lugar da mensagem, que já tem o espaço reservado: nada pula. */}
               <div className="grid justify-items-end">
                 <p
-                  className={`col-start-1 row-start-1 rounded-marca-lg px-4 py-2.5 ${
+                  className={`col-start-1 row-start-1 rounded-2xl px-4 py-2.5 ${
                     item.tipo === "cliente"
-                      ? "rounded-tl-sm bg-superficie"
+                      ? "rounded-tl-md bg-white/[0.06]"
                       : item.tipo === "ia"
-                        ? "rounded-tr-sm bg-dado-fundo"
-                        : "rounded-tr-sm border border-acao/50 bg-acao/15"
+                        ? "rounded-tr-md border border-dado/25 bg-dado/10"
+                        : "rounded-tr-md border border-acao/40 bg-acao-cheia/25"
                   } ${passo ? `conversa-chega ${item.tipo === "cliente" ? "origin-top-left" : "origin-top-right"}` : ""}`}
                   style={chega}
                 >
@@ -108,7 +108,7 @@ export function ConversaExemplo({ compacta = false }: { compacta?: boolean }) {
           );
         })}
       </ol>
-      <figcaption className="mt-4 border-t border-linha pt-3 text-sm text-mudo">
+      <figcaption className="mt-4 border-t border-white/[0.08] pt-3 text-sm text-mudo">
         Ilustração de uma conversa. O que a IA responde depende da configuração e das informações autorizadas pela sua empresa.
       </figcaption>
     </figure>

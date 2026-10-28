@@ -16,6 +16,7 @@ const config: Config = {
         acao: "rgb(var(--c-acao) / <alpha-value>)",
         "acao-forte": "rgb(var(--c-acao-forte) / <alpha-value>)",
         "sobre-acao": "rgb(var(--c-sobre-acao) / <alpha-value>)",
+        "acao-cheia": "rgb(var(--c-acao-cheia) / <alpha-value>)",
         dado: "rgb(var(--c-dado) / <alpha-value>)",
         "dado-fundo": "rgb(var(--c-dado-fundo) / <alpha-value>)",
         escuro: "rgb(var(--c-escuro) / <alpha-value>)",
@@ -29,6 +30,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--fonte-texto)", "system-ui", "sans-serif"],
         titulo: ["var(--fonte-titulo)", "system-ui", "sans-serif"],
+        marca: ["var(--fonte-marca)", "system-ui", "sans-serif"],
       },
       borderRadius: {
         marca: "var(--raio)",

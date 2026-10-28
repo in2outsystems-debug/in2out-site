@@ -32,11 +32,12 @@ export function Cabecalho() {
   const ativo = (href: string) => caminho === href || caminho.startsWith(href + "/");
 
   return (
-    <header className="escuro sticky top-0 z-40 border-b border-white/10 bg-escuro text-sobre-escuro">
-      <div className="pagina flex h-16 items-center justify-between gap-4">
+    <header className="escuro sticky top-0 z-40 px-3 pt-3 text-sobre-escuro sm:px-4">
+      {/* Cabeçalho flutuante em pílula: o fundo borra o conteúdo que passa por baixo */}
+      <div className="mx-auto flex h-14 max-w-pagina items-center justify-between gap-4 rounded-full border border-white/10 bg-escuro/75 pl-4 pr-2 backdrop-blur-xl sm:h-16 sm:pl-6">
         <Link href="/" className="alvo flex items-center gap-2 font-bold" aria-label={`${site.nome}, página inicial`}>
           <Image src="/img/icone.png" alt="" width={40} height={38} priority className="h-9 w-auto" />
-          <NomeMarca className="hidden whitespace-nowrap text-base min-[375px]:inline sm:text-lg" />
+          <NomeMarca className="hidden whitespace-nowrap text-base min-[440px]:inline sm:text-lg" />
         </Link>
 
         <nav aria-label="Principal" className="hidden items-center gap-1 lg:flex">
@@ -45,8 +46,8 @@ export function Cabecalho() {
               key={m.href}
               href={m.href}
               aria-current={ativo(m.href) ? "page" : undefined}
-              className={`alvo inline-flex items-center rounded-marca px-3 font-medium hover:bg-white/10 ${
-                ativo(m.href) ? "underline decoration-2 underline-offset-8" : ""
+              className={`alvo inline-flex items-center rounded-full px-4 text-[0.9375rem] font-medium transition-colors hover:bg-white/10 hover:text-white ${
+                ativo(m.href) ? "bg-white/10 text-white" : "text-sobre-escuro/80"
               }`}
             >
               {m.rotulo}
@@ -55,14 +56,14 @@ export function Cabecalho() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Botao href="/diagnostico" posicao="cabecalho" className="!px-4 !py-2">
+          <Botao href="/diagnostico" posicao="cabecalho" className="!px-5 !py-2.5">
             <span className="sm:hidden">Diagnóstico</span>
             <span className="hidden sm:inline">Diagnóstico gratuito</span>
           </Botao>
           <button
             ref={botao}
             type="button"
-            className="alvo prensa inline-flex items-center justify-center rounded-marca border border-white/30 lg:hidden"
+            className="alvo prensa inline-flex items-center justify-center rounded-full border border-white/20 lg:hidden"
             aria-expanded={aberto}
             aria-controls="menu-movel"
             onClick={() => setAberto((a) => !a)}
@@ -104,7 +105,7 @@ export function Cabecalho() {
           aria-label="Principal"
           data-presenca={presenca}
           data-anim="topo"
-          className="border-t border-white/10 bg-escuro lg:hidden"
+          className="mx-auto mt-2 max-w-pagina rounded-3xl border border-white/10 bg-escuro/95 backdrop-blur-xl lg:hidden"
         >
           <ul className="pagina flex flex-col py-3">
             {menu.map((m) => (
