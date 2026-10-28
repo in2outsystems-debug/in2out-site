@@ -76,7 +76,7 @@ export function ConteudoHub({ itens }: { itens: ItemHub[] }) {
                 aria-pressed={cat === c}
                 onClick={() => setCat(c)}
                 className={`alvo rounded-full border-2 px-4 font-medium ${
-                  cat === c ? "border-acao bg-acao text-sobre-acao" : "border-linha bg-superficie hover:border-mudo"
+                  cat === c ? "border-acao-cheia bg-acao-cheia text-sobre-acao" : "border-linha bg-superficie hover:border-mudo"
                 }`}
               >
                 {c}

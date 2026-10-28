@@ -71,7 +71,7 @@ export default function Home() {
       {/* 1. Hero: a dor primeiro, a conversa como prova */}
       <section className="escuro relative overflow-hidden bg-escuro text-sobre-escuro">
         <div aria-hidden="true" className="brilho pointer-events-none absolute inset-0" />
-        <div className="pagina relative grid items-center gap-12 py-14 sm:py-16 lg:grid-cols-[minmax(0,1fr)_28rem] lg:gap-16 lg:py-14">
+        <div className="pagina relative grid items-start gap-12 py-14 sm:py-16 lg:grid-cols-[minmax(0,1fr)_28rem] lg:gap-16 lg:py-14">
           <div>
             <h1 className="titulo-1 max-w-3xl !text-sobre-escuro">
               Seu cliente chama no WhatsApp e fica <span className="destaque">esperando?</span>

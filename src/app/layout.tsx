@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <a
           href="#conteudo"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-marca focus:bg-acao focus:px-4 focus:py-3 focus:font-semibold focus:text-sobre-acao"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-acao-cheia focus:px-4 focus:py-3 focus:font-semibold focus:text-sobre-acao"
         >
           Ir para o conteúdo
         </a>

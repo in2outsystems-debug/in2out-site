@@ -129,7 +129,7 @@ export function Formulario({ tipo, origem, valores = {}, rotuloEnviar, aviso, ao
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => track("whatsapp_click", { posicao: "formulario_envio", formulario: tipo })}
-              className="alvo prensa mt-3 inline-flex items-center rounded-marca bg-acao px-5 py-3 font-semibold text-sobre-acao hover:bg-acao-forte"
+              className="alvo prensa mt-3 inline-flex items-center rounded-full bg-acao-cheia text-sobre-acao shadow-[0_8px_28px_-8px_rgb(var(--c-acao-cheia)/0.8)] hover:brightness-110 px-5 py-3 font-semibold"
             >
               Enviar pelo WhatsApp<span className="sr-only"> (abre em nova aba)</span>
             </a>
@@ -231,7 +231,7 @@ export function Formulario({ tipo, origem, valores = {}, rotuloEnviar, aviso, ao
             }}
             aria-invalid={erroConsent ? true : undefined}
             aria-describedby={erroConsent ? `${uid}-consent-erro` : undefined}
-            className="mt-1 h-6 w-6 flex-shrink-0 accent-[rgb(var(--c-acao))]"
+            className="mt-1 h-6 w-6 flex-shrink-0 accent-[rgb(var(--c-acao-cheia))]"
           />
           <label htmlFor={`${uid}-consent`} className="text-base">
             Autorizo a WS3 Systems a usar meus dados para responder a este contato, conforme a{" "}
@@ -251,7 +251,7 @@ export function Formulario({ tipo, origem, valores = {}, rotuloEnviar, aviso, ao
       <button
         type="submit"
         disabled={enviando}
-        className="alvo prensa inline-flex w-full items-center justify-center gap-2 rounded-marca bg-acao px-6 py-3 text-lg font-semibold text-sobre-acao hover:bg-acao-forte disabled:opacity-70 sm:w-auto"
+        className="alvo prensa inline-flex w-full items-center justify-center gap-2 rounded-full bg-acao-cheia text-sobre-acao shadow-[0_8px_28px_-8px_rgb(var(--c-acao-cheia)/0.8)] hover:brightness-110 px-7 py-3 text-lg font-semibold disabled:opacity-70 sm:w-auto"
       >
         {enviando && <span className="spinner" aria-hidden="true" />}
         {enviando ? "Enviando..." : (rotuloEnviar ?? def.enviar)}

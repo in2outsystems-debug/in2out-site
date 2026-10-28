@@ -21,8 +21,8 @@ const conversa: Item[] = [
 
 const autor = { cliente: "Cliente", ia: "IA", equipe: "Equipe" } as const;
 
-/** Versão curta para o topo da home: pergunta, resposta da IA, passagem para a equipe. */
-const curta = [0, 1, 4, 5, 6];
+/** Versão curta para o topo da home: três mensagens (cliente, IA, equipe) e o aviso de passagem. */
+const curta = [0, 1, 4, 5];
 
 /**
  * Roteiro da versão animada, em ms desde o carregamento.
@@ -34,7 +34,6 @@ const roteiro: { digita?: number; chega: number }[] = [
   { digita: 1200, chega: 2400 },
   { chega: 3100 },
   { digita: 3600, chega: 4700 },
-  { chega: 5900 },
 ];
 
 const tempo = (ms?: number) => (ms === undefined ? undefined : `${ms}ms`);

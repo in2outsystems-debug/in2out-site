@@ -223,7 +223,7 @@ export function Quiz() {
                   marcado ? "border-acao bg-suave" : "border-linha bg-superficie hover:border-mudo"
                 }`}
               >
-                <input type="radio" name={p.id} value={o.rotulo} checked={marcado} onChange={() => escolher(p.id, o.rotulo)} className="h-5 w-5 accent-[rgb(var(--c-acao))]" />
+                <input type="radio" name={p.id} value={o.rotulo} checked={marcado} onChange={() => escolher(p.id, o.rotulo)} className="h-6 w-6 accent-[rgb(var(--c-acao-cheia))]" />
                 {o.rotulo}
               </label>
             );
@@ -238,11 +238,11 @@ export function Quiz() {
 
       <div className="mt-8 flex gap-3">
         {etapa > 0 && (
-          <button type="button" onClick={() => { setErro(""); setEtapa(etapa - 1); }} className="alvo prensa rounded-marca border-2 border-acao px-5 py-3 font-semibold text-acao hover:bg-suave">
+          <button type="button" onClick={() => { setErro(""); setEtapa(etapa - 1); }} className="alvo prensa rounded-full border border-white/20 px-6 py-3 font-semibold text-tinta hover:border-white/40 hover:bg-white/[0.06]">
             Voltar
           </button>
         )}
-        <button type="button" onClick={avancar} className="alvo prensa rounded-marca bg-acao px-6 py-3 font-semibold text-sobre-acao hover:bg-acao-forte">
+        <button type="button" onClick={avancar} className="alvo prensa rounded-full bg-acao-cheia text-sobre-acao shadow-[0_8px_28px_-8px_rgb(var(--c-acao-cheia)/0.8)] hover:brightness-110 px-7 py-3 font-semibold">
           {etapa + 1 === total ? "Ver resultado" : "Próxima"}
         </button>
       </div>
