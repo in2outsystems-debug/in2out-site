@@ -314,6 +314,95 @@ main > article.pagina:first-of-type > :nth-child(1) { --i: 0; }
 main > article.pagina:first-of-type > :nth-child(2) { --i: 1; }
 main > article.pagina:first-of-type > :nth-child(n + 3) { --i: 2; }
 
+/*
+ * Conversa do topo (ConversaExemplo compacta): acontece uma vez, como num WhatsApp de verdade.
+ * O roteiro (--chega, --digita) vem do componente. Com movimento reduzido, a regra global
+ * zera durações e atrasos: a conversa aparece inteira e o "digitando…" termina escondido.
+ */
+.conversa-chega {
+  animation: conversa-chega 360ms var(--ease-entrada) var(--chega, 0ms) backwards;
+}
+@keyframes conversa-chega {
+  from {
+    opacity: 0;
+    translate: 0 6px;
+    scale: 0.96;
+    filter: blur(2px);
+  }
+}
+.conversa-digitando {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.85rem 1rem;
+  border-radius: var(--raio-grande);
+  border-top-right-radius: 0.125rem;
+  background: rgb(var(--c-superficie));
+  animation: conversa-digitando var(--digita-dur, 1000ms) linear var(--digita, 0ms) both;
+}
+@keyframes conversa-digitando {
+  0% {
+    opacity: 0;
+    translate: 0 4px;
+  }
+  12%,
+  88% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.conversa-digitando > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: rgb(var(--c-mudo));
+  /* Duas voltas e para: o indicador some antes disso, nada fica rodando escondido. */
+  animation: conversa-ponto 900ms ease-in-out var(--digita, 0ms) 2;
+}
+.conversa-digitando > span:nth-child(2) {
+  animation-delay: calc(var(--digita, 0ms) + 150ms);
+}
+.conversa-digitando > span:nth-child(3) {
+  animation-delay: calc(var(--digita, 0ms) + 300ms);
+}
+@keyframes conversa-ponto {
+  0%,
+  60%,
+  100% {
+    translate: 0 0;
+    opacity: 0.5;
+  }
+  30% {
+    translate: 0 -3px;
+    opacity: 1;
+  }
+}
+/* Marcador do evento: um pulso quando a conversa passa para a equipe */
+.conversa-pulso {
+  position: relative;
+}
+.conversa-pulso::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgb(var(--c-dado));
+  animation: conversa-pulso 900ms var(--ease-entrada) var(--chega, 0ms) both;
+}
+@keyframes conversa-pulso {
+  from {
+    opacity: 0.7;
+    scale: 1;
+  }
+  to {
+    opacity: 0;
+    scale: 3.5;
+  }
+}
+
 /* Saída da página antes de navegar (TransicaoRota) */
 main {
   transition:
