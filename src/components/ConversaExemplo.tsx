@@ -109,7 +109,9 @@ export function ConversaExemplo({ compacta = false }: { compacta?: boolean }) {
         })}
       </ol>
       <figcaption className="mt-4 border-t border-white/[0.08] pt-3 text-sm text-mudo">
-        Ilustração de uma conversa. O que a IA responde depende da configuração e das informações autorizadas pela sua empresa.
+        {compacta
+          ? "Exemplo de atendimento com o WS3 Atendy, um dos sistemas da WS3 Systems. A IA responde conforme a configuração e as informações autorizadas pela empresa."
+          : "Ilustração de uma conversa. O que a IA responde depende da configuração e das informações autorizadas pela sua empresa."}
       </figcaption>
     </figure>
   );

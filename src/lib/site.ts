@@ -4,7 +4,7 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://ws3systems
 
 export const site = {
   nome: "WS3 Systems",
-  slogan: "Atendimento no WhatsApp com IA, CRM e a sua equipe no controle.",
+  slogan: "Processos, automação e IA para quem atende pelo WhatsApp.",
   descricao:
     "Consultoria de gestão de processos, automação, IA e tráfego pago para micro e pequenas empresas, MEIs e autônomos. Primeiro organizar, depois automatizar.",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "5599984195490",

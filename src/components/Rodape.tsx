@@ -65,8 +65,8 @@ export function Rodape() {
             <NomeMarca />
           </div>
           <p className="mt-4 max-w-sm text-lg text-sobre-escuro/85">{site.slogan}</p>
-          <Link href="/produtos/ws3-atendy" className="alvo inline-flex items-center gap-1 font-semibold text-acao underline-offset-2 hover:underline">
-            Conheça o WS3 Atendy
+          <Link href="/produtos" className="alvo inline-flex items-center gap-1 font-semibold text-acao underline-offset-2 hover:underline">
+            Conheça os nossos sistemas
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
           </Link>
 

@@ -12,7 +12,7 @@ Donos e gestores de pequenas e médias empresas (também MEIs e autônomos que c
 
 ## Product Purpose
 
-A WS3 Systems une consultoria de processos e produto. A consultoria organiza o trabalho (gestão de processos, automação, IA aplicada, gestão de tráfego pago); o produto, **WS3 Atendy**, atende pelo WhatsApp com IA, CRM e automações, com a equipe no controle do que precisa de atenção humana.
+A WS3 Systems é uma **agência** de processos, automação e IA. O site fala como a agência: ela organiza o trabalho (gestão de processos, automação, IA aplicada, gestão de tráfego pago) e produz sistemas próprios. **WS3 Atendy** é um desses sistemas (atendimento no WhatsApp com IA, CRM e automações, com a equipe no controle do que precisa de atenção humana), não a marca do site. A home e o rodapé apresentam a agência primeiro e o Atendy como produto dentro dela.
 
 Sucesso do site: a pessoa agenda uma demonstração de 30 minutos (`NEXT_PUBLIC_AGENDA_URL`). WhatsApp é a alternativa.
 

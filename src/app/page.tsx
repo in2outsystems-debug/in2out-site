@@ -12,9 +12,9 @@ import { pageMeta, faqLd } from "@/lib/seo";
 import { demonstracao, servicos, whatsappLink } from "@/lib/site";
 
 export const metadata = pageMeta({
-  titulo: "Atendimento com IA no WhatsApp, com o processo em ordem",
+  titulo: "Processos, automação e IA para quem atende pelo WhatsApp",
   descricao:
-    "O WS3 Atendy junta atendimento, CRM, IA e automação no WhatsApp. Antes de ligar a IA, a WS3 organiza o seu atendimento. Faça o diagnóstico gratuito.",
+    "A WS3 Systems organiza o atendimento da sua empresa e entrega a tecnologia certa, de serviços sob medida ao sistema WS3 Atendy. Faça o diagnóstico gratuito.",
   caminho: "/",
 });
 
@@ -49,6 +49,7 @@ const perguntaPorTexto = (texto: string) => perguntas.find((q) => q.p === texto)
 
 // Objeções do método e dúvidas do produto que mais pesam na decisão.
 const perguntasHome: Pergunta[] = [
+  perguntaPorTexto("O que a WS3 Systems faz?"),
   perguntaPorTexto("Por que organizar antes de automatizar?"),
   perguntaPorTexto("A IA vai substituir minha equipe?"),
   perguntaPorTexto("Como o WhatsApp é conectado?"),
@@ -79,7 +80,7 @@ export default function Home() {
               Seu cliente chama no WhatsApp e fica <span className="destaque">esperando?</span>
             </h1>
             <p className="mt-6 max-w-leitura text-lg text-sobre-escuro/80 sm:text-xl">
-              O WS3 Atendy junta atendimento, CRM, IA e automação numa operação só. E antes de ligar a IA, organizamos o seu atendimento, para ela repetir o jeito certo de responder, e não a bagunça.
+              A WS3 Systems é uma agência de processos, automação e IA para pequenas e médias empresas. Primeiro organizamos o seu atendimento; depois entregamos a tecnologia certa, como o WS3 Atendy, o nosso sistema de atendimento com IA no WhatsApp.
             </p>
             <div className="mt-9">
               <Botao href="/diagnostico" tamanho="grande" posicao="home_hero" seta className="w-full sm:w-auto">
@@ -87,8 +88,8 @@ export default function Home() {
               </Botao>
               <p className="mt-3 text-sm text-sobre-escuro/70">5 perguntas, resultado na hora, sem cadastro.</p>
             </div>
-            <Botao href="#produto" variante="texto" posicao="home_hero_produto" className="mt-4 text-sobre-escuro/90">
-              Ver o que o WS3 Atendy faz
+            <Botao href="#servicos" variante="texto" posicao="home_hero_servicos" className="mt-4 text-sobre-escuro/90">
+              Ver o que fazemos
             </Botao>
           </div>
 
@@ -100,7 +101,7 @@ export default function Home() {
                 <span aria-hidden="true" className="h-2 w-2 rounded-full bg-dado" />
                 IA atendendo
               </span>
-              <span className={`${pilula} lg:absolute lg:-right-4 lg:bottom-32`}>
+              <span className={`${pilula} lg:absolute lg:-bottom-5 lg:-right-4`}>
                 <span aria-hidden="true" className="h-2 w-2 rounded-full bg-acao" />
                 Com a equipe
               </span>
@@ -152,8 +153,22 @@ export default function Home() {
         </div>
       </Secao>
 
-      {/* 4. Produto: três casos de uso e o que ele faz */}
-      <Secao id="produto" olho="Produto em destaque" titulo="WS3 Atendy: atendimento, CRM, IA e automação numa operação só" intro="Feito para quem vende e atende pelo WhatsApp. A IA atende, e a sua equipe assume com um clique quando precisar.">
+      {/* 4. Serviços: o que a agência faz */}
+      <Secao id="servicos" olho="O que fazemos" titulo="Do processo à tecnologia, em quatro frentes" intro="Começamos pelo processo que mais pesa no seu atendimento e só depois automatizamos. Cada frente tem página própria, com o que entregamos e o que não fazemos.">
+        <ul className="grid gap-x-10 gap-y-6 md:grid-cols-2">
+          {servicos.map((s) => (
+            <li key={s.slug} className="border-t border-white/[0.12] pt-5">
+              <Link href={`/servicos/${s.slug}`} className="alvo inline-flex items-center text-lg font-semibold text-acao underline-offset-2 hover:underline">
+                {s.nome}
+              </Link>
+              <p className="mt-1 text-mudo">{s.curto}</p>
+            </li>
+          ))}
+        </ul>
+      </Secao>
+
+      {/* 5. Produto: um dos sistemas da WS3, em três casos de uso */}
+      <Secao id="produto" fundo="suave" olho="Nosso sistema" titulo="WS3 Atendy: atendimento, CRM, IA e automação numa operação só" intro="Um dos sistemas da WS3 Systems, feito para quem vende e atende pelo WhatsApp. A IA atende, e a sua equipe assume com um clique quando precisar.">
         <CasosDeUso />
 
         <ul className="mt-14 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -181,27 +196,13 @@ export default function Home() {
         </div>
       </Secao>
 
-      {/* 5. Integrações */}
-      <Secao id="integracoes" fundo="suave" olho="Integrações" titulo="Seu WhatsApp, sua agenda e sua equipe no mesmo lugar" intro="O Atendy liga o que você já usa: o cliente chama, a agenda marca, a equipe é avisada.">
+      {/* 6. Integrações do WS3 Atendy */}
+      <Secao id="integracoes" olho="Integrações" titulo="O WS3 Atendy liga o que você já usa" intro="O cliente chama no WhatsApp, a agenda marca e a equipe é avisada, tudo no mesmo lugar.">
         <HubIntegracoes />
         <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-2 text-mudo">
           <li>Conecte o WhatsApp lendo um QR Code.</li>
           <li>Receba leads de formulários e anúncios.</li>
           <li>Importe a sua planilha de contatos.</li>
-        </ul>
-      </Secao>
-
-      {/* 6. Serviços, em formato compacto */}
-      <Secao id="servicos" olho="Serviços" titulo="Quatro frentes de trabalho">
-        <ul className="grid gap-x-10 gap-y-6 md:grid-cols-2">
-          {servicos.map((s) => (
-            <li key={s.slug} className="border-t border-white/[0.12] pt-5">
-              <Link href={`/servicos/${s.slug}`} className="alvo inline-flex items-center text-lg font-semibold text-acao underline-offset-2 hover:underline">
-                {s.nome}
-              </Link>
-              <p className="mt-1 text-mudo">{s.curto}</p>
-            </li>
-          ))}
         </ul>
       </Secao>
 
@@ -232,7 +233,7 @@ export default function Home() {
 
       <ChamadaFinal
         titulo="Descubra se o seu atendimento está pronto para automatizar"
-        texto="Comece pelo diagnóstico gratuito: 5 perguntas e o resultado na hora. Depois, veja o WS3 Atendy funcionando numa demonstração de 30 minutos e teste por 7 dias."
+        texto="Comece pelo diagnóstico gratuito: 5 perguntas e o resultado na hora. Depois, converse com a gente numa demonstração de 30 minutos e veja o WS3 Atendy funcionando, com teste de 7 dias."
         rotulo="Fazer o diagnóstico gratuito"
         href="/diagnostico"
         posicao="home_final"
