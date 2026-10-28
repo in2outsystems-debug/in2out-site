@@ -3,7 +3,7 @@ import { Acordeao } from "@/components/Acordeao";
 import { Botao } from "@/components/Botao";
 import { ChamadaFinal, JsonLd, Secao } from "@/components/Blocos";
 import { CasosDeUso } from "@/components/CasosDeUso";
-import { ConversaExemplo } from "@/components/ConversaExemplo";
+import { PalcoHero } from "@/components/PalcoHero";
 import { FluxoMetodo } from "@/components/FluxoMetodo";
 import { HubIntegracoes } from "@/components/HubIntegracoes";
 import { Termo } from "@/components/Termo";
@@ -61,9 +61,6 @@ const perguntasHome: Pergunta[] = [
   },
 ];
 
-const pilula =
-  "inline-flex items-center gap-2 rounded-full border border-white/10 bg-escuro/80 px-3.5 py-2 text-sm font-semibold shadow-lg backdrop-blur-md";
-
 export default function Home() {
   const demo = demonstracao();
 
@@ -74,7 +71,7 @@ export default function Home() {
       {/* 1. Hero: a dor primeiro, a conversa como prova */}
       <section className="escuro relative overflow-hidden bg-escuro text-sobre-escuro">
         <div aria-hidden="true" className="brilho pointer-events-none absolute inset-0" />
-        <div className="pagina relative grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-[minmax(0,1fr)_28rem] lg:gap-16 lg:py-28">
+        <div className="pagina relative grid items-center gap-12 py-14 sm:py-16 lg:grid-cols-[minmax(0,1fr)_28rem] lg:gap-16 lg:py-14">
           <div>
             <h1 className="titulo-1 max-w-3xl !text-sobre-escuro">
               Seu cliente chama no WhatsApp e fica <span className="destaque">esperando?</span>
@@ -93,24 +90,7 @@ export default function Home() {
             </Botao>
           </div>
 
-          <div className="relative">
-            <ConversaExemplo compacta />
-            {/* Etiquetas de status: flutuam sobre a conversa no desktop e vão para baixo no celular */}
-            <div className="mt-4 flex flex-wrap gap-2 lg:mt-0">
-              <span className={`${pilula} lg:absolute lg:-left-8 lg:-top-5`}>
-                <span aria-hidden="true" className="h-2 w-2 rounded-full bg-dado" />
-                IA atendendo
-              </span>
-              <span className={`${pilula} lg:absolute lg:-bottom-5 lg:-right-4`}>
-                <span aria-hidden="true" className="h-2 w-2 rounded-full bg-acao" />
-                Com a equipe
-              </span>
-              <span className={`${pilula} lg:absolute lg:-left-6 lg:-bottom-5`}>
-                <span aria-hidden="true" className="h-2 w-2 rounded-full bg-ok" />
-                Agendado
-              </span>
-            </div>
-          </div>
+          <PalcoHero />
         </div>
       </section>
 

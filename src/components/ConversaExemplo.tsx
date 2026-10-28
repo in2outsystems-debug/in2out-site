@@ -16,12 +16,13 @@ const conversa: Item[] = [
   { tipo: "evento", texto: "Contato registrado no CRM, etapa Orçamento" },
   { tipo: "evento", texto: "Passado para a equipe: precisa de visita técnica" },
   { tipo: "equipe", texto: "Oi, aqui é da equipe! Posso marcar a visita para amanhã às 10h?" },
+  { tipo: "cliente", texto: "Pode ser! Combinado." },
 ];
 
 const autor = { cliente: "Cliente", ia: "IA", equipe: "Equipe" } as const;
 
 /** Versão curta para o topo da home: pergunta, resposta da IA, passagem para a equipe. */
-const curta = [0, 1, 4, 5];
+const curta = [0, 1, 4, 5, 6];
 
 /**
  * Roteiro da versão animada, em ms desde o carregamento.
@@ -33,6 +34,7 @@ const roteiro: { digita?: number; chega: number }[] = [
   { digita: 1200, chega: 2400 },
   { chega: 3100 },
   { digita: 3600, chega: 4700 },
+  { chega: 5900 },
 ];
 
 const tempo = (ms?: number) => (ms === undefined ? undefined : `${ms}ms`);
@@ -110,7 +112,7 @@ export function ConversaExemplo({ compacta = false }: { compacta?: boolean }) {
       </ol>
       <figcaption className="mt-4 border-t border-white/[0.08] pt-3 text-sm text-mudo">
         {compacta
-          ? "Exemplo de atendimento com o WS3 Atendy, um dos sistemas da WS3 Systems. A IA responde conforme a configuração e as informações autorizadas pela empresa."
+          ? "Exemplo com o WS3 Atendy, um dos sistemas da WS3 Systems. A IA responde conforme as informações autorizadas pela empresa."
           : "Ilustração de uma conversa. O que a IA responde depende da configuração e das informações autorizadas pela sua empresa."}
       </figcaption>
     </figure>
