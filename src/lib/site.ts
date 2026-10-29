@@ -51,35 +51,34 @@ export const menu = [
   { href: "/sobre", rotulo: "Sobre" },
 ];
 
-// Rodapé agrupado pelo que o visitante quer fazer, não pela estrutura do site.
 /**
  * Pessoas que aparecem na página Sobre. Vazio, a seção não aparece.
  * Para incluir alguém: { nome: "Nome", cargo: "Cargo e experiência", foto: "/img/equipe/nome.jpg" }.
  */
 export const equipe: { nome: string; cargo: string; foto?: string }[] = [];
 
+// Rodapé em três colunas, como na referência: Soluções, Empresa e Legal.
 export const rodape = {
-  comece: [
-    { href: "/diagnostico", rotulo: "Diagnóstico gratuito" },
-    { href: "/produtos/ws3-atendy#demonstracao", rotulo: "Demonstração" },
-    { href: "/produtos/ws3-atendy#teste-gratuito", rotulo: "Teste de 7 dias" },
-    { href: "/contato", rotulo: "Contato" },
-  ],
-  conheca: [
+  solucoes: [
     { href: "/produtos/ws3-atendy", rotulo: "WS3 Atendy" },
-    { href: "/metodo", rotulo: "Método" },
-    { href: "/servicos", rotulo: "Serviços" },
-    { href: "/sobre", rotulo: "Sobre" },
+    { href: "/servicos/gestao-de-processos", rotulo: "Gestão de processos" },
+    { href: "/servicos/automacao", rotulo: "Automação" },
+    { href: "/servicos/ia-aplicada", rotulo: "IA aplicada" },
+    { href: "/servicos/trafego-pago", rotulo: "Gestão de tráfego pago" },
   ],
-  aprenda: [
+  empresa: [
+    { href: "/diagnostico", rotulo: "Diagnóstico gratuito" },
+    { href: "/metodo", rotulo: "Método" },
+    { href: "/sobre", rotulo: "Sobre" },
     { href: "/conteudo", rotulo: "Conteúdo" },
     { href: "/materiais", rotulo: "Materiais gratuitos" },
     { href: "/perguntas-frequentes", rotulo: "Perguntas frequentes" },
+    { href: "/contato", rotulo: "Contato" },
   ],
   legal: [
-    { href: "/privacidade", rotulo: "Privacidade" },
+    { href: "/privacidade", rotulo: "Política de privacidade" },
     { href: "/termos", rotulo: "Termos de uso" },
-    { href: "/rss.xml", rotulo: "RSS" },
+    { href: "/cookies", rotulo: "Política de cookies" },
   ],
 };
 
