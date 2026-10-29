@@ -7,6 +7,7 @@ import { CasosDeUso } from "@/components/CasosDeUso";
 import { PalcoHero } from "@/components/PalcoHero";
 import { FluxoMetodo } from "@/components/FluxoMetodo";
 import { HubIntegracoes } from "@/components/HubIntegracoes";
+import { IconeCaixa, type NomeIcone } from "@/components/Icone";
 import { perguntas, type Pergunta } from "@/lib/faq";
 import { pageMeta, faqLd } from "@/lib/seo";
 import { demonstracao, servicos, whatsappLink } from "@/lib/site";
@@ -18,27 +19,38 @@ export const metadata = pageMeta({
   caminho: "/",
 });
 
-const sinais = [
+const sinais: { icone: NomeIcone; titulo: string; texto: string }[] = [
   {
+    icone: "espera",
     titulo: "O cliente chama no WhatsApp e fica esperando",
     texto: "As conversas se espalham entre celulares, ninguém sabe quem já respondeu e o retorno depende da memória de quem atendeu.",
   },
   {
+    icone: "repeticao",
     titulo: "O mesmo erro se repete todo mês",
     texto: "Pedido esquecido, orçamento sem retorno, cliente sem resposta. A equipe corrige na hora e o erro volta no mês seguinte.",
   },
   {
+    icone: "equipe",
     titulo: "Cada pessoa resolve do seu jeito",
     texto: "O resultado depende de quem atendeu. O cliente percebe e a equipe também.",
   },
 ];
 
+const iconeServico: Record<string, NomeIcone> = {
+  "gestao-de-processos": "mapa",
+  automacao: "engrenagem",
+  "ia-aplicada": "faisca",
+  "trafego-pago": "megafone",
+};
+
 const testeDe3 = ["Existe um processo definido?", "Ele está padronizado?", "Alguém mede o resultado?"];
 
 // Quem lê precisa se reconhecer em poucos segundos: os dois perfis do público da WS3.
-const publicos = [
+const publicos: { id: string; icone: NomeIcone; titulo: string; quem: string; sinais: string[]; ajuda: string; link: { href: string; rotulo: string } }[] = [
   {
     id: "pme",
+    icone: "empresa",
     titulo: "Pequenas e médias empresas",
     quem: "Donos e gestores com uma equipe que atende clientes pelo WhatsApp.",
     sinais: [
@@ -51,6 +63,7 @@ const publicos = [
   },
   {
     id: "autonomos",
+    icone: "pessoa",
     titulo: "Profissionais autônomos",
     quem: "MEIs e profissionais que atendem sozinhos, como consultórios, estúdios e prestadores de serviço.",
     sinais: [
@@ -119,6 +132,7 @@ export default function Home() {
         <div className="grid gap-4 md:grid-cols-2">
           {publicos.map((pb) => (
             <div key={pb.id} className="painel vivo flex flex-col p-6 sm:p-8">
+              <IconeCaixa nome={pb.icone} className="mb-5" />
               <h3 className="text-2xl font-semibold tracking-tight">{pb.titulo}</h3>
               <p className="texto-cartao mt-2 text-mudo">{pb.quem}</p>
               <p className="olho mt-6">Você se reconhece se</p>
@@ -147,6 +161,7 @@ export default function Home() {
           <ul className="grid divide-y divide-white/[0.08] md:grid-cols-3 md:divide-x md:divide-y-0">
             {sinais.map((s) => (
               <li key={s.titulo} className="p-6 sm:p-8">
+                <IconeCaixa nome={s.icone} className="mb-4" />
                 <h3 className="text-xl font-semibold">{s.titulo}</h3>
                 <p className="texto-cartao mt-3 text-mudo">{s.texto}</p>
               </li>
@@ -185,6 +200,7 @@ export default function Home() {
         <ul className="grid gap-4 md:grid-cols-2">
           {servicos.map((s) => (
             <li key={s.slug} className="painel vivo flex flex-col p-6 sm:p-7">
+              <IconeCaixa nome={iconeServico[s.slug] ?? "engrenagem"} className="mb-4" />
               <h3 className="text-xl font-semibold">{s.nome}</h3>
               <p className="texto-cartao mt-2 flex-1 text-mudo">{s.curto}</p>
               <Link

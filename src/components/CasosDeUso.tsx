@@ -3,6 +3,9 @@
 import { useRef, useState, type KeyboardEvent } from "react";
 import { Botao } from "./Botao";
 import { track } from "@/lib/analytics";
+import { Icone, type NomeIcone } from "./Icone";
+
+const iconeCaso: Record<string, NomeIcone> = { atendimento: "conversa", agendamento: "calendario", "follow-up": "retorno", disparos: "envio" };
 
 type Fala = { de: "cliente" | "ia" | "equipe" | "campanha"; texto: string };
 
@@ -135,7 +138,10 @@ export function CasosDeUso() {
                 sel ? "border-acao-cheia/60 bg-acao-cheia/15" : "border-white/[0.08] hover:border-white/20 hover:bg-white/[0.04]"
               }`}
             >
-              <span className={`block text-base font-semibold lg:text-lg ${sel ? "text-tinta" : "text-mudo"}`}>{c.nome}</span>
+              <span className={`flex items-center gap-2.5 text-base font-semibold lg:text-lg ${sel ? "text-tinta" : "text-mudo"}`}>
+                <Icone nome={iconeCaso[c.id]} tamanho={20} className={`flex-shrink-0 ${sel ? "text-dado" : "text-mudo"}`} />
+                {c.nome}
+              </span>
               <span className="mt-1 hidden text-sm text-mudo lg:block">{c.resumo}</span>
             </button>
           );

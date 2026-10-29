@@ -1,4 +1,7 @@
 import { metodo } from "@/lib/site";
+import { IconeCaixa, type NomeIcone } from "./Icone";
+
+const icone: Record<string, NomeIcone> = { mapear: "mapa", padronizar: "lista", medir: "grafico", automatizar: "engrenagem", ia: "faisca" };
 
 /** Os cinco passos: horizontal a partir de md, vertical no celular. Linhas e marcadores são SVG. */
 export function FluxoMetodo({ detalhado = false }: { detalhado?: boolean }) {
@@ -20,6 +23,7 @@ export function FluxoMetodo({ detalhado = false }: { detalhado?: boolean }) {
               </svg>
             )}
           </div>
+          <IconeCaixa nome={icone[p.slug] ?? "mapa"} className="mb-3" />
           <h3 className="text-xl font-semibold">{p.nome}</h3>
           <p className="mt-1 text-mudo">{detalhado ? p.detalhe : p.resumo}</p>
         </li>
