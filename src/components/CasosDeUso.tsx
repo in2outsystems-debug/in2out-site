@@ -74,7 +74,7 @@ function Bolha({ fala, atraso }: { fala: Fala; atraso: number }) {
   const cliente = fala.de === "cliente";
   return (
     <div className={`entrada flex max-w-[88%] flex-col gap-1 ${cliente ? "self-start" : "items-end self-end"}`} style={{ animationDelay: `${atraso}ms` }}>
-      <span className={`text-xs font-semibold ${cliente ? "text-mudo" : fala.de === "ia" ? "text-dado" : "text-acao"}`}>{autor[fala.de]}</span>
+      <span className={`text-[0.8125rem] font-semibold ${cliente ? "text-mudo" : fala.de === "ia" ? "text-dado" : "text-acao"}`}>{autor[fala.de]}</span>
       <p
         className={`rounded-2xl px-4 py-2.5 ${
           cliente
@@ -166,7 +166,7 @@ export function CasosDeUso() {
               </svg>
             </span>
             <span>
-              <span className="block text-xs font-semibold uppercase tracking-[0.14em] text-dado">{caso.resultado.rotulo}</span>
+              <span className="block text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-dado">{caso.resultado.rotulo}</span>
               <span className="block font-semibold">{caso.resultado.titulo}</span>
               <span className="block text-sm text-mudo">{caso.resultado.detalhe}</span>
             </span>

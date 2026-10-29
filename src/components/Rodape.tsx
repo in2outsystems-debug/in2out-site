@@ -12,7 +12,7 @@ function Coluna({ titulo, itens }: { titulo: string; itens: { href: string; rotu
       <ul className="space-y-1">
         {itens.map((i) => (
           <li key={i.href}>
-            <Link href={i.href} className="alvo inline-flex items-center text-sobre-escuro/80 underline-offset-2 hover:text-white hover:underline">
+            <Link href={i.href} className="alvo inline-flex items-center text-[0.9375rem] text-sobre-escuro/80 underline-offset-2 hover:text-white hover:underline">
               {i.rotulo}
             </Link>
           </li>
@@ -64,7 +64,7 @@ export function Rodape() {
             <Image src="/img/icone.png" alt="" width={40} height={38} className="h-9 w-auto" />
             <NomeMarca />
           </div>
-          <p className="mt-4 max-w-sm text-lg text-sobre-escuro/85">{site.slogan}</p>
+          <p className="mt-4 max-w-sm text-base text-sobre-escuro/85">{site.slogan}</p>
           <Link href="/produtos" className="alvo inline-flex items-center gap-1 font-semibold text-acao underline-offset-2 hover:underline">
             Conheça os nossos sistemas
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" /></svg>

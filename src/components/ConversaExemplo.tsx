@@ -77,7 +77,7 @@ export function ConversaExemplo({ compacta = false }: { compacta?: boolean }) {
           return (
             <li key={i} className={`flex max-w-[85%] flex-col gap-1 ${item.tipo === "cliente" ? "self-start" : "items-end self-end"}`}>
               <span
-                className={`text-xs font-semibold ${item.tipo === "cliente" ? "text-mudo" : item.tipo === "ia" ? "text-dado" : "text-acao"} ${passo ? "conversa-chega" : ""}`}
+                className={`text-[0.8125rem] font-semibold ${item.tipo === "cliente" ? "text-mudo" : item.tipo === "ia" ? "text-dado" : "text-acao"} ${passo ? "conversa-chega" : ""}`}
                 style={{ "--chega": tempo(digita ?? passo?.chega) } as CSSProperties}
               >
                 {autor[item.tipo]}

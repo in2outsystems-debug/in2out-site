@@ -130,7 +130,7 @@ export default function Ws3Atendy() {
           {grupos.map((g) => (
             <div key={g.titulo} className="painel vivo-leve p-6">
               <h3 className="titulo-3">{g.titulo}</h3>
-              <p className="mt-2 text-mudo">{g.frase}</p>
+              <p className="texto-cartao mt-2 text-mudo">{g.frase}</p>
               <ul className="mt-5 flex flex-col gap-2">
                 {g.itens.map((i) => (
                   <li key={i} className="flex items-center gap-2.5">

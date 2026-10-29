@@ -17,7 +17,7 @@ type Props = {
 };
 
 const base =
-  "alvo prensa inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-center font-semibold transition-[background-color,border-color,box-shadow,filter]";
+  "alvo prensa inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-center text-[0.9375rem] font-semibold transition-[background-color,border-color,box-shadow,filter]";
 
 const variantes = {
   // Azul da marca cheio, com um brilho suave por baixo: é o botão da ação principal.
@@ -41,7 +41,7 @@ function Seta() {
 export function Botao({ href, children, posicao, variante = "primario", tamanho = "normal", seta = false, className = "" }: Props) {
   const externo = /^(https?:|mailto:|tel:)/.test(href);
   const whatsapp = href.includes("wa.me");
-  const classes = `${variante === "texto" ? "alvo inline-flex items-center" : base} ${variantes[variante]} ${tamanho === "grande" ? "px-7 py-3.5 text-base sm:text-lg" : ""} ${seta ? "pr-4" : ""} ${className}`;
+  const classes = `${variante === "texto" ? "alvo inline-flex items-center" : base} ${variantes[variante]} ${tamanho === "grande" ? "px-7 py-3.5 !text-base" : ""} ${seta ? "pr-4" : ""} ${className}`;
 
   const aoClicar = () => {
     if (whatsapp) track("whatsapp_click", { posicao });

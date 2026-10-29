@@ -120,7 +120,7 @@ export default function Home() {
           {publicos.map((pb) => (
             <div key={pb.id} className="painel vivo flex flex-col p-6 sm:p-8">
               <h3 className="text-2xl font-semibold tracking-tight">{pb.titulo}</h3>
-              <p className="mt-2 text-mudo">{pb.quem}</p>
+              <p className="texto-cartao mt-2 text-mudo">{pb.quem}</p>
               <p className="olho mt-6">Você se reconhece se</p>
               <div className="mt-3">
                 <Lista itens={pb.sinais} />
@@ -148,7 +148,7 @@ export default function Home() {
             {sinais.map((s) => (
               <li key={s.titulo} className="p-6 sm:p-8">
                 <h3 className="text-xl font-semibold">{s.titulo}</h3>
-                <p className="mt-3 text-mudo">{s.texto}</p>
+                <p className="texto-cartao mt-3 text-mudo">{s.texto}</p>
               </li>
             ))}
           </ul>
@@ -186,7 +186,7 @@ export default function Home() {
           {servicos.map((s) => (
             <li key={s.slug} className="painel vivo flex flex-col p-6 sm:p-7">
               <h3 className="text-xl font-semibold">{s.nome}</h3>
-              <p className="mt-2 flex-1 text-mudo">{s.curto}</p>
+              <p className="texto-cartao mt-2 flex-1 text-mudo">{s.curto}</p>
               <Link
                 href={`/servicos/${s.slug}`}
                 className="vivo-seta alvo mt-5 inline-flex items-center gap-2 font-semibold text-acao after:absolute after:inset-0 after:rounded-[1.5rem] focus:outline-none"

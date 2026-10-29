@@ -23,7 +23,7 @@ export default function Sobre() {
       <TopoPagina
         migalhas={[{ nome: "Sobre", caminho: "/sobre" }]}
         olho="Sobre"
-        titulo="Agência de processos, automação e IA para quem tem uma empresa pequena"
+        titulo="Agência de processos, automação e IA para empresas pequenas"
         texto={`A ${site.nome} nasceu para ajudar micro e pequenas empresas, MEIs e autônomos a organizar o trabalho antes de investir em tecnologia.`}
       />
 

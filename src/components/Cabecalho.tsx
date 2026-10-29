@@ -46,7 +46,7 @@ export function Cabecalho() {
               key={m.href}
               href={m.href}
               aria-current={ativo(m.href) ? "page" : undefined}
-              className={`alvo inline-flex items-center rounded-full px-4 text-[0.9375rem] font-medium transition-colors hover:bg-white/10 hover:text-white ${
+              className={`alvo inline-flex items-center rounded-full px-4 text-sm font-semibold transition-colors hover:bg-white/10 hover:text-white ${
                 ativo(m.href) ? "bg-white/10 text-white" : "text-sobre-escuro/80"
               }`}
             >
