@@ -128,7 +128,7 @@ export default function Ws3Atendy() {
       <Secao id="funcionalidades" olho="Funcionalidades" titulo="O que mais ajuda no dia a dia" intro="Quatro frentes para atender, agendar, retomar e falar com a sua base pelo WhatsApp.">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {grupos.map((g) => (
-            <div key={g.titulo} className="painel p-6">
+            <div key={g.titulo} className="painel vivo-leve p-6">
               <h3 className="titulo-3">{g.titulo}</h3>
               <p className="mt-2 text-mudo">{g.frase}</p>
               <ul className="mt-5 flex flex-col gap-2">

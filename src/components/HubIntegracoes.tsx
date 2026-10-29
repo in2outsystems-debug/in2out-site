@@ -28,7 +28,7 @@ const icones: Record<string, string> = {
 function No({ nome, evento, icone, lado }: { nome: string; evento: string; icone: string; lado: "e" | "d" }) {
   return (
     <li
-      className={`painel relative flex items-center gap-3 px-4 py-3 lg:before:absolute lg:before:top-1/2 lg:before:h-px lg:before:w-8 lg:before:bg-gradient-to-r ${
+      className={`painel vivo-leve relative flex items-center gap-3 px-4 py-3 lg:before:absolute lg:before:top-1/2 lg:before:h-px lg:before:w-8 lg:before:bg-gradient-to-r ${
         lado === "e"
           ? "lg:before:-right-8 lg:before:from-white/20 lg:before:to-dado/60"
           : "lg:before:-left-8 lg:before:from-dado/60 lg:before:to-white/20"

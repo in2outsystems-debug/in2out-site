@@ -466,6 +466,45 @@ main > article.pagina:first-of-type > :nth-child(n + 3) { --i: 2; }
   }
 }
 
+/*
+ * Cartão com vida: ao passar o mouse (ou focar por teclado), sobe 4px e a borda acende em ciano.
+ * `vivo` é para cartões com destino (a seta do link se afasta do texto); `vivo-leve` é para os informativos
+ * (só a borda e o fundo reagem). Só em telas com mouse; movimento reduzido mantém a cor e tira o deslocamento.
+ */
+.vivo,
+.vivo-leve {
+  position: relative;
+  transition:
+    transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 300ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.vivo-seta {
+  transition: gap 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .vivo:hover,
+  .vivo:focus-within {
+    transform: translateY(-4px);
+    border-color: rgb(var(--c-dado) / 0.4);
+    background-color: rgb(255 255 255 / 0.05);
+  }
+  .vivo:hover .vivo-seta,
+  .vivo:focus-within .vivo-seta {
+    gap: 0.75rem;
+  }
+  .vivo-leve:hover {
+    border-color: rgb(var(--c-dado) / 0.3);
+    background-color: rgb(255 255 255 / 0.05);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vivo:hover,
+  .vivo:focus-within {
+    transform: none;
+  }
+}
+
 /* Marcador do evento: um pulso quando a conversa passa para a equipe */
 .conversa-pulso {
   position: relative;

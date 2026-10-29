@@ -118,7 +118,7 @@ export default function Home() {
       <Secao id="publico" fundo="suave" olho="Para quem é" titulo="Feito para quem atende pelo WhatsApp" intro="Se você atende clientes pelo WhatsApp, uma destas descrições provavelmente é a sua.">
         <div className="grid gap-4 md:grid-cols-2">
           {publicos.map((pb) => (
-            <div key={pb.id} className="painel flex flex-col p-6 sm:p-8">
+            <div key={pb.id} className="painel vivo flex flex-col p-6 sm:p-8">
               <h3 className="text-2xl font-semibold tracking-tight">{pb.titulo}</h3>
               <p className="mt-2 text-mudo">{pb.quem}</p>
               <p className="olho mt-6">Você se reconhece se</p>
@@ -129,8 +129,11 @@ export default function Home() {
                 <p>
                   <strong>Como ajudamos:</strong> <span className="text-mudo">{pb.ajuda}</span>
                 </p>
-                <Link href={pb.link.href} className="alvo mt-2 inline-flex items-center font-semibold text-acao underline underline-offset-2">
+                <Link href={pb.link.href} className="vivo-seta alvo mt-2 inline-flex items-center gap-2 font-semibold text-acao after:absolute after:inset-0 after:rounded-[1.5rem] focus:outline-none">
                   {pb.link.rotulo}
+                  <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <path d="M3 8h10M9 4l4 4-4 4" />
+                  </svg>
                 </Link>
               </div>
             </div>
@@ -179,13 +182,20 @@ export default function Home() {
 
       {/* 4. Serviços: o que a agência faz */}
       <Secao id="servicos" olho="O que fazemos" titulo="Do processo à tecnologia, em quatro frentes" intro="Começamos pelo processo que mais pesa no seu atendimento e só depois automatizamos. Cada frente tem página própria, com o que entregamos e o que não fazemos.">
-        <ul className="grid gap-x-10 gap-y-6 md:grid-cols-2">
+        <ul className="grid gap-4 md:grid-cols-2">
           {servicos.map((s) => (
-            <li key={s.slug} className="border-t border-white/[0.12] pt-5">
-              <Link href={`/servicos/${s.slug}`} className="alvo inline-flex items-center text-lg font-semibold text-acao underline-offset-2 hover:underline">
-                {s.nome}
+            <li key={s.slug} className="painel vivo flex flex-col p-6 sm:p-7">
+              <h3 className="text-xl font-semibold">{s.nome}</h3>
+              <p className="mt-2 flex-1 text-mudo">{s.curto}</p>
+              <Link
+                href={`/servicos/${s.slug}`}
+                className="vivo-seta alvo mt-5 inline-flex items-center gap-2 font-semibold text-acao after:absolute after:inset-0 after:rounded-[1.5rem] focus:outline-none"
+              >
+                Ver como funciona<span className="sr-only">: {s.nome}</span>
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                  <path d="M3 8h10M9 4l4 4-4 4" />
+                </svg>
               </Link>
-              <p className="mt-1 text-mudo">{s.curto}</p>
             </li>
           ))}
         </ul>
