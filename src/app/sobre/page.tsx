@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChamadaFinal, Secao, TopoPagina } from "@/components/Blocos";
 import { pageMeta } from "@/lib/seo";
-import { dadoPreenchido, equipe, servicos, site } from "@/lib/site";
+import { equipe, servicos, site } from "@/lib/site";
 
 export const metadata = pageMeta({
   titulo: "Sobre a WS3 Systems",
@@ -18,8 +18,6 @@ const principios = [
 ];
 
 export default function Sobre() {
-  const identidade = [site.razaoSocial, dadoPreenchido(site.cnpj) ? `CNPJ ${site.cnpj}` : "", site.endereco].filter(dadoPreenchido).filter(Boolean);
-
   return (
     <>
       <TopoPagina
@@ -92,10 +90,6 @@ export default function Sobre() {
             ))}
           </ul>
         </Secao>
-      )}
-
-      {identidade.length > 0 && (
-        <p className="pagina pb-10 text-sm text-mudo">{identidade.join(" · ")}</p>
       )}
 
       <ChamadaFinal titulo="Quer conversar?" rotulo="Falar com a WS3" href="/contato" posicao="sobre_final" />

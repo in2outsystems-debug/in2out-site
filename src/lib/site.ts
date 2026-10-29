@@ -13,7 +13,7 @@ export const site = {
   agendaUrl: process.env.NEXT_PUBLIC_AGENDA_URL || "",
   razaoSocial: "[inserir razão social]",
   cnpj: "[inserir CNPJ]",
-  endereco: "[inserir endereço ou cidade de atuação]",
+  endereco: "Rua B, S/N, Parque Juçara, Porto Franco-MA",
 };
 
 export function whatsappLink(mensagem = "Olá! Vim pelo site da WS3 Systems e quero conversar sobre o meu negócio.") {
