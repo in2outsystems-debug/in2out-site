@@ -1,10 +1,14 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { Icone, type NomeIcone } from "./Icone";
 
 /**
  * Palco do topo da home: o WhatsApp chama, o WS3 Atendy responde, e dois selos mostram o que ele fez.
- * Pouco texto de propósito: uma pergunta, uma resposta, dois selos. Acontece uma vez, em cerca de 5 s.
+ * Pouco texto de propósito: uma pergunta, uma resposta, dois selos. A cena leva cerca de 5 s, fica parada para ser lida
+ * e recomeça, com uma saída suave. Pausa com a aba escondida e não repete com movimento reduzido.
  * Só CSS e SVG. Com movimento reduzido, a cena aparece pronta.
  */
 
@@ -28,7 +32,7 @@ const chega = (ms: number) => ({ "--chega": `${ms}ms` }) as CSSProperties;
 // Curva do ícone do WhatsApp até o ícone da WS3, no espaço 448 x 64 do SVG.
 const CURVA = "M24 32 C 120 0, 300 64, 416 32";
 
-export function PalcoHero() {
+function Cena() {
   return (
     <div>
       {/* Decorativo: o que ele conta já está dito na conversa e nas etapas */}
@@ -98,6 +102,42 @@ export function PalcoHero() {
       </div>
 
       <p className="mt-5 text-sm text-mudo">Exemplo com o WS3 Atendy. A IA responde conforme as informações autorizadas pela empresa.</p>
+    </div>
+  );
+}
+
+const CICLO = 12000;
+const SAIDA = 450;
+
+export function PalcoHero() {
+  const [volta, setVolta] = useState(0);
+  const [saindo, setSaindo] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let sair: ReturnType<typeof setTimeout>;
+    let trocar: ReturnType<typeof setTimeout>;
+    const agendar = () => {
+      sair = setTimeout(() => {
+        if (document.hidden) return agendar();
+        setSaindo(true);
+        trocar = setTimeout(() => {
+          setVolta((v) => v + 1);
+          setSaindo(false);
+          agendar();
+        }, SAIDA);
+      }, CICLO - SAIDA);
+    };
+    agendar();
+    return () => {
+      clearTimeout(sair);
+      clearTimeout(trocar);
+    };
+  }, []);
+
+  return (
+    <div key={volta} className="transition-opacity ease-out" style={{ opacity: saindo ? 0 : 1, transitionDuration: `${SAIDA}ms` }}>
+      <Cena />
     </div>
   );
 }
