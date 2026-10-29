@@ -1,17 +1,27 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { ConversaExemplo } from "./ConversaExemplo";
+import { Icone, type NomeIcone } from "./Icone";
 
 /**
- * Palco do topo da home: o WhatsApp chama, o WS3 Atendy responde, e as etapas do atendimento acendem.
- * Tudo acontece uma vez, em cerca de 5 s, sincronizado com a conversa de exemplo (ver `roteiro` em ConversaExemplo).
+ * Palco do topo da home: o WhatsApp chama, o WS3 Atendy responde, e dois selos mostram o que ele fez.
+ * Pouco texto de propósito: uma pergunta, uma resposta, dois selos. Acontece uma vez, em cerca de 5 s.
  * Só CSS e SVG. Com movimento reduzido, a cena aparece pronta.
  */
 
-const etapas = [
-  { id: "ia", rotulo: "IA atendendo", cor: "bg-dado", chega: 1200 },
-  { id: "equipe", rotulo: "Com a equipe", cor: "bg-acao", chega: 3100 },
+const selos: { rotulo: string; icone: NomeIcone; chega: number; lado: string }[] = [
+  { rotulo: "Lead qualificado", icone: "pessoa", chega: 3200, lado: "self-start pl-4" },
+  { rotulo: "Horário agendado", icone: "calendario", chega: 4300, lado: "self-end pr-2" },
 ];
+
+function Digitando() {
+  return (
+    <span className="conversa-digitando">
+      <span />
+      <span />
+      <span />
+    </span>
+  );
+}
 
 const chega = (ms: number) => ({ "--chega": `${ms}ms` }) as CSSProperties;
 
@@ -54,19 +64,40 @@ export function PalcoHero() {
         </span>
       </div>
 
-      <ConversaExemplo compacta />
+      {/* Cena solta, sem moldura: uma pergunta, uma resposta e dois selos do que o sistema fez */}
+      <div className="flex flex-col gap-3">
+        <p className="conversa-chega max-w-[80%] origin-top-left self-start rounded-2xl rounded-tl-md border border-white/10 bg-escuro/80 px-4 py-2.5 backdrop-blur-md" style={chega(700)}>
+          Oi! Vocês fazem orçamento para instalação?
+        </p>
 
-      <ol aria-label="Etapas do atendimento de exemplo" className="mt-4 flex flex-wrap items-center gap-2">
-        {etapas.map((e, i) => (
-          <li key={e.id} className="flex items-center gap-2">
-            {i > 0 && <span aria-hidden="true" className="palco-fio hidden h-px w-5 bg-white/20 sm:block" style={chega(e.chega - 300)} />}
-            <span className="conversa-chega inline-flex items-center gap-2 rounded-full border border-white/10 bg-escuro/80 px-3.5 py-2 text-sm font-semibold backdrop-blur-md" style={chega(e.chega)}>
-              <span aria-hidden="true" className={`h-2 w-2 rounded-full ${e.cor}`} />
-              {e.rotulo}
-            </span>
-          </li>
-        ))}
-      </ol>
+        {/* O "digitando…" ocupa o lugar da resposta, que já tem o espaço reservado: nada pula. */}
+        <div className="grid max-w-[84%] justify-items-end self-end">
+          <p
+            className="conversa-chega col-start-1 row-start-1 origin-top-right rounded-2xl rounded-tr-md border border-dado/25 bg-dado/10 px-4 py-2.5 backdrop-blur-md"
+            style={chega(2400)}
+          >
+            Fazemos, sim! Me diz o bairro e o que precisa instalar?
+          </p>
+          <span aria-hidden="true" className="col-start-1 row-start-1 self-start" style={{ "--digita": "1200ms", "--digita-dur": "1200ms" } as CSSProperties}>
+            <Digitando />
+          </span>
+        </div>
+
+        <ul aria-label="O que o sistema fez" className="mt-1 flex flex-col gap-3">
+          {selos.map((e) => (
+            <li key={e.rotulo} className={`conversa-chega ${e.lado}`} style={chega(e.chega)}>
+              <span className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-escuro/80 py-1.5 pl-1.5 pr-4 text-sm font-semibold backdrop-blur-md">
+                <span aria-hidden="true" className="flex h-8 w-8 items-center justify-center rounded-full border border-acao/25 bg-acao-cheia/20 text-dado">
+                  <Icone nome={e.icone} tamanho={18} />
+                </span>
+                {e.rotulo}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <p className="mt-5 text-sm text-mudo">Exemplo com o WS3 Atendy. A IA responde conforme as informações autorizadas pela empresa.</p>
     </div>
   );
 }
