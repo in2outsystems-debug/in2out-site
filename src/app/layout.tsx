@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Cabecalho } from "@/components/Cabecalho";
 import { Rodape } from "@/components/Rodape";
-import { WhatsAppTardio, ConsentimentoTardio } from "@/components/movimento/TardiosCliente";
+import { ConsentimentoTardio } from "@/components/movimento/TardiosCliente";
 import { TransicaoRota } from "@/components/movimento/TransicaoRota";
 import { RevelarGlobal } from "@/components/movimento/RevelarGlobal";
 import { JsonLd } from "@/components/Blocos";
@@ -44,7 +44,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <Rodape />
         <RevelarGlobal escopo="footer" />
-        <WhatsAppTardio />
         <ConsentimentoTardio />
         <JsonLd dados={[organizationLd, websiteLd]} />
       </body>
