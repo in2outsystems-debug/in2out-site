@@ -6,7 +6,7 @@ export const site = {
   nome: "WS3 Systems",
   slogan: "Processos, automação e IA para quem atende pelo WhatsApp.",
   descricao:
-    "Consultoria de gestão de processos, automação, IA e tráfego pago para micro e pequenas empresas, MEIs e autônomos. Primeiro organizar, depois automatizar.",
+    "Agência de gestão de processos, automação, IA e tráfego pago para micro e pequenas empresas, MEIs e autônomos, com sistemas próprios como o WS3 Atendy. Primeiro organizar, depois automatizar.",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "5599984195490",
   email: "ws3.systems@gmail.com",
   instagram: { usuario: "ws3.systems", url: "https://instagram.com/ws3.systems" },
@@ -52,6 +52,12 @@ export const menu = [
 ];
 
 // Rodapé agrupado pelo que o visitante quer fazer, não pela estrutura do site.
+/**
+ * Pessoas que aparecem na página Sobre. Vazio, a seção não aparece.
+ * Para incluir alguém: { nome: "Nome", cargo: "Cargo e experiência", foto: "/img/equipe/nome.jpg" }.
+ */
+export const equipe: { nome: string; cargo: string; foto?: string }[] = [];
+
 export const rodape = {
   comece: [
     { href: "/diagnostico", rotulo: "Diagnóstico gratuito" },

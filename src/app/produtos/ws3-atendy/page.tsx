@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Acordeao } from "@/components/Acordeao";
-import { ChamadaFinal, JsonLd, Lista, Secao, TopoPagina } from "@/components/Blocos";
+import { ChamadaFinal, JsonLd, Secao, TopoPagina } from "@/components/Blocos";
 import { Botao } from "@/components/Botao";
+import { Passos } from "@/components/Composicoes";
 import { ConversaExemplo } from "@/components/ConversaExemplo";
 import { Termo } from "@/components/Termo";
 import { faqLd, pageMeta } from "@/lib/seo";
@@ -29,18 +30,22 @@ const passos = [
   "A equipe assume o que exige pessoa.",
 ];
 
-const funcionalidades = [
-  "Agentes de IA",
-  "WhatsApp integrado",
-  "Caixa de entrada centralizada",
-  "CRM com funil",
-  "Identificação de intenções",
-  "Qualificação",
-  "Transferência humana",
-  "Agendamentos",
-  "Follow-up automatizado",
-  "Base de conhecimento",
-  "Relatórios",
+const grupos = [
+  {
+    titulo: "Atender",
+    frase: "A IA responde na hora e a equipe assume quando precisar.",
+    itens: ["Agentes de IA", "WhatsApp integrado", "Caixa de entrada centralizada", "Identificação de intenções", "Transferência humana"],
+  },
+  {
+    titulo: "Vender e agendar",
+    frase: "Cada conversa vira um lead acompanhado até o próximo passo.",
+    itens: ["CRM com funil", "Qualificação", "Agendamentos", "Follow-up automatizado"],
+  },
+  {
+    titulo: "Conhecer e controlar",
+    frase: "A IA fala com a sua voz e você enxerga o resultado.",
+    itens: ["Base de conhecimento", "Relatórios"],
+  },
 ];
 
 const aplicacoes = [
@@ -54,7 +59,7 @@ const faq = [
   { p: "O WS3 Atendy substitui funcionários?", r: "Não. Ele combina automação e atendimento humano. A equipe fica no controle do que precisa de atenção humana." },
   { p: "A IA responde qualquer pergunta?", r: "Não. As respostas dependem da configuração e das informações autorizadas pela empresa." },
   { p: "Tem CRM?", r: "Sim. O CRM registra contatos, conversas e o andamento de cada cliente." },
-  { p: "Faz agendamento?", r: "Depende da conexão autorizada com a agenda e da validação do fluxo." },
+  { p: "Faz agendamento?", r: "Sim. Os agentes de IA consultam os horários livres, marcam, remarcam e cancelam pela conversa. A agenda pode ser sincronizada com o Google Agenda e gerar o link do Google Meet." },
 ];
 
 export default function Ws3Atendy() {
@@ -82,56 +87,64 @@ export default function Ws3Atendy() {
           { nome: "WS3 Atendy", caminho: "/produtos/ws3-atendy" },
         ]}
         olho="WS3 Atendy"
-        titulo="Automatize o atendimento. Organize sua operação. Mantenha cada conversa em movimento."
+        titulo="Cada conversa do WhatsApp em movimento, sem perder ninguém."
         texto={
           <>
-            O WS3 Atendy reúne IA, <Termo nome="CRM">CRM</Termo> e automações para atender novos interessados e clientes atuais pelo WhatsApp, entender necessidades, organizar informações e dar continuidade às conversas. Automatize o que faz sentido. A equipe fica no controle do que precisa de atenção humana.
+            O WS3 Atendy reúne IA, <Termo nome="CRM">CRM</Termo> e automações para atender novos interessados e clientes atuais pelo WhatsApp. A equipe fica no controle do que precisa de atenção humana.
           </>
         }
+        lado={<ConversaExemplo />}
       >
-        <div className="flex flex-wrap gap-3">
-          <Botao href="#demonstracao" tamanho="grande" posicao="atendy_topo">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <Botao href="#demonstracao" tamanho="grande" posicao="atendy_topo" seta className="w-full sm:w-auto">
             Agendar demonstração
           </Botao>
-          <Botao href="/diagnostico" variante="secundario" tamanho="grande" posicao="atendy_topo_diagnostico">
-            Fazer o diagnóstico antes
+          <Botao href="/diagnostico" variante="texto" posicao="atendy_topo_diagnostico" className="text-sobre-escuro/90">
+            Antes, fazer o diagnóstico
           </Botao>
         </div>
       </TopoPagina>
 
       <Secao id="problema" olho="O problema" titulo="Onde o atendimento se perde">
-        <div className="grid items-center gap-8 lg:grid-cols-2">
-          <Lista itens={problemas} marcador="x" />
-          <ConversaExemplo />
-        </div>
-      </Secao>
-
-      <Secao id="como-funciona" fundo="suave" olho="Como funciona" titulo="Em cinco passos">
-        <ol className="grid gap-4 md:grid-cols-5">
-          {passos.map((p, i) => (
-            <li key={p} className="cartao">
-              <p className="text-sm font-semibold text-dado">Passo {i + 1}</p>
-              <p className="mt-1 font-medium">{p}</p>
-            </li>
-          ))}
-        </ol>
-        <p className="mt-6 max-w-leitura text-mudo">O que a IA faz em cada conversa depende da configuração e das informações autorizadas pela sua empresa.</p>
-      </Secao>
-
-      <Secao id="funcionalidades" olho="Funcionalidades" titulo="11 recursos no mesmo lugar">
-        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {funcionalidades.map((f) => (
-            <li key={f} className="cartao !p-4 font-medium">
-              {f}
+        <ul className="grid gap-x-10 gap-y-6 md:grid-cols-3">
+          {problemas.map((p) => (
+            <li key={p} className="border-t border-white/[0.12] pt-5 text-lg">
+              {p}
             </li>
           ))}
         </ul>
       </Secao>
 
+      <Secao id="como-funciona" fundo="suave" olho="Como funciona" titulo="Em cinco passos">
+        <Passos itens={passos} />
+        <p className="mt-8 max-w-leitura text-mudo">O que a IA faz em cada conversa depende da configuração e das informações autorizadas pela sua empresa.</p>
+      </Secao>
+
+      <Secao id="funcionalidades" olho="Funcionalidades" titulo="Tudo no mesmo lugar" intro="Onze recursos, em três frentes.">
+        <div className="grid gap-4 lg:grid-cols-3">
+          {grupos.map((g) => (
+            <div key={g.titulo} className="painel p-6">
+              <h3 className="titulo-3">{g.titulo}</h3>
+              <p className="mt-2 text-mudo">{g.frase}</p>
+              <ul className="mt-5 flex flex-col gap-2">
+                {g.itens.map((i) => (
+                  <li key={i} className="flex items-center gap-2.5">
+                    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 text-dado">
+                      <path d="M5 12l5 5L20 7" />
+                    </svg>
+                    {i}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </Secao>
+
       <Secao id="aplicacoes" fundo="suave" olho="Aplicações" titulo="Onde costuma ajudar">
-        <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid gap-x-10 gap-y-6 md:grid-cols-2">
           {aplicacoes.map((a) => (
-            <li key={a.nome} className="cartao">
+            <li key={a.nome} className="border-t border-white/[0.12] pt-5">
               <h3 className="titulo-3">{a.nome}</h3>
               <p className="mt-2 text-mudo">{a.texto}</p>
             </li>
@@ -153,7 +166,7 @@ export default function Ws3Atendy() {
         intro="Mostramos o atendimento, o CRM e a passagem da conversa para a equipe. Sem compromisso."
       >
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-          <Botao href={demonstracao().href} tamanho="grande" posicao="atendy_demonstracao">
+          <Botao href={demonstracao().href} tamanho="grande" posicao="atendy_demonstracao" seta className="w-full sm:w-auto">
             {demonstracao().rotulo}
           </Botao>
           <p className="text-mudo">
@@ -170,9 +183,9 @@ export default function Ws3Atendy() {
         id="teste-gratuito"
         olho="Teste gratuito"
         titulo="Depois da demonstração, teste por 7 dias"
-        intro="Preencha o formulário e entramos em contato pelo WhatsApp para combinar a ativação."
+        intro="Deixe o essencial e entramos em contato pelo WhatsApp para combinar a ativação."
       >
-        <div className="max-w-2xl rounded-marca-lg border border-linha bg-superficie p-6 sm:p-8">
+        <div className="painel max-w-2xl p-6 sm:p-8">
           <FormularioTardio
             tipo="teste"
             origem="atendy_teste"

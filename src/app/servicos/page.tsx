@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ChamadaFinal, Secao, TopoPagina } from "@/components/Blocos";
+import { Botao } from "@/components/Botao";
+import { Sequencia } from "@/components/Composicoes";
 import { pageMeta } from "@/lib/seo";
 import { servicos } from "@/lib/site";
 
@@ -15,26 +17,33 @@ export default function Servicos() {
       <TopoPagina
         migalhas={[{ nome: "Serviços", caminho: "/servicos" }]}
         olho="Serviços"
-        titulo="Quatro serviços, na ordem do método"
+        titulo="Do processo à tecnologia, em quatro serviços"
         texto="Cada serviço depende do anterior. Por isso começamos pela gestão de processos e só avançamos quando o processo está pronto."
-      />
-      <Secao>
-        <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {servicos.map((s, i) => (
-            <li key={s.slug} className="cartao flex flex-col">
-              <p className="text-sm font-semibold text-dado">Serviço {i + 1}</p>
-              <h2 className="titulo-3 mt-1 text-2xl">{s.nome}</h2>
-              <p className="mt-2 text-mudo">{s.curto}</p>
-              <p className="mt-3 flex-1 text-sm text-mudo">
-                <strong className="text-tinta">A dor:</strong> {s.dor}
-              </p>
-              <Link href={`/servicos/${s.slug}`} className="alvo mt-4 inline-flex items-center font-semibold text-acao underline underline-offset-2">
-                Ver detalhes<span className="sr-only">: {s.nome}</span>
-              </Link>
-            </li>
-          ))}
-        </ol>
+      >
+        <Botao href="/diagnostico" tamanho="grande" posicao="servicos_topo" seta className="w-full sm:w-auto">
+          Fazer o diagnóstico gratuito
+        </Botao>
+      </TopoPagina>
+
+      <Secao id="ordem" olho="Na ordem do método" titulo="Por onde começar e o que vem depois">
+        <Sequencia
+          itens={servicos.map((s) => ({
+            titulo: s.nome,
+            texto: s.curto,
+            extra: (
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-6">
+                <p className="max-w-leitura text-sm text-mudo">
+                  <strong className="text-tinta">A dor:</strong> {s.dor}
+                </p>
+                <Link href={`/servicos/${s.slug}`} className="alvo inline-flex flex-shrink-0 items-center font-semibold text-acao underline underline-offset-2">
+                  Ver como funciona<span className="sr-only">: {s.nome}</span>
+                </Link>
+              </div>
+            ),
+          }))}
+        />
       </Secao>
+
       <ChamadaFinal
         titulo="Não sabe por onde começar?"
         texto="O diagnóstico gratuito indica o serviço certo para o momento da sua empresa."

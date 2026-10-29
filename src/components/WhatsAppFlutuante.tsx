@@ -1,9 +1,15 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { track } from "@/lib/analytics";
 import { whatsappLink } from "@/lib/site";
 
+const SEM_FLUTUANTE = ["/contato", "/obrigado"];
+
 export function WhatsAppFlutuante() {
+  const caminho = usePathname();
+  if (SEM_FLUTUANTE.includes(caminho)) return null;
+
   return (
     <a
       href={whatsappLink()}

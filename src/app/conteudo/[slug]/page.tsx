@@ -84,8 +84,8 @@ export default async function ArtigoPagina({ params }: Props) {
             {a.atualizado !== a.publicado && <>, atualizado em {formatarData(a.atualizado)}</>} · {a.minutos} min de leitura
           </p>
 
-          <section aria-labelledby="resposta" className="mt-8 rounded-marca-lg border-l-4 border-dado bg-dado-fundo p-6">
-            <h2 id="resposta" className="text-lg font-bold">
+          <section aria-labelledby="resposta" className="painel brilho mt-8 p-6">
+            <h2 id="resposta" className="text-lg font-semibold text-dado">
               Resposta direta
             </h2>
             <p className="mt-2 text-lg">{a.resposta}</p>

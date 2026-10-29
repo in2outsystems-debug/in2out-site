@@ -43,28 +43,38 @@ export function Migalhas({ itens }: { itens: { nome: string; caminho: string }[]
   );
 }
 
-/** Abertura padrão das páginas internas. */
+/**
+ * Abertura padrão das páginas internas. `lado` abre uma segunda coluna (um painel ou a conversa de exemplo)
+ * a partir de lg, alinhada pelo topo ao título.
+ */
 export function TopoPagina({
   migalhas,
   olho,
   titulo,
   texto,
   children,
+  lado,
 }: {
   migalhas: { nome: string; caminho: string }[];
   olho?: string;
   titulo: string;
   texto?: ReactNode;
   children?: ReactNode;
+  lado?: ReactNode;
 }) {
   return (
-    <section className="border-b border-linha bg-suave">
+    <section className="border-b border-white/[0.08]">
       <div className="pagina py-10 sm:py-14">
         <Migalhas itens={migalhas} />
-        {olho && <p className="olho mt-6">{olho}</p>}
-        <h1 className={`titulo-1 max-w-4xl ${olho ? "mt-2" : "mt-6"}`}>{titulo}</h1>
-        {texto && <p className="mt-4 max-w-leitura text-xl text-mudo">{texto}</p>}
-        {children && <div className="mt-6">{children}</div>}
+        <div className={`mt-6 grid gap-10 ${lado ? "lg:grid-cols-[minmax(0,1fr)_26rem] lg:items-start lg:gap-16" : ""}`}>
+          <div>
+            {olho && <p className="olho">{olho}</p>}
+            <h1 className={`titulo-1 max-w-4xl ${olho ? "mt-2" : ""}`}>{titulo}</h1>
+            {texto && <p className="mt-5 max-w-leitura text-lg text-mudo sm:text-xl">{texto}</p>}
+            {children && <div className="mt-8">{children}</div>}
+          </div>
+          {lado && <div>{lado}</div>}
+        </div>
       </div>
     </section>
   );

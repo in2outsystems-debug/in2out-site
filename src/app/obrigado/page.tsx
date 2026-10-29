@@ -17,7 +17,7 @@ const textos: Record<string, { titulo: string; passos: string[]; cta: { href: st
   contato: {
     titulo: "Recebemos a sua mensagem",
     passos: ["Lemos o que você escreveu.", "Respondemos pelo WhatsApp ou e-mail em horário comercial.", "Se fizer sentido, combinamos uma conversa de 30 minutos."],
-    cta: { href: "/conteudo", rotulo: "Ler artigos enquanto espera" },
+    cta: { href: "/diagnostico", rotulo: "Fazer o diagnóstico gratuito enquanto espera" },
   },
   teste: {
     titulo: "Recebemos o seu pedido de teste gratuito do WS3 Atendy",

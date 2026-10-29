@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Acordeao } from "@/components/Acordeao";
 import { ChamadaFinal, JsonLd, Lista, Secao, TopoPagina } from "@/components/Blocos";
+import { Botao } from "@/components/Botao";
+import { DuasColunas, Sequencia } from "@/components/Composicoes";
 import { faqLd, pageMeta } from "@/lib/seo";
 import { SITE_URL, servicos, site } from "@/lib/site";
 
@@ -48,48 +50,44 @@ export default async function Servico({ params }: Props) {
         olho="Serviço"
         titulo={s.nome}
         texto={s.curto}
-      />
+        lado={
+          <div className="painel brilho p-6 sm:p-8">
+            <h2 className="titulo-3">Quando faz sentido</h2>
+            <div className="mt-5">
+              <Lista itens={s.paraQuem} />
+            </div>
+          </div>
+        }
+      >
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <Botao href="/diagnostico" tamanho="grande" posicao={`servico_${s.slug}_topo`} seta className="w-full sm:w-auto">
+            Fazer o diagnóstico gratuito
+          </Botao>
+          <Botao href="#etapas" variante="texto" posicao={`servico_${s.slug}_etapas`} className="text-sobre-escuro/90">
+            Ver como o trabalho acontece
+          </Botao>
+        </div>
+      </TopoPagina>
 
       <Secao id="dor" olho="A dor" titulo="O que costuma acontecer">
-        <p className="texto-leitura text-xl">{s.dor}</p>
+        <p className="max-w-3xl text-2xl font-light leading-snug text-tinta/90 sm:text-3xl">{s.dor}</p>
         {s.condicao && (
-          <p className="mt-6 max-w-leitura rounded-marca-lg bg-dado-fundo p-5">
+          <p className="painel mt-8 max-w-3xl p-5 sm:p-6">
             <strong>Condição para este serviço.</strong> {s.condicao}
           </p>
         )}
       </Secao>
 
-      <Secao id="para-quem" fundo="suave" olho="Para quem é" titulo="Quando este serviço faz sentido">
-        <div className="max-w-leitura">
-          <Lista itens={s.paraQuem} />
-        </div>
-      </Secao>
-
-      <Secao id="entregamos" olho="O que entregamos" titulo="O trabalho em si">
-        <div className="max-w-leitura">
-          <Lista itens={s.entregamos} />
-        </div>
-      </Secao>
-
       <Secao id="etapas" fundo="suave" olho="Etapas" titulo="Como o trabalho acontece">
-        <ol className="grid gap-4 md:grid-cols-5">
-          {s.etapas.map((e, i) => (
-            <li key={e} className="cartao">
-              <p className="text-sm font-semibold text-dado">Etapa {i + 1}</p>
-              <p className="mt-1">{e}</p>
-            </li>
-          ))}
-        </ol>
+        <Sequencia longo itens={s.etapas.map((e) => ({ titulo: e }))} />
       </Secao>
 
-      <Secao id="entregaveis" olho="Entregáveis" titulo="O que você recebe no final">
-        <div className="max-w-leitura">
-          <Lista itens={s.entregaveis} />
-        </div>
+      <Secao id="entregas" olho="O que você recebe" titulo="O trabalho e as entregas">
+        <DuasColunas esquerda={{ titulo: "O que fazemos", itens: s.entregamos }} direita={{ titulo: "O que você recebe no final", itens: s.entregaveis }} />
       </Secao>
 
       <Secao id="limites" fundo="suave" olho="Limites" titulo="O que este serviço não faz">
-        <div className="max-w-leitura">
+        <div className="painel max-w-3xl p-6 sm:p-8">
           <Lista itens={s.limites} marcador="x" />
         </div>
       </Secao>
@@ -107,26 +105,31 @@ export default async function Servico({ params }: Props) {
             .
           </p>
         )}
-      </Secao>
-
-      <Secao id="outros" fundo="suave" titulo="Outros serviços">
-        <ul className="flex flex-wrap gap-3">
-          {outros.map((o) => (
-            <li key={o.slug}>
-              <Link href={`/servicos/${o.slug}`} className="alvo inline-flex items-center rounded-marca border border-linha bg-superficie px-4 font-semibold hover:border-acao">
-                {o.nome}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className="mt-12">
+          <h3 className="titulo-3">Outros serviços</h3>
+          <ul className="mt-4 flex flex-wrap gap-3">
+            {outros.map((o) => (
+              <li key={o.slug}>
+                <Link href={`/servicos/${o.slug}`} className="alvo inline-flex items-center rounded-full border border-white/15 px-5 font-semibold transition-colors hover:border-white/40 hover:bg-white/[0.05]">
+                  {o.nome}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Secao>
 
       <ChamadaFinal
         titulo="Vamos conversar sobre o seu caso?"
-        texto="Uma conversa de 30 minutos para entender o seu processo e dizer com franqueza se podemos ajudar."
-        rotulo="Agendar conversa"
-        href="/contato#agendar"
+        texto="Comece pelo diagnóstico gratuito. Se preferir, marque uma conversa de 30 minutos para entendermos o seu processo e dizermos, com franqueza, se podemos ajudar."
+        rotulo="Fazer o diagnóstico gratuito"
+        href="/diagnostico"
         posicao={`servico_${s.slug}_final`}
+        extra={
+          <Botao href="/contato#agendar" variante="contorno-claro" tamanho="grande" posicao={`servico_${s.slug}_conversa`} className="w-full sm:w-auto">
+            Agendar conversa
+          </Botao>
+        }
       />
     </>
   );

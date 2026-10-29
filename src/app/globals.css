@@ -195,7 +195,7 @@ li {
   @apply font-semibold;
 }
 .prosa blockquote {
-  @apply my-6 border-l-4 border-dado pl-4 text-mudo;
+  @apply my-6 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-mudo;
 }
 
 

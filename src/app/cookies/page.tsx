@@ -42,7 +42,7 @@ export default function Cookies() {
               <td className="py-2 pr-4">_ga, _ga_*</td>
               <td className="py-2 pr-4">Medição (Google Analytics)</td>
               <td className="py-2 pr-4">Contam visitas e mostram quais páginas ajudam mais. Só são criados se você aceitar.</td>
-              <td className="py-2">[inserir conforme configuração do GA4]</td>
+              <td className="py-2">Definida pelo Google Analytics</td>
             </tr>
           </tbody>
         </table>
