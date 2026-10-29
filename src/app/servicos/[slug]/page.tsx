@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Acordeao } from "@/components/Acordeao";
 import { ChamadaFinal, JsonLd, Lista, Secao, TopoPagina } from "@/components/Blocos";
 import { Botao } from "@/components/Botao";
+import { FluxoAnuncioAtendimento } from "@/components/AnuncioAtendimento";
 import { DuasColunas, Sequencia } from "@/components/Composicoes";
 import { faqLd, pageMeta } from "@/lib/seo";
 import { SITE_URL, servicos, site } from "@/lib/site";
@@ -77,6 +78,22 @@ export default async function Servico({ params }: Props) {
           </p>
         )}
       </Secao>
+
+      {s.slug === "trafego-pago" && (
+        <Secao id="anuncio-atendimento" olho="Anúncio e atendimento" titulo="O anúncio só vale se o atendimento acompanha">
+          <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="max-w-leitura text-lg text-mudo">
+              <p>
+                Antes de gastar verba, olhamos se o seu atendimento responde a tempo e se dá para saber de onde veio cada contato. É aí que o tráfego pago e o WS3 Atendy se encontram: o sistema registra a origem, a IA responde em segundos e o relatório mostra o que funciona.
+              </p>
+              <p className="mt-4">
+                Quer só os anúncios? Também fazemos. Mas recomendamos começar pelo diagnóstico, para ver se o atendimento aguenta o volume.
+              </p>
+            </div>
+            <FluxoAnuncioAtendimento />
+          </div>
+        </Secao>
+      )}
 
       <Secao id="etapas" fundo="suave" olho="Etapas" titulo="Como o trabalho acontece">
         <Sequencia longo itens={s.etapas.map((e) => ({ titulo: e }))} />

@@ -72,6 +72,16 @@ export const perguntas: Pergunta[] = [
     r: "Pelo próprio celular: você lê um QR Code ou digita um código de pareamento. O mesmo número passa a servir o atendimento, os follow-ups e os agentes de IA.",
   },
   {
+    grupo: "Serviços",
+    p: "Vocês gerenciam anúncios?",
+    r: "Sim. A gestão de tráfego pago cria e acompanha campanhas no Google Ads e no Meta Ads, nas contas da sua empresa. Antes, olhamos se o atendimento aguenta o volume, porque anúncio sem resposta rápida desperdiça verba.",
+  },
+  {
+    grupo: "WS3 Atendy",
+    p: "Posso enviar mensagens em massa pelo WhatsApp?",
+    r: "Dá para fazer campanhas segmentadas por tags, com intervalo entre os envios e horário permitido. Envie apenas a quem autorizou receber e ofereça uma forma simples de sair da lista.",
+  },
+  {
     grupo: "Dados e privacidade",
     p: "O que acontece com os dados que envio nos formulários?",
     r: "Eles são usados só para responder ao seu contato, conforme a política de privacidade e a LGPD. Você pode pedir a exclusão a qualquer momento pelo e-mail de contato.",

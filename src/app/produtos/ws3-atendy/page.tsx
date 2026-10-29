@@ -32,19 +32,24 @@ const passos = [
 
 const grupos = [
   {
-    titulo: "Atender",
-    frase: "A IA responde na hora e a equipe assume quando precisar.",
-    itens: ["Agentes de IA", "WhatsApp integrado", "Caixa de entrada centralizada", "Identificação de intenções", "Transferência humana"],
+    titulo: "Atendimento",
+    frase: "A IA responde na hora, a qualquer hora, e a equipe assume com um clique.",
+    itens: ["Caixa de entrada única do WhatsApp", "Agentes de IA treinados com a sua empresa", "Transferência para uma pessoa, com o histórico", "CRM com funil de vendas"],
   },
   {
-    titulo: "Vender e agendar",
-    frase: "Cada conversa vira um lead acompanhado até o próximo passo.",
-    itens: ["CRM com funil", "Qualificação", "Agendamentos", "Follow-up automatizado"],
+    titulo: "Agendamento",
+    frase: "O cliente marca pelo WhatsApp, até de madrugada.",
+    itens: ["Consulta a agenda em tempo real", "Marca, remarca e cancela", "Google Agenda e link do Google Meet", "Lembretes que reduzem as faltas"],
   },
   {
-    titulo: "Conhecer e controlar",
-    frase: "A IA fala com a sua voz e você enxerga o resultado.",
-    itens: ["Base de conhecimento", "Relatórios"],
+    titulo: "Follow-up",
+    frase: "Ninguém fica sem retorno.",
+    itens: ["Uma sequência para cada etapa do funil", "Texto, imagem, áudio ou vídeo", "Só envia nos horários permitidos", "Para quando o cliente agenda"],
+  },
+  {
+    titulo: "Disparos",
+    frase: "Campanhas para a sua base, no ritmo certo.",
+    itens: ["Público escolhido por tags", "Intervalo natural entre os envios", "Respostas direto no chat", "Métricas de envio e resposta"],
   },
 ];
 
@@ -120,8 +125,8 @@ export default function Ws3Atendy() {
         <p className="mt-8 max-w-leitura text-mudo">O que a IA faz em cada conversa depende da configuração e das informações autorizadas pela sua empresa.</p>
       </Secao>
 
-      <Secao id="funcionalidades" olho="Funcionalidades" titulo="Tudo no mesmo lugar" intro="Onze recursos, em três frentes.">
-        <div className="grid gap-4 lg:grid-cols-3">
+      <Secao id="funcionalidades" olho="Funcionalidades" titulo="O que mais ajuda no dia a dia" intro="Quatro frentes para atender, agendar, retomar e falar com a sua base pelo WhatsApp.">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {grupos.map((g) => (
             <div key={g.titulo} className="painel p-6">
               <h3 className="titulo-3">{g.titulo}</h3>
@@ -139,6 +144,9 @@ export default function Ws3Atendy() {
             </div>
           ))}
         </div>
+        <p className="mt-6 max-w-3xl text-sm text-mudo">
+          Campanhas e disparos são para quem autorizou receber as mensagens, com uma forma simples de sair da lista. E ainda: base de conhecimento com os seus PDFs, relatórios e automações visuais.
+        </p>
       </Secao>
 
       <Secao id="aplicacoes" fundo="suave" olho="Aplicações" titulo="Onde costuma ajudar">

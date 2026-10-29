@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { Acordeao } from "@/components/Acordeao";
 import { Botao } from "@/components/Botao";
-import { ChamadaFinal, JsonLd, Secao } from "@/components/Blocos";
+import { ChamadaFinal, JsonLd, Lista, Secao } from "@/components/Blocos";
+import { FluxoAnuncioAtendimento, TextoTrafegoPago } from "@/components/AnuncioAtendimento";
 import { CasosDeUso } from "@/components/CasosDeUso";
 import { PalcoHero } from "@/components/PalcoHero";
 import { FluxoMetodo } from "@/components/FluxoMetodo";
 import { HubIntegracoes } from "@/components/HubIntegracoes";
-import { Termo } from "@/components/Termo";
 import { perguntas, type Pergunta } from "@/lib/faq";
 import { pageMeta, faqLd } from "@/lib/seo";
 import { demonstracao, servicos, whatsappLink } from "@/lib/site";
@@ -14,7 +14,7 @@ import { demonstracao, servicos, whatsappLink } from "@/lib/site";
 export const metadata = pageMeta({
   titulo: "Processos, automação e IA para quem atende pelo WhatsApp",
   descricao:
-    "A WS3 Systems organiza o atendimento da sua empresa e entrega a tecnologia certa, de serviços sob medida ao sistema WS3 Atendy. Faça o diagnóstico gratuito.",
+    "A WS3 Systems organiza o atendimento, cuida dos anúncios e entrega a tecnologia certa, como o sistema WS3 Atendy, para pequenas empresas e profissionais autônomos. Faça o diagnóstico gratuito.",
   caminho: "/",
 });
 
@@ -35,14 +35,32 @@ const sinais = [
 
 const testeDe3 = ["Existe um processo definido?", "Ele está padronizado?", "Alguém mede o resultado?"];
 
-// O que o WS3 Atendy faz, conforme o guia de funcionalidades da plataforma.
-const recursos = [
-  { id: "caixa", titulo: "Uma caixa de entrada só", texto: <>Todo o WhatsApp da empresa num lugar, com o histórico do cliente ao lado de cada conversa.</> },
-  { id: "agentes", titulo: "Agentes de IA que executam", texto: <>Atendem, qualificam e agendam, a qualquer hora, treinados com os seus PDFs, o seu tom de voz e as suas regras.</> },
-  { id: "limites", titulo: "Você define os limites", texto: <>A IA sabe a hora de chamar uma pessoa. A equipe assume com um clique e devolve para a IA depois.</> },
-  { id: "crm", titulo: "Funil de vendas", texto: <>Cada conversa ligada a um lead no <Termo nome="CRM">CRM</Termo>, com tarefas e mensagens agendadas.</> },
-  { id: "agenda", titulo: "Agenda e lembretes", texto: <>Sincronizada com o Google Agenda, com confirmação e lembrete automáticos para reduzir faltas.</> },
-  { id: "followup", titulo: "Follow-up que não esquece ninguém", texto: <>Sequências por etapa do funil e campanhas segmentadas, no horário certo.</> },
+// Quem lê precisa se reconhecer em poucos segundos: os dois perfis do público da WS3.
+const publicos = [
+  {
+    id: "pme",
+    titulo: "Pequenas e médias empresas",
+    quem: "Donos e gestores com uma equipe que atende clientes pelo WhatsApp.",
+    sinais: [
+      "Várias pessoas atendem, cada uma do seu jeito.",
+      "Os contatos ficam espalhados em celulares e planilhas.",
+      "Os anúncios trazem mensagens, mas ninguém sabe quantas viraram venda.",
+    ],
+    ajuda: "Organizamos o processo, automatizamos o atendimento e acompanhamos os anúncios.",
+    link: { href: "/servicos", rotulo: "Ver os serviços" },
+  },
+  {
+    id: "autonomos",
+    titulo: "Profissionais autônomos",
+    quem: "MEIs e profissionais que atendem sozinhos, como consultórios, estúdios e prestadores de serviço.",
+    sinais: [
+      "Você responde tudo sozinho, inclusive à noite e no fim de semana.",
+      "Cliente que demora a ser respondido pode procurar outro profissional.",
+      "A agenda mora na memória ou num caderno.",
+    ],
+    ajuda: "Uma IA atende e agenda por você, e o follow-up lembra de quem ficou sem resposta.",
+    link: { href: "/produtos/ws3-atendy", rotulo: "Conhecer o WS3 Atendy" },
+  },
 ];
 
 const perguntaPorTexto = (texto: string) => perguntas.find((q) => q.p === texto)!;
@@ -52,7 +70,9 @@ const perguntasHome: Pergunta[] = [
   perguntaPorTexto("O que a WS3 Systems faz?"),
   perguntaPorTexto("Por que organizar antes de automatizar?"),
   perguntaPorTexto("A IA vai substituir minha equipe?"),
+  perguntaPorTexto("Vocês gerenciam anúncios?"),
   perguntaPorTexto("Como o WhatsApp é conectado?"),
+  perguntaPorTexto("Posso enviar mensagens em massa pelo WhatsApp?"),
   perguntaPorTexto("Quanto custa?"),
   {
     grupo: "Método",
@@ -77,7 +97,7 @@ export default function Home() {
               Seu cliente chama no WhatsApp e fica <span className="destaque">esperando?</span>
             </h1>
             <p className="mt-6 max-w-leitura text-lg text-sobre-escuro/80 sm:text-xl">
-              A WS3 Systems é uma agência de processos, automação e IA para pequenas e médias empresas. Primeiro organizamos o seu atendimento; depois entregamos a tecnologia certa, como o WS3 Atendy, o nosso sistema de atendimento com IA no WhatsApp.
+              A WS3 Systems é uma agência de processos, automação, IA e tráfego pago para pequenas e médias empresas e profissionais autônomos. Primeiro organizamos o seu atendimento; depois entregamos a tecnologia certa, como o WS3 Atendy, o nosso sistema de atendimento com IA no WhatsApp.
             </p>
             <div className="mt-9">
               <Botao href="/diagnostico" tamanho="grande" posicao="home_hero" seta className="w-full sm:w-auto">
@@ -94,7 +114,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. Sinais e o teste de 3 perguntas */}
+      {/* 2. Para quem é: o visitante se reconhece */}
+      <Secao id="publico" fundo="suave" olho="Para quem é" titulo="Feito para quem atende pelo WhatsApp" intro="Se você atende clientes pelo WhatsApp, uma destas descrições provavelmente é a sua.">
+        <div className="grid gap-4 md:grid-cols-2">
+          {publicos.map((pb) => (
+            <div key={pb.id} className="painel flex flex-col p-6 sm:p-8">
+              <h3 className="text-2xl font-semibold tracking-tight">{pb.titulo}</h3>
+              <p className="mt-2 text-mudo">{pb.quem}</p>
+              <p className="olho mt-6">Você se reconhece se</p>
+              <div className="mt-3">
+                <Lista itens={pb.sinais} />
+              </div>
+              <div className="mt-6 border-t border-white/[0.08] pt-5">
+                <p>
+                  <strong>Como ajudamos:</strong> <span className="text-mudo">{pb.ajuda}</span>
+                </p>
+                <Link href={pb.link.href} className="alvo mt-2 inline-flex items-center font-semibold text-acao underline underline-offset-2">
+                  {pb.link.rotulo}
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Secao>
+
+      {/* 3. Sinais e o teste de 3 perguntas */}
       <Secao id="sinais" olho="Três sinais" titulo="Como saber se o seu atendimento precisa de processo">
         <div className="painel brilho overflow-hidden">
           <ul className="grid divide-y divide-white/[0.08] md:grid-cols-3 md:divide-x md:divide-y-0">
@@ -147,20 +191,23 @@ export default function Home() {
         </ul>
       </Secao>
 
-      {/* 5. Produto: um dos sistemas da WS3, em três casos de uso */}
-      <Secao id="produto" fundo="suave" olho="Nosso sistema" titulo="WS3 Atendy: atendimento, CRM, IA e automação numa operação só" intro="Um dos sistemas da WS3 Systems, feito para quem vende e atende pelo WhatsApp. A IA atende, e a sua equipe assume com um clique quando precisar.">
+      {/* 4b. Tráfego pago junto do atendimento */}
+      <Secao id="trafego" fundo="suave">
+        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
+          <TextoTrafegoPago posicao="home" />
+          <FluxoAnuncioAtendimento />
+        </div>
+      </Secao>
+
+      {/* 5. Produto: um dos sistemas da WS3, nos quatro recursos que mais atraem */}
+      <Secao id="produto" olho="Nosso sistema" titulo="WS3 Atendy: atendimento, agendamento, follow-up e disparos" intro="Um dos sistemas da WS3 Systems, feito para quem vende e atende pelo WhatsApp. A IA atende, e a sua equipe assume com um clique quando precisar.">
         <CasosDeUso />
 
-        <ul className="mt-14 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-          {recursos.map((r) => (
-            <li key={r.id} className="border-t border-white/[0.12] pt-5">
-              <h3 className="text-lg font-semibold">{r.titulo}</h3>
-              <p className="mt-2 text-mudo">{r.texto}</p>
-            </li>
-          ))}
-        </ul>
+        <p className="mt-10 max-w-3xl text-mudo">
+          E ainda: <strong className="text-tinta">CRM com funil</strong>, base de conhecimento com os seus PDFs, relatórios e automações visuais, tudo no mesmo lugar.
+        </p>
 
-        <div className="mt-12 flex flex-col gap-5 rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:p-7">
+        <div className="mt-8 flex flex-col gap-5 rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:p-7">
           <p className="max-w-2xl text-lg">
             <strong>Teste gratuito de 7 dias</strong>{" "}
             <span className="text-mudo">depois da demonstração de 30 minutos, para ver funcionando no seu WhatsApp.</span>
@@ -177,7 +224,7 @@ export default function Home() {
       </Secao>
 
       {/* 6. Integrações do WS3 Atendy */}
-      <Secao id="integracoes" olho="Integrações" titulo="O WS3 Atendy liga o que você já usa" intro="O cliente chama no WhatsApp, a agenda marca e a equipe é avisada, tudo no mesmo lugar.">
+      <Secao id="integracoes" fundo="suave" olho="Integrações" titulo="O WS3 Atendy liga o que você já usa" intro="O cliente chama no WhatsApp, a agenda marca e a equipe é avisada, tudo no mesmo lugar.">
         <HubIntegracoes />
         <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-2 text-mudo">
           <li>Conecte o WhatsApp lendo um QR Code.</li>
@@ -187,7 +234,7 @@ export default function Home() {
       </Secao>
 
       {/* 7. Perguntas: título à esquerda, painel azul à direita */}
-      <section id="faq" aria-labelledby="faq-t" className="secao bg-suave">
+      <section id="faq" aria-labelledby="faq-t" className="secao">
         <div className="pagina grid gap-10 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
           <div>
             <p className="olho">Perguntas frequentes</p>

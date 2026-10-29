@@ -5,18 +5,18 @@ import { Lista } from "./Blocos";
  * Sequência numerada em linhas, para etapas e ordem de trabalho.
  * O número grande e a linha vertical dão o ritmo; cada passo ocupa a largura toda.
  */
-export function Sequencia({ itens, longo = false }: { itens: { titulo: string; texto?: ReactNode; extra?: ReactNode }[]; longo?: boolean }) {
+export function Sequencia({ itens, longo = false, compacta = false }: { itens: { titulo: string; texto?: ReactNode; extra?: ReactNode }[]; longo?: boolean; compacta?: boolean }) {
   return (
     <ol className="relative">
       {itens.map((p, i) => (
-        <li key={p.titulo} className="relative grid grid-cols-[3rem_minmax(0,1fr)] gap-x-4 pb-8 last:pb-0 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-x-6">
-          {i < itens.length - 1 && <span aria-hidden="true" className="absolute left-6 top-12 h-[calc(100%-3rem)] w-px bg-white/15 sm:left-8" />}
-          <span className="flex h-12 w-12 items-center justify-center rounded-full border border-acao-cheia/50 bg-acao-cheia/15 text-lg font-semibold tabular-nums text-tinta sm:h-16 sm:w-16 sm:text-xl">
+        <li key={p.titulo} className={`relative grid gap-x-4 last:pb-0 ${compacta ? "grid-cols-[2.5rem_minmax(0,1fr)] pb-5" : "grid-cols-[3rem_minmax(0,1fr)] pb-8 sm:grid-cols-[4rem_minmax(0,1fr)] sm:gap-x-6"}`}>
+          {i < itens.length - 1 && <span aria-hidden="true" className={compacta ? "absolute left-5 top-10 h-[calc(100%-2.5rem)] w-px bg-white/15" : "absolute left-6 top-12 h-[calc(100%-3rem)] w-px bg-white/15 sm:left-8"} />}
+          <span className={`flex items-center justify-center rounded-full border border-acao-cheia/50 bg-acao-cheia/15 font-semibold tabular-nums text-tinta ${compacta ? "h-10 w-10 text-base" : "h-12 w-12 text-lg sm:h-16 sm:w-16 sm:text-xl"}`}>
             {i + 1}
           </span>
-          <div className="pt-1.5 sm:pt-3">
-            <h3 className={longo ? "max-w-leitura text-lg font-medium" : "text-xl font-semibold"}>{p.titulo}</h3>
-            {p.texto && <p className="mt-1 max-w-leitura text-mudo">{p.texto}</p>}
+          <div className={compacta ? "pt-1" : "pt-1.5 sm:pt-3"}>
+            <h3 className={compacta ? "text-base font-semibold" : longo ? "max-w-leitura text-lg font-medium" : "text-xl font-semibold"}>{p.titulo}</h3>
+            {p.texto && <p className={`mt-1 max-w-leitura text-mudo ${compacta ? "text-sm" : ""}`}>{p.texto}</p>}
             {p.extra && <div className="mt-3">{p.extra}</div>}
           </div>
         </li>

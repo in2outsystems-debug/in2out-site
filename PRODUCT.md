@@ -8,7 +8,7 @@ web
 
 ## Users
 
-Donos e gestores de pequenas e médias empresas (também MEIs e autônomos que começaram a contratar) que atendem clientes pelo WhatsApp. Chegam sem tempo, quase sempre pelo celular, vindos do Instagram ou de anúncios. O trabalho deles no site: entender rápido se a WS3 resolve o atendimento que hoje trava no WhatsApp e decidir se vale meia hora para ver funcionando.
+Donos e gestores de pequenas e médias empresas e profissionais autônomos (MEIs, consultórios, estúdios, prestadores de serviço) que atendem clientes pelo WhatsApp. Chegam sem tempo, quase sempre pelo celular, vindos do Instagram ou de anúncios. O trabalho deles no site: entender rápido se a WS3 resolve o atendimento que hoje trava no WhatsApp e decidir se vale meia hora para ver funcionando.
 
 ## Product Purpose
 
