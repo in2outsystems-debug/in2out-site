@@ -12,6 +12,7 @@ type Estado = "parado" | "carregando" | "completo";
  * até a próxima página montar. Intercepta só cliques comuns em links internos de página;
  * novas abas, downloads, âncoras e links externos seguem o comportamento normal.
  * Voltar/avançar do navegador não passa por aqui, e a barra não aparece.
+ * Se a navegação suave não completar em 4 s, cai para a navegação comum do navegador.
  */
 export function TransicaoRota() {
   const router = useRouter();
@@ -58,17 +59,22 @@ export function TransicaoRota() {
 
       // Não chama stopPropagation: os eventos de análise dos botões continuam disparando.
       e.preventDefault();
+      const caminhoAntes = atual.current;
       limpar();
       setEstado("carregando");
       if (!reduzir.matches) principal()?.setAttribute("data-saindo", "");
 
+      const destino = url.pathname + url.search + url.hash;
       timers.current.push(
-        window.setTimeout(() => router.push(url.pathname + url.search + url.hash), reduzir.matches ? 0 : SAIDA_MS),
-        // Rede de segurança: se a navegação não completar, devolve a página ao normal.
+        window.setTimeout(() => router.push(destino), reduzir.matches ? 0 : SAIDA_MS),
+        // A página não fica apagada esperando: se a próxima demorar, ela reaparece e a barra segue correndo.
+        window.setTimeout(() => principal()?.removeAttribute("data-saindo"), 700),
+        // Se a navegação suave não completar (rede lenta, primeira abertura no servidor de desenvolvimento),
+        // o navegador vai à página de verdade. O clique nunca termina sem levar ao destino.
         window.setTimeout(() => {
-          principal()?.removeAttribute("data-saindo");
-          setEstado("parado");
-        }, 8000),
+          if (atual.current === caminhoAntes) window.location.assign(destino);
+        }, 4000),
+        window.setTimeout(() => setEstado("parado"), 15000),
       );
     };
 
