@@ -13,6 +13,9 @@ type Fala = { de: "cliente" | "ia" | "equipe" | "campanha"; texto: string };
 type Caso = {
   id: string;
   nome: string;
+  /** Como o item aparece no menu da plataforma */
+  menu: string;
+  contato: { nome: string; etapa: string };
   fala: Fala[];
   resultado: { rotulo: string; titulo: string; detalhe: string };
 };
@@ -22,6 +25,8 @@ const casos: Caso[] = [
   {
     id: "atendimento",
     nome: "Atendimento",
+    menu: "Conversas",
+    contato: { nome: "Lead 1", etapa: "Novo Lead" },
     fala: [
       { de: "cliente", texto: "Oi! Vocês fazem limpeza de ar-condicionado split?" },
       { de: "ia", texto: "Fazemos, sim! Para indicar o serviço certo, me diz: são quantos BTUs e em qual bairro?" },
@@ -33,6 +38,8 @@ const casos: Caso[] = [
   {
     id: "agendamento",
     nome: "Agendamento",
+    menu: "Agendamentos",
+    contato: { nome: "Lead 2", etapa: "Em contato" },
     fala: [
       { de: "cliente", texto: "Oi! Quero marcar uma consulta essa semana." },
       { de: "ia", texto: "Claro! Na quinta tenho 10h30, 14h ou 16h30. Qual você prefere?" },
@@ -43,6 +50,8 @@ const casos: Caso[] = [
   {
     id: "follow-up",
     nome: "Follow-up",
+    menu: "Follow-up automático",
+    contato: { nome: "Paula", etapa: "Em contato" },
     fala: [
       { de: "ia", texto: "Oi, Paula! Ontem você pediu um orçamento de instalação. Conseguiu ver? Posso tirar alguma dúvida?" },
       { de: "cliente", texto: "Vi sim! Pode ser na sexta?" },
@@ -53,6 +62,8 @@ const casos: Caso[] = [
   {
     id: "disparos",
     nome: "Disparos",
+    menu: "Disparos",
+    contato: { nome: "Carlos", etapa: "Novo Lead" },
     fala: [
       { de: "campanha", texto: "Oi, Carlos! Faz um tempo que você não passa por aqui. Esta semana temos horários livres na quinta. Quer reservar o seu?" },
       { de: "cliente", texto: "Quero sim! Pode ser de manhã?" },
@@ -107,54 +118,63 @@ export function CasosDeUso() {
   };
 
   return (
-    <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,17rem)_minmax(0,25rem)] lg:justify-center lg:gap-14">
-      <div role="tablist" aria-label="Recursos do WS3 Atendy" aria-orientation="vertical" className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-1">
-        {casos.map((c, i) => {
-          const sel = i === ativo;
-          return (
-            <button
-              key={c.id}
-              ref={(el) => {
-                abas.current[i] = el;
-              }}
-              id={`aba-${c.id}`}
-              role="tab"
-              type="button"
-              aria-selected={sel}
-              aria-controls="painel-caso"
-              tabIndex={sel ? 0 : -1}
-              onClick={() => escolher(i)}
-              onKeyDown={(e) => aoTeclar(e, i)}
-              className={`alvo prensa rounded-2xl border px-4 py-3 text-left transition-colors lg:px-5 lg:py-4 ${
-                sel ? "border-acao-cheia/60 bg-acao-cheia/15" : "border-white/[0.08] hover:border-white/20 hover:bg-white/[0.04]"
-              }`}
-            >
-              <span className={`flex items-center gap-2.5 text-base font-semibold lg:text-lg ${sel ? "text-tinta" : "text-mudo"}`}>
-                <Icone nome={iconeCaso[c.id]} tamanho={20} className={`flex-shrink-0 ${sel ? "text-dado" : "text-mudo"}`} />
-                {c.nome}
-              </span>
-            </button>
-          );
-        })}
+    <div className="painel mx-auto max-w-[46rem] overflow-hidden bg-[rgb(var(--c-acao-cheia)/0.07)] lg:grid lg:grid-cols-[13.5rem_minmax(0,1fr)]">
+      {/* Menu da plataforma: no celular vira uma grade de abas; no computador, a barra lateral */}
+      <div className="border-b border-white/[0.08] bg-black/25 lg:border-b-0 lg:border-r">
+        <div aria-hidden="true" className="hidden items-center gap-2 px-4 pb-3 pt-4 lg:flex">
+          <Image src="/img/icone.png" alt="" width={36} height={34} className="h-6 w-auto" />
+          <span className="font-semibold tracking-tight">WS3 Systems</span>
+        </div>
+        <div aria-hidden="true" className="hidden px-4 pb-1 pt-2 text-sm text-mudo lg:block">
+          <span className="block py-2">Visão Geral</span>
+          <span className="block py-2">Funil e Contatos</span>
+        </div>
+        <div role="tablist" aria-label="Recursos do WS3 Atendy" aria-orientation="vertical" className="grid grid-cols-2 gap-1.5 p-2 sm:grid-cols-4 lg:grid-cols-1">
+          {casos.map((c, i) => {
+            const sel = i === ativo;
+            return (
+              <button
+                key={c.id}
+                ref={(el) => {
+                  abas.current[i] = el;
+                }}
+                id={`aba-${c.id}`}
+                role="tab"
+                type="button"
+                aria-selected={sel}
+                aria-controls="painel-caso"
+                tabIndex={sel ? 0 : -1}
+                onClick={() => escolher(i)}
+                onKeyDown={(e) => aoTeclar(e, i)}
+                className={`alvo rounded-xl px-3 py-2.5 text-left transition-colors ${sel ? "bg-white/[0.1]" : "hover:bg-white/[0.05]"}`}
+              >
+                <span className={`flex items-center gap-2.5 text-[0.9375rem] font-semibold ${sel ? "text-tinta" : "text-mudo"}`}>
+                  <Icone nome={iconeCaso[c.id]} tamanho={20} className={`flex-shrink-0 ${sel ? "text-dado" : "text-mudo"}`} />
+                  {c.menu}
+                </span>
+              </button>
+            );
+          })}
+        </div>
       </div>
 
-      <div id="painel-caso" role="tabpanel" aria-labelledby={`aba-${caso.id}`} className="painel overflow-hidden">
-        <div className="flex items-center gap-3 border-b border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm">
-          <span aria-hidden="true" className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-acao-cheia/50 bg-acao-cheia/20">
-            <Image src="/img/icone.png" alt="" width={36} height={34} className="h-5 w-auto" />
+      <div id="painel-caso" role="tabpanel" aria-labelledby={`aba-${caso.id}`} className="min-w-0">
+        <div className="flex items-center gap-3 border-b border-white/[0.08] px-4 py-3 text-sm">
+          <span aria-hidden="true" className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-acao-cheia/30 font-semibold">
+            {caso.contato.nome.slice(0, 1)}
           </span>
           <span className="min-w-0 flex-1">
-            <span className="block font-semibold">WS3 Atendy</span>
+            <span className="block font-semibold">{caso.contato.nome}</span>
             <span className="flex items-center gap-1.5 text-mudo">
               <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-ok" />
-              {caso.nome}, online agora
+              Conectado
             </span>
           </span>
-          <span className="rounded-full border border-white/15 px-2.5 py-0.5 text-mudo">Exemplo</span>
+          <span className="rounded-full border border-dado/30 bg-dado/10 px-2.5 py-0.5 text-dado">{caso.contato.etapa}</span>
         </div>
 
         {/* A chave refaz a animação de entrada a cada troca de aba */}
-        <div key={caso.id} className="flex min-h-[19rem] flex-col gap-2.5 px-4 py-4 sm:min-h-[21rem] lg:min-h-[26rem]">
+        <div key={caso.id} className="flex min-h-[19rem] flex-col gap-2.5 px-4 py-4 sm:min-h-[21rem] lg:min-h-[24rem]">
           {caso.fala.map((f, i) => (
             <Bolha key={i} fala={f} atraso={i * 140} />
           ))}
@@ -174,7 +194,7 @@ export function CasosDeUso() {
           </div>
         </div>
 
-        <div className="flex border-t border-white/[0.08] px-5 py-3 sm:justify-end">
+        <div className="flex border-t border-white/[0.08] px-4 py-3 sm:justify-end">
           <Botao href="/diagnostico" posicao={`home_caso_${caso.id}`} seta className="w-full sm:w-auto">
             Fazer o diagnóstico gratuito
           </Botao>
