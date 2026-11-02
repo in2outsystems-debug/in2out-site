@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState, type KeyboardEvent } from "react";
 import { Botao } from "./Botao";
 import { track } from "@/lib/analytics";
@@ -106,7 +107,7 @@ export function CasosDeUso() {
   };
 
   return (
-    <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-10">
+    <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,17rem)_minmax(0,25rem)] lg:justify-center lg:gap-14">
       <div role="tablist" aria-label="Recursos do WS3 Atendy" aria-orientation="vertical" className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-1">
         {casos.map((c, i) => {
           const sel = i === ativo;
@@ -138,19 +139,22 @@ export function CasosDeUso() {
       </div>
 
       <div id="painel-caso" role="tabpanel" aria-labelledby={`aba-${caso.id}`} className="painel overflow-hidden">
-        <div className="flex items-center justify-between gap-3 border-b border-white/[0.08] px-5 py-3 text-sm">
-          <span className="font-semibold">
-            {caso.nome} no WhatsApp
-            <span className="ml-2 inline-flex items-center gap-1.5 font-normal text-mudo">
+        <div className="flex items-center gap-3 border-b border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm">
+          <span aria-hidden="true" className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-acao-cheia/50 bg-acao-cheia/20">
+            <Image src="/img/icone.png" alt="" width={36} height={34} className="h-5 w-auto" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block font-semibold">WS3 Atendy</span>
+            <span className="flex items-center gap-1.5 text-mudo">
               <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-ok" />
-              Online agora
+              {caso.nome}, online agora
             </span>
           </span>
           <span className="rounded-full border border-white/15 px-2.5 py-0.5 text-mudo">Exemplo</span>
         </div>
 
         {/* A chave refaz a animação de entrada a cada troca de aba */}
-        <div key={caso.id} className="flex min-h-[19rem] flex-col gap-2.5 px-5 py-4 sm:min-h-[21rem] lg:min-h-[22rem]">
+        <div key={caso.id} className="flex min-h-[19rem] flex-col gap-2.5 px-4 py-4 sm:min-h-[21rem] lg:min-h-[26rem]">
           {caso.fala.map((f, i) => (
             <Bolha key={i} fala={f} atraso={i * 140} />
           ))}
