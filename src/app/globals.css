@@ -405,68 +405,41 @@ main > article.pagina:first-of-type > :nth-child(n + 3) { --i: 2; }
   }
 }
 /*
- * Palco do topo (PalcoHero): ícones, linha e etapas, na mesma linha do tempo da conversa.
- * Tudo finito: nada fica rodando depois da cena. Com movimento reduzido a cena aparece pronta.
+ * Palco do topo (PalcoHero): o fluxo do atendimento. As linhas aparecem, a luz percorre cada uma
+ * quando o dado passa, e o núcleo pulsa o tempo todo. Com movimento reduzido, a regra global
+ * deixa a cena pronta e parada (uma volta só, sem duração).
  */
-.palco-anel {
-  animation: palco-anel 3200ms ease-out var(--atraso, 0ms) 1 backwards;
+.fluxo-linha {
+  animation: fluxo-aparece 600ms ease-out var(--chega, 0ms) backwards;
 }
-@keyframes palco-anel {
+@keyframes fluxo-aparece {
+  from {
+    opacity: 0;
+  }
+}
+.fluxo-luz {
+  stroke-dasharray: 0.14 2;
+  animation: fluxo-luz 1100ms ease-in-out var(--luz, 0ms) both;
+}
+@keyframes fluxo-luz {
+  from {
+    stroke-dashoffset: 0.14;
+  }
+  to {
+    stroke-dashoffset: -1;
+  }
+}
+.fluxo-anel {
+  animation: fluxo-anel 3200ms ease-out infinite;
+}
+@keyframes fluxo-anel {
   0% {
-    opacity: 0.8;
-    scale: 0.8;
+    opacity: 0.7;
+    scale: 0.72;
   }
   100% {
     opacity: 0;
-    scale: 1.3;
-  }
-}
-.palco-linha {
-  stroke-dasharray: 1;
-  animation: palco-desenha 1100ms var(--ease-entrada) 500ms backwards;
-}
-@keyframes palco-desenha {
-  from {
-    stroke-dashoffset: 1;
-  }
-}
-.palco-luz {
-  stroke-dasharray: 0.14 2;
-  animation-duration: 1300ms;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: both;
-}
-.palco-luz-ida {
-  animation-name: palco-luz-ida;
-  animation-delay: 800ms;
-}
-.palco-luz-volta {
-  animation-name: palco-luz-volta;
-  animation-delay: 2500ms;
-}
-@keyframes palco-luz-ida {
-  from {
-    stroke-dashoffset: 0.14;
-  }
-  to {
-    stroke-dashoffset: -1;
-  }
-}
-@keyframes palco-luz-volta {
-  from {
-    stroke-dashoffset: -1;
-  }
-  to {
-    stroke-dashoffset: 0.14;
-  }
-}
-.palco-fio {
-  transform-origin: left center;
-  animation: palco-fio 500ms var(--ease-entrada) var(--chega, 0ms) backwards;
-}
-@keyframes palco-fio {
-  from {
-    scale: 0 1;
+    scale: 1.25;
   }
 }
 
@@ -506,29 +479,6 @@ main > article.pagina:first-of-type > :nth-child(n + 3) { --i: 2; }
   .vivo:hover,
   .vivo:focus-within {
     transform: none;
-  }
-}
-
-/* Marcador do evento: um pulso quando a conversa passa para a equipe */
-.conversa-pulso {
-  position: relative;
-}
-.conversa-pulso::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: rgb(var(--c-dado));
-  animation: conversa-pulso 900ms var(--ease-entrada) var(--chega, 0ms) both;
-}
-@keyframes conversa-pulso {
-  from {
-    opacity: 0.7;
-    scale: 1;
-  }
-  to {
-    opacity: 0;
-    scale: 3.5;
   }
 }
 
