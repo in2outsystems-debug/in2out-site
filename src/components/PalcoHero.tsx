@@ -79,15 +79,15 @@ const cenarios: Cenario[] = [
     cartao: { titulo: "Follow-up enviado", valor: "Ontem, 9h", detalhe: "no horário permitido", icone: "retorno" },
   },
   {
-    nicho: "Assistência técnica",
-    pergunta: "Minha impressora parou de imprimir. Podem ajudar?",
-    resposta: "Posso sim! Aparece alguma luz vermelha no painel?",
+    nicho: "Suporte técnico da empresa",
+    pergunta: "Meu acesso ao sistema deu erro. Podem me ajudar?",
+    resposta: "Claro! Me conta o que aparece na tela quando dá o erro?",
     selos: [
       { rotulo: "Problema identificado", icone: "ferramenta" },
       { rotulo: "Histórico salvo", icone: "lista" },
     ],
-    destaque: { rotulo: "Equipe avisada", icone: "equipe" },
-    cartao: { titulo: "Atendimento", valor: "Com a equipe", detalhe: "conversa e histórico juntos", icone: "conversa" },
+    destaque: { rotulo: "Passado ao suporte", icone: "equipe" },
+    cartao: { titulo: "Setor de suporte", valor: "Com a equipe", detalhe: "conversa e histórico juntos", icone: "conversa" },
   },
   {
     nicho: "Loja e comércio, venda",
