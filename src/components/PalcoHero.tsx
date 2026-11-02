@@ -17,10 +17,12 @@ import { Icone, type NomeIcone } from "./Icone";
 const chega = (ms: number) => ({ "--chega": `${ms}ms` }) as CSSProperties;
 const luz = (ms: number) => ({ "--luz": `${ms}ms` }) as CSSProperties;
 
-// Caminhos no espaço 448 x 544 do SVG (esticado para a largura da cena).
+// Caminhos no espaço do SVG (esticado para a largura da cena). No celular a cena é mais alta (544); a partir de lg, compacta (480).
 const P_PERGUNTA = "M286 70 C 312 70, 322 60, 340 58";
-const P_NUCLEO = "M392 114 L 392 282";
-const P_LEAD = "M196 334 C 250 334, 252 310, 304 310";
+const Linhas = [
+  { id: "fluxo-grad-m", altura: 544, nucleo: "M392 114 L 392 282", lead: "M196 334 C 250 334, 252 310, 304 310", classe: "lg:hidden" },
+  { id: "fluxo-grad-g", altura: 480, nucleo: "M392 114 L 392 240", lead: "M196 282 C 250 282, 252 266, 304 266", classe: "hidden lg:block" },
+];
 
 type Selo = { rotulo: string; icone: NomeIcone };
 type Cenario = {
@@ -123,28 +125,30 @@ function Cena({ c }: { c: Cenario }) {
     <div
       role="img"
       aria-label={`Ilustração de um atendimento, ${c.nicho}. O cliente escreve: ${c.pergunta} A IA do WS3 Atendy responde: ${c.resposta} O sistema registra: ${selo1.rotulo}, ${selo2.rotulo}, ${c.destaque.rotulo}.`}
-      className="relative h-[34rem] w-full"
+      className="relative h-[34rem] w-full lg:h-[30rem]"
     >
       <div aria-hidden="true" className="contents">
         {/* Linhas: um traço fraco por caminho e, por cima, a luz que leva o dado de um ponto ao outro */}
-        <svg viewBox="0 0 448 544" preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible">
-          <defs>
-            <linearGradient id="fluxo-grad" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0" stopColor="rgb(var(--c-acao-forte))" stopOpacity="0.95" />
-              <stop offset="1" stopColor="rgb(var(--c-acao))" stopOpacity="0.95" />
-            </linearGradient>
-          </defs>
-          {[
-            { d: P_PERGUNTA, em: 1300 },
-            { d: P_NUCLEO, em: 3400 },
-            { d: P_LEAD, em: 4300 },
-          ].map((l) => (
-            <g key={l.d}>
-              <path d={l.d} fill="none" stroke="rgb(255 255 255 / 0.16)" strokeWidth="1.5" strokeDasharray="3 6" vectorEffect="non-scaling-stroke" className="fluxo-linha" style={chega(l.em - 400)} />
-              <path d={l.d} pathLength={1} fill="none" stroke="url(#fluxo-grad)" strokeWidth="3" strokeLinecap="round" vectorEffect="non-scaling-stroke" className="fluxo-luz" style={luz(l.em)} />
-            </g>
-          ))}
-        </svg>
+        {Linhas.map((v) => (
+          <svg key={v.id} viewBox={`0 0 448 ${v.altura}`} preserveAspectRatio="none" className={`absolute inset-0 h-full w-full overflow-visible ${v.classe}`}>
+            <defs>
+              <linearGradient id={v.id} x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stopColor="rgb(var(--c-acao-forte))" stopOpacity="0.95" />
+                <stop offset="1" stopColor="rgb(var(--c-acao))" stopOpacity="0.95" />
+              </linearGradient>
+            </defs>
+            {[
+              { d: P_PERGUNTA, em: 1300 },
+              { d: v.nucleo, em: 3400 },
+              { d: v.lead, em: 4300 },
+            ].map((l) => (
+              <g key={l.d}>
+                <path d={l.d} fill="none" stroke="rgb(255 255 255 / 0.16)" strokeWidth="1.5" strokeDasharray="3 6" vectorEffect="non-scaling-stroke" className="fluxo-linha" style={chega(l.em - 400)} />
+                <path d={l.d} pathLength={1} fill="none" stroke={`url(#${v.id})`} strokeWidth="3" strokeLinecap="round" vectorEffect="non-scaling-stroke" className="fluxo-luz" style={luz(l.em)} />
+              </g>
+            ))}
+          </svg>
+        ))}
 
         {/* Núcleo: o sistema, sempre ativo */}
         <span className="conversa-chega absolute right-0 top-0 flex h-28 w-28 items-center justify-center" style={chega(100)}>
@@ -166,7 +170,7 @@ function Cena({ c }: { c: Cenario }) {
         </p>
 
         {/* Resposta da IA: o "digitando…" ocupa o lugar do texto, que já tem o espaço reservado */}
-        <div className="absolute left-[26%] top-[150px] w-[66%]">
+        <div className="absolute left-[26%] top-[150px] lg:top-[124px] w-[66%]">
           <div className="conversa-chega origin-top-right rounded-2xl rounded-tr-md border border-dado/25 bg-escuro/80 px-4 py-3 backdrop-blur-md" style={chega(3000)}>
             <span className="block text-[0.8125rem] font-semibold text-dado">WS3 Atendy</span>
             {c.resposta}
@@ -178,8 +182,8 @@ function Cena({ c }: { c: Cenario }) {
 
         {/* O que o sistema fez */}
         {[
-          { ...selo1, pos: "left-0 top-[316px]", ms: 3700 },
-          { ...selo2, pos: "left-[8%] top-[372px]", ms: 4900 },
+          { ...selo1, pos: "left-0 top-[316px] lg:top-[262px]", ms: 3700 },
+          { ...selo2, pos: "left-[8%] top-[372px] lg:top-[312px]", ms: 4900 },
         ].map((x) => (
           <span key={x.rotulo} className={`conversa-chega absolute inline-flex items-center gap-2.5 rounded-full py-1.5 pl-1.5 pr-4 text-sm font-semibold ${vidro} ${x.pos}`} style={chega(x.ms)}>
             <span className="flex h-8 w-8 items-center justify-center rounded-full border border-acao/25 bg-acao-cheia/20 text-dado">
@@ -190,7 +194,7 @@ function Cena({ c }: { c: Cenario }) {
         ))}
 
         <span
-          className="conversa-chega absolute right-0 top-[280px] z-10 inline-flex items-center gap-3 rounded-full border border-acao/50 bg-escuro/90 py-2 pl-2 pr-5 font-semibold shadow-[0_0_40px_-10px_rgb(var(--c-acao-cheia)/0.9)] backdrop-blur-md"
+          className="conversa-chega absolute right-0 top-[280px] z-10 lg:top-[240px] inline-flex items-center gap-3 rounded-full border border-acao/50 bg-escuro/90 py-2 pl-2 pr-5 font-semibold shadow-[0_0_40px_-10px_rgb(var(--c-acao-cheia)/0.9)] backdrop-blur-md"
           style={chega(4200)}
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-acao-cheia text-white">
@@ -199,7 +203,7 @@ function Cena({ c }: { c: Cenario }) {
           {c.destaque.rotulo}
         </span>
 
-        <div className={`conversa-chega absolute right-0 top-[424px] w-[56%] rounded-2xl p-4 ${vidro}`} style={chega(5600)}>
+        <div className={`conversa-chega absolute right-0 top-[424px] w-[56%] lg:top-[368px] rounded-2xl p-4 ${vidro}`} style={chega(5600)}>
           <div className="flex items-start justify-between gap-2">
             <span className="text-[0.8125rem] text-mudo">{c.cartao.titulo}</span>
             <Icone nome={c.cartao.icone} tamanho={18} className="text-dado" />
@@ -242,7 +246,7 @@ export function PalcoHero() {
   }, [atual]);
 
   return (
-    <div>
+    <div className="lg:[zoom:0.88]">
       <div key={atual} className="transition-opacity ease-out" style={{ opacity: saindo ? 0 : 1, transitionDuration: `${SAIDA}ms` }}>
         <Cena c={cenarios[atual]} />
       </div>
