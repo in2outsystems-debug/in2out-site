@@ -87,6 +87,7 @@ export function Secao({
   intro,
   children,
   fundo = "normal",
+  lado = false,
 }: {
   id?: string;
   titulo?: string;
@@ -94,18 +95,22 @@ export function Secao({
   intro?: ReactNode;
   children: ReactNode;
   fundo?: "normal" | "suave" | "escuro";
+  /** Em telas grandes, o título fica à esquerda e a introdução à direita, sem vazio ao lado do título. */
+  lado?: boolean;
 }) {
   const cls = fundo === "suave" ? "bg-suave" : fundo === "escuro" ? "escuro bg-escuro text-sobre-escuro" : "";
   return (
     <section id={id} className={`secao ${cls}`} aria-labelledby={titulo && id ? `${id}-t` : undefined}>
       <div className="pagina">
         {olho && <p className="olho">{olho}</p>}
-        {titulo && (
-          <h2 id={id ? `${id}-t` : undefined} className={`titulo-2 max-w-3xl ${fundo === "escuro" ? "!text-sobre-escuro" : ""} ${olho ? "mt-2" : ""}`}>
-            {titulo}
-          </h2>
-        )}
-        {intro && <p className={`mt-3 max-w-leitura text-lg ${fundo === "escuro" ? "text-sobre-escuro/85" : "text-mudo"}`}>{intro}</p>}
+        <div className={lado ? "lg:grid lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-end lg:gap-12" : undefined}>
+          {titulo && (
+            <h2 id={id ? `${id}-t` : undefined} className={`titulo-2 ${lado ? "" : "max-w-3xl"} ${fundo === "escuro" ? "!text-sobre-escuro" : ""} ${olho ? "mt-2" : ""}`}>
+              {titulo}
+            </h2>
+          )}
+          {intro && <p className={`mt-3 max-w-leitura text-lg ${lado ? "lg:mt-0 lg:justify-self-end" : ""} ${fundo === "escuro" ? "text-sobre-escuro/85" : "text-mudo"}`}>{intro}</p>}
+        </div>
         <div className={titulo || intro ? "mt-8" : ""}>{children}</div>
       </div>
     </section>
