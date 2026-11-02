@@ -12,10 +12,8 @@ type Fala = { de: "cliente" | "ia" | "equipe" | "campanha"; texto: string };
 type Caso = {
   id: string;
   nome: string;
-  resumo: string;
   fala: Fala[];
   resultado: { rotulo: string; titulo: string; detalhe: string };
-  pontos: string[];
 };
 
 /** Conversas de exemplo, escritas a partir do guia de funcionalidades. Não são casos reais. */
@@ -23,7 +21,6 @@ const casos: Caso[] = [
   {
     id: "atendimento",
     nome: "Atendimento",
-    resumo: "Responde na hora, qualifica e passa para a equipe quando precisar.",
     fala: [
       { de: "cliente", texto: "Oi! Vocês fazem limpeza de ar-condicionado split?" },
       { de: "ia", texto: "Fazemos, sim! Para indicar o serviço certo, me diz: são quantos BTUs e em qual bairro?" },
@@ -31,43 +28,36 @@ const casos: Caso[] = [
       { de: "ia", texto: "Perfeito, atendemos o Centro. Já vou ver um horário para você." },
     ],
     resultado: { rotulo: "Funil", titulo: "Lead qualificado", detalhe: "Registrado no CRM, etapa Orçamento" },
-    pontos: ["Responde na hora, a qualquer hora", "Qualifica e registra no CRM", "Passa para a equipe com o histórico"],
   },
   {
     id: "agendamento",
     nome: "Agendamento",
-    resumo: "Consulta a agenda e confirma o horário pelo WhatsApp.",
     fala: [
       { de: "cliente", texto: "Oi! Quero marcar uma consulta essa semana." },
       { de: "ia", texto: "Claro! Na quinta tenho 10h30, 14h ou 16h30. Qual você prefere?" },
       { de: "cliente", texto: "14h fica ótimo pra mim!" },
     ],
     resultado: { rotulo: "Horário confirmado", titulo: "Quinta-feira, 14:00", detalhe: "Lembrete um dia antes" },
-    pontos: ["Consulta a agenda em tempo real", "Marca, remarca e cancela", "Sincroniza com o Google Agenda"],
   },
   {
     id: "follow-up",
     nome: "Follow-up",
-    resumo: "Volta a falar com quem ficou sem responder.",
     fala: [
       { de: "ia", texto: "Oi, Paula! Ontem você pediu um orçamento de instalação. Conseguiu ver? Posso tirar alguma dúvida?" },
       { de: "cliente", texto: "Vi sim! Pode ser na sexta?" },
       { de: "ia", texto: "Pode! Tenho 9h ou 15h na sexta. Qual prefere?" },
     ],
     resultado: { rotulo: "Follow-up", titulo: "Retorno automático", detalhe: "Enviado um dia depois, no horário permitido" },
-    pontos: ["Uma sequência para cada etapa do funil", "Texto, imagem, áudio ou vídeo", "Só envia nos horários permitidos"],
   },
   {
     id: "disparos",
     nome: "Disparos",
-    resumo: "Campanhas para a sua base, no ritmo e no horário certos.",
     fala: [
       { de: "campanha", texto: "Oi, Carlos! Faz um tempo que você não passa por aqui. Esta semana temos horários livres na quinta. Quer reservar o seu?" },
       { de: "cliente", texto: "Quero sim! Pode ser de manhã?" },
       { de: "ia", texto: "Claro! Quinta às 9h ou às 10h30. Qual fica melhor?" },
     ],
     resultado: { rotulo: "Campanha", titulo: "Resposta no chat", detalhe: "A IA continua a conversa" },
-    pontos: ["Público escolhido por tags", "Só para quem autorizou o contato", "Veja quem respondeu em tempo real"],
   },
 ];
 
@@ -142,7 +132,6 @@ export function CasosDeUso() {
                 <Icone nome={iconeCaso[c.id]} tamanho={20} className={`flex-shrink-0 ${sel ? "text-dado" : "text-mudo"}`} />
                 {c.nome}
               </span>
-              <span className="mt-1 hidden text-sm text-mudo lg:block">{c.resumo}</span>
             </button>
           );
         })}
@@ -179,17 +168,7 @@ export function CasosDeUso() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4 border-t border-white/[0.08] px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
-          <ul className="flex flex-col gap-1 text-sm text-mudo">
-            {caso.pontos.map((p) => (
-              <li key={p} className="flex items-center gap-2">
-                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 text-dado">
-                  <path d="M5 12l5 5L20 7" />
-                </svg>
-                {p}
-              </li>
-            ))}
-          </ul>
+        <div className="flex border-t border-white/[0.08] px-5 py-4 sm:justify-end">
           <Botao href="/diagnostico" posicao={`home_caso_${caso.id}`} seta className="w-full sm:w-auto">
             Fazer o diagnóstico gratuito
           </Botao>

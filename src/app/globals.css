@@ -443,6 +443,28 @@ main > article.pagina:first-of-type > :nth-child(n + 3) { --i: 2; }
   }
 }
 
+/* Linha do fluxo de tráfego: a luz corre da esquerda para a direita, uma linha de cada vez. */
+.fluxo-corre {
+  overflow: hidden;
+  background: rgb(255 255 255 / 0.14);
+}
+.fluxo-corre::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgb(var(--c-acao-forte)), transparent);
+  animation: fluxo-corre 3000ms ease-in-out var(--atraso, 0ms) infinite;
+}
+@keyframes fluxo-corre {
+  from {
+    translate: -100% 0;
+  }
+  to {
+    translate: 260% 0;
+  }
+}
+
 /*
  * Cartão com vida: ao passar o mouse (ou focar por teclado), sobe 4px e a borda acende em ciano.
  * `vivo` é para cartões com destino (a seta do link se afasta do texto); `vivo-leve` é para os informativos

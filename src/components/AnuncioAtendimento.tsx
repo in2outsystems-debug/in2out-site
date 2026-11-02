@@ -1,7 +1,6 @@
-import Link from "next/link";
-import { Botao } from "./Botao";
-import { Lista } from "./Blocos";
+import type { CSSProperties } from "react";
 import { Sequencia } from "./Composicoes";
+import { IconeCaixa, type NomeIcone } from "./Icone";
 
 /**
  * Tráfego pago e atendimento juntos: o anúncio traz o contato, o WS3 Atendy responde e registra a origem.
@@ -27,30 +26,29 @@ export function FluxoAnuncioAtendimento() {
   );
 }
 
-export function TextoTrafegoPago({ posicao }: { posicao: string }) {
+const nos: { rotulo: string; icone: NomeIcone }[] = [
+  { rotulo: "Anúncio", icone: "megafone" },
+  { rotulo: "Contato no CRM", icone: "pessoa" },
+  { rotulo: "IA responde", icone: "faisca" },
+  { rotulo: "Agenda ou equipe", icone: "calendario" },
+  { rotulo: "Relatório", icone: "grafico" },
+];
+
+/** O caminho do anúncio ao relatório, em cinco pontos ligados por uma linha onde a luz corre. Vertical no celular. */
+export function FluxoTrafego() {
   return (
-    <div>
-      <h2 className="titulo-2">Anúncio traz o contato. O atendimento transforma em cliente.</h2>
-      <p className="mt-4 max-w-leitura text-lg text-mudo">
-        Criamos e acompanhamos os seus anúncios no Google e no Meta. E olhamos primeiro se o seu atendimento aguenta o volume, porque anúncio sem resposta rápida desperdiça verba.
-      </p>
-      <div className="mt-6">
-        <Lista
-          itens={[
-            "Campanhas no Google Ads e no Meta Ads (Instagram e Facebook)",
-            "As contas ficam no nome da sua empresa",
-            "Relatório mensal com os contatos gerados e o custo de cada um",
-          ]}
-        />
-      </div>
-      <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-        <Botao href="/servicos/trafego-pago" tamanho="grande" posicao={`${posicao}_trafego`} seta className="w-full sm:w-auto">
-          Ver a gestão de tráfego pago
-        </Botao>
-        <Link href="/diagnostico" className="alvo inline-flex items-center font-semibold text-acao underline underline-offset-2">
-          Antes, fazer o diagnóstico
-        </Link>
-      </div>
-    </div>
+    <ol className="relative ml-6 border-l border-white/15 md:ml-0 md:grid md:grid-cols-5 md:gap-4 md:border-l-0">
+      {nos.map((n, i) => (
+        <li key={n.rotulo} className="relative pb-8 pl-10 pt-3 last:pb-0 md:pb-0 md:pl-0 md:pt-0">
+          <div className="absolute -left-6 top-0 md:static md:mb-4">
+            <IconeCaixa nome={n.icone} />
+          </div>
+          {i < nos.length - 1 && (
+            <span aria-hidden="true" className="fluxo-corre absolute left-[4.5rem] right-3 top-6 hidden h-px md:block" style={{ "--atraso": `${i * 600}ms` } as CSSProperties} />
+          )}
+          <h3 className="text-lg font-semibold">{n.rotulo}</h3>
+        </li>
+      ))}
+    </ol>
   );
 }
