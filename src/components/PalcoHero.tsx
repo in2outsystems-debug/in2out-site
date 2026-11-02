@@ -8,22 +8,98 @@ import { Icone, type NomeIcone } from "./Icone";
  * Palco do topo da home: o fluxo do atendimento acontecendo, não uma tela de celular.
  * O cliente chama no WhatsApp, o WS3 Atendy responde e, em volta dele, o que o sistema faz vai acendendo:
  * qualifica, agenda, avisa a equipe, programa o retorno. Linhas de luz levam o dado de um ponto ao outro.
- * A cena leva cerca de 6 s, fica viva (o núcleo pulsa) e recomeça a cada 12 s, com saída suave.
- * Pausa com a aba escondida; com movimento reduzido aparece pronta e parada.
+ * A cena leva cerca de 6 s, fica viva (o núcleo pulsa) e, a cada 11 s, dá lugar ao exemplo seguinte, de outro
+ * nicho e outra situação (ver `cenarios`). Os pontos abaixo da cena deixam escolher o exemplo.
+ * Pausa com a aba escondida; com movimento reduzido aparece pronta e parada, e só os pontos trocam de exemplo.
  * Decorativo: o `aria-label` resume a cena e o resto fica escondido da leitura de tela.
  */
 
 const chega = (ms: number) => ({ "--chega": `${ms}ms` }) as CSSProperties;
 const luz = (ms: number) => ({ "--luz": `${ms}ms` }) as CSSProperties;
 
-// Caminhos no espaço 448 x 512 do SVG (esticado para a largura da cena).
+// Caminhos no espaço 448 x 544 do SVG (esticado para a largura da cena).
 const P_PERGUNTA = "M286 70 C 312 70, 322 60, 340 58";
 const P_NUCLEO = "M392 114 L 392 282";
 const P_LEAD = "M196 334 C 250 334, 252 310, 304 310";
 
-const selos: { rotulo: string; icone: NomeIcone; pos: string; chega: number }[] = [
-  { rotulo: "Lead qualificado", icone: "pessoa", pos: "left-0 top-[316px]", chega: 3700 },
-  { rotulo: "Equipe avisada", icone: "equipe", pos: "left-[8%] top-[372px]", chega: 4900 },
+type Selo = { rotulo: string; icone: NomeIcone };
+type Cenario = {
+  nicho: string;
+  pergunta: string;
+  resposta: string;
+  selos: [Selo, Selo];
+  destaque: Selo;
+  cartao: { titulo: string; valor: string; detalhe: string; icone: NomeIcone };
+};
+
+/** Exemplos ilustrativos de situações de atendimento, de nichos diferentes. Não são casos reais nem promessa de resultado. */
+const cenarios: Cenario[] = [
+  {
+    nicho: "Serviços e instalações",
+    pergunta: "Oi! Vocês fazem orçamento para instalação?",
+    resposta: "Fazemos, sim! Me diz o bairro e o que precisa instalar?",
+    selos: [
+      { rotulo: "Lead qualificado", icone: "pessoa" },
+      { rotulo: "Equipe avisada", icone: "equipe" },
+    ],
+    destaque: { rotulo: "Horário agendado", icone: "calendario" },
+    cartao: { titulo: "Follow-up programado", valor: "Amanhã, 9h", detalhe: "retorno automático", icone: "retorno" },
+  },
+  {
+    nicho: "Clínica de estética, vindo de anúncio",
+    pergunta: "Vi o anúncio de vocês. Ainda tem horário essa semana?",
+    resposta: "Tem sim! Você prefere de manhã ou à tarde?",
+    selos: [
+      { rotulo: "Veio de anúncio", icone: "megafone" },
+      { rotulo: "Lead qualificado", icone: "pessoa" },
+    ],
+    destaque: { rotulo: "Contato no CRM", icone: "funil" },
+    cartao: { titulo: "Origem do contato", valor: "Instagram", detalhe: "anúncio registrado", icone: "megafone" },
+  },
+  {
+    nicho: "Consultório e estúdio, agendamento",
+    pergunta: "Quero marcar um horário essa semana.",
+    resposta: "Claro! Quinta tenho 10h30, 14h ou 16h30. Qual prefere?",
+    selos: [
+      { rotulo: "Agenda consultada", icone: "calendario" },
+      { rotulo: "Google Agenda atualizado", icone: "check" },
+    ],
+    destaque: { rotulo: "Horário confirmado", icone: "calendario" },
+    cartao: { titulo: "Lembrete", valor: "1 dia antes", detalhe: "enviado automaticamente", icone: "espera" },
+  },
+  {
+    nicho: "Orçamento sem resposta, follow-up",
+    pergunta: "Vi a mensagem sobre o orçamento. Pode ser na sexta?",
+    resposta: "Pode! Tenho 9h ou 15h na sexta. Qual prefere?",
+    selos: [
+      { rotulo: "Retorno automático", icone: "retorno" },
+      { rotulo: "Cliente reativado", icone: "pessoa" },
+    ],
+    destaque: { rotulo: "Horário agendado", icone: "calendario" },
+    cartao: { titulo: "Follow-up enviado", valor: "Ontem, 9h", detalhe: "no horário permitido", icone: "retorno" },
+  },
+  {
+    nicho: "Assistência técnica",
+    pergunta: "Minha impressora parou de imprimir. Podem ajudar?",
+    resposta: "Posso sim! Aparece alguma luz vermelha no painel?",
+    selos: [
+      { rotulo: "Problema identificado", icone: "ferramenta" },
+      { rotulo: "Histórico salvo", icone: "lista" },
+    ],
+    destaque: { rotulo: "Equipe avisada", icone: "equipe" },
+    cartao: { titulo: "Atendimento", valor: "Com a equipe", detalhe: "conversa e histórico juntos", icone: "conversa" },
+  },
+  {
+    nicho: "Loja e comércio, venda",
+    pergunta: "Vocês têm o plano anual? Quanto custa?",
+    resposta: "Temos! Posso te passar os valores e fechar por aqui. Pode ser?",
+    selos: [
+      { rotulo: "Interesse de compra", icone: "carrinho" },
+      { rotulo: "Lead qualificado", icone: "pessoa" },
+    ],
+    destaque: { rotulo: "Proposta enviada", icone: "envio" },
+    cartao: { titulo: "Funil", valor: "Negociação", detalhe: "etapa atualizada no CRM", icone: "funil" },
+  },
 ];
 
 const WHATSAPP =
@@ -41,16 +117,17 @@ function Digitando() {
   );
 }
 
-function Cena() {
+function Cena({ c }: { c: Cenario }) {
+  const [selo1, selo2] = c.selos;
   return (
     <div
       role="img"
-      aria-label="Ilustração do fluxo: o cliente pergunta no WhatsApp, a IA do WS3 Atendy responde, qualifica o contato, agenda o horário, avisa a equipe e programa o retorno."
-      className="relative h-[32rem] w-full"
+      aria-label={`Ilustração de um atendimento, ${c.nicho}. O cliente escreve: ${c.pergunta} A IA do WS3 Atendy responde: ${c.resposta} O sistema registra: ${selo1.rotulo}, ${selo2.rotulo}, ${c.destaque.rotulo}.`}
+      className="relative h-[34rem] w-full"
     >
       <div aria-hidden="true" className="contents">
         {/* Linhas: um traço fraco por caminho e, por cima, a luz que leva o dado de um ponto ao outro */}
-        <svg viewBox="0 0 448 512" preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible">
+        <svg viewBox="0 0 448 544" preserveAspectRatio="none" className="absolute inset-0 h-full w-full overflow-visible">
           <defs>
             <linearGradient id="fluxo-grad" x1="0" x2="1" y1="0" y2="1">
               <stop offset="0" stopColor="rgb(var(--c-acao-forte))" stopOpacity="0.95" />
@@ -85,14 +162,14 @@ function Cena() {
           </svg>
         </span>
         <p className={`conversa-chega absolute left-[8%] top-[34px] w-[58%] origin-top-left rounded-2xl rounded-tl-md px-4 py-3 ${vidro}`} style={chega(700)}>
-          Oi! Vocês fazem orçamento para instalação?
+          {c.pergunta}
         </p>
 
         {/* Resposta da IA: o "digitando…" ocupa o lugar do texto, que já tem o espaço reservado */}
         <div className="absolute left-[26%] top-[150px] w-[66%]">
           <div className="conversa-chega origin-top-right rounded-2xl rounded-tr-md border border-dado/25 bg-escuro/80 px-4 py-3 backdrop-blur-md" style={chega(3000)}>
             <span className="block text-[0.8125rem] font-semibold text-dado">WS3 Atendy</span>
-            Fazemos, sim! Me diz o bairro e o que precisa instalar?
+            {c.resposta}
           </div>
           <span className="absolute left-3 top-8" style={{ "--digita": "1900ms", "--digita-dur": "1100ms" } as CSSProperties}>
             <Digitando />
@@ -100,12 +177,15 @@ function Cena() {
         </div>
 
         {/* O que o sistema fez */}
-        {selos.map((s) => (
-          <span key={s.rotulo} className={`conversa-chega absolute inline-flex items-center gap-2.5 rounded-full py-1.5 pl-1.5 pr-4 text-sm font-semibold ${vidro} ${s.pos}`} style={chega(s.chega)}>
+        {[
+          { ...selo1, pos: "left-0 top-[316px]", ms: 3700 },
+          { ...selo2, pos: "left-[8%] top-[372px]", ms: 4900 },
+        ].map((x) => (
+          <span key={x.rotulo} className={`conversa-chega absolute inline-flex items-center gap-2.5 rounded-full py-1.5 pl-1.5 pr-4 text-sm font-semibold ${vidro} ${x.pos}`} style={chega(x.ms)}>
             <span className="flex h-8 w-8 items-center justify-center rounded-full border border-acao/25 bg-acao-cheia/20 text-dado">
-              <Icone nome={s.icone} tamanho={18} />
+              <Icone nome={x.icone} tamanho={18} />
             </span>
-            {s.rotulo}
+            {x.rotulo}
           </span>
         ))}
 
@@ -114,31 +194,32 @@ function Cena() {
           style={chega(4200)}
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-acao-cheia text-white">
-            <Icone nome="calendario" tamanho={19} />
+            <Icone nome={c.destaque.icone} tamanho={19} />
           </span>
-          Horário agendado
+          {c.destaque.rotulo}
         </span>
 
-        <div className={`conversa-chega absolute right-0 top-[396px] w-[56%] rounded-2xl p-4 ${vidro}`} style={chega(5600)}>
+        <div className={`conversa-chega absolute right-0 top-[424px] w-[56%] rounded-2xl p-4 ${vidro}`} style={chega(5600)}>
           <div className="flex items-start justify-between gap-2">
-            <span className="text-[0.8125rem] text-mudo">Follow-up programado</span>
-            <Icone nome="retorno" tamanho={18} className="text-dado" />
+            <span className="text-[0.8125rem] text-mudo">{c.cartao.titulo}</span>
+            <Icone nome={c.cartao.icone} tamanho={18} className="text-dado" />
           </div>
-          <span className="mt-1 block text-2xl font-bold tracking-tight">Amanhã, 9h</span>
-          <span className="block text-[0.8125rem] text-mudo">retorno automático</span>
+          <span className="mt-1 block text-xl font-bold tracking-tight">{c.cartao.valor}</span>
+          <span className="block text-[0.8125rem] text-mudo">{c.cartao.detalhe}</span>
         </div>
       </div>
     </div>
   );
 }
 
-const CICLO = 12000;
+const CICLO = 11000;
 const SAIDA = 450;
 
 export function PalcoHero() {
-  const [volta, setVolta] = useState(0);
+  const [atual, setAtual] = useState(0);
   const [saindo, setSaindo] = useState(false);
 
+  // Troca de exemplo sozinha. Escolher um ponto muda `atual` e o relógio recomeça.
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let sair: ReturnType<typeof setTimeout>;
@@ -148,9 +229,8 @@ export function PalcoHero() {
         if (document.hidden) return agendar();
         setSaindo(true);
         trocar = setTimeout(() => {
-          setVolta((v) => v + 1);
+          setAtual((v) => (v + 1) % cenarios.length);
           setSaindo(false);
-          agendar();
         }, SAIDA);
       }, CICLO - SAIDA);
     };
@@ -159,14 +239,36 @@ export function PalcoHero() {
       clearTimeout(sair);
       clearTimeout(trocar);
     };
-  }, []);
+  }, [atual]);
 
   return (
     <div>
-      <div key={volta} className="transition-opacity ease-out" style={{ opacity: saindo ? 0 : 1, transitionDuration: `${SAIDA}ms` }}>
-        <Cena />
+      <div key={atual} className="transition-opacity ease-out" style={{ opacity: saindo ? 0 : 1, transitionDuration: `${SAIDA}ms` }}>
+        <Cena c={cenarios[atual]} />
       </div>
-      <p className="mt-2 text-sm text-mudo">Exemplo ilustrativo do WS3 Atendy. A IA responde conforme as informações autorizadas pela empresa.</p>
+      <div className="mt-2 flex items-center justify-between gap-4">
+        <p className="text-sm text-mudo">
+          <span className="font-semibold text-sobre-escuro/90">{cenarios[atual].nicho}</span>
+          <span className="block">Exemplo ilustrativo do WS3 Atendy.</span>
+        </p>
+        <div role="group" aria-label="Exemplos de atendimento" className="flex flex-shrink-0">
+          {cenarios.map((c, i) => (
+            <button
+              key={c.nicho}
+              type="button"
+              aria-label={`Ver o exemplo: ${c.nicho}`}
+              aria-current={i === atual ? "true" : undefined}
+              onClick={() => {
+                setSaindo(false);
+                setAtual(i);
+              }}
+              className="group flex h-11 w-6 items-center justify-center"
+            >
+              <span className={`h-2 rounded-full transition-all duration-300 ${i === atual ? "w-5 bg-dado" : "w-2 bg-white/25 group-hover:bg-white/50"}`} />
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
