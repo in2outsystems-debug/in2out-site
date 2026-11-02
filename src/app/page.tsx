@@ -98,7 +98,6 @@ export default function Home() {
               <Botao href="/diagnostico" tamanho="grande" posicao="home_hero" seta className="w-full sm:w-auto">
                 Fazer o diagnóstico gratuito
               </Botao>
-              <p className="mt-3 text-sm text-sobre-escuro/70">5 perguntas, resultado na hora, sem cadastro.</p>
             </div>
             <Botao href="#servicos" variante="texto" posicao="home_hero_servicos" className="mt-4 text-sobre-escuro/90">
               Ver o que fazemos
