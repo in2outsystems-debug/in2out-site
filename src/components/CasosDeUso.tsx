@@ -66,10 +66,10 @@ const autor = { cliente: "Cliente", ia: "IA", equipe: "Equipe", campanha: "Campa
 function Bolha({ fala, atraso }: { fala: Fala; atraso: number }) {
   const cliente = fala.de === "cliente";
   return (
-    <div className={`entrada flex max-w-[88%] flex-col gap-1 ${cliente ? "self-start" : "items-end self-end"}`} style={{ animationDelay: `${atraso}ms` }}>
+    <div className={`entrada flex max-w-[88%] flex-col gap-0.5 ${cliente ? "self-start" : "items-end self-end"}`} style={{ animationDelay: `${atraso}ms` }}>
       <span className={`text-[0.8125rem] font-semibold ${cliente ? "text-mudo" : fala.de === "ia" ? "text-dado" : "text-acao"}`}>{autor[fala.de]}</span>
       <p
-        className={`rounded-2xl px-4 py-2.5 ${
+        className={`rounded-2xl px-4 py-2 ${
           cliente
             ? "rounded-tl-md bg-white/[0.06]"
             : fala.de === "ia"
@@ -138,7 +138,7 @@ export function CasosDeUso() {
       </div>
 
       <div id="painel-caso" role="tabpanel" aria-labelledby={`aba-${caso.id}`} className="painel overflow-hidden">
-        <div className="flex items-center justify-between gap-3 border-b border-white/[0.08] px-5 py-4 text-sm">
+        <div className="flex items-center justify-between gap-3 border-b border-white/[0.08] px-5 py-3 text-sm">
           <span className="font-semibold">
             {caso.nome} no WhatsApp
             <span className="ml-2 inline-flex items-center gap-1.5 font-normal text-mudo">
@@ -150,25 +150,27 @@ export function CasosDeUso() {
         </div>
 
         {/* A chave refaz a animação de entrada a cada troca de aba */}
-        <div key={caso.id} className="flex min-h-[19rem] flex-col gap-3 px-5 py-5 sm:min-h-[21rem]">
+        <div key={caso.id} className="flex min-h-[19rem] flex-col gap-2.5 px-5 py-4 sm:min-h-[21rem] lg:min-h-[22rem]">
           {caso.fala.map((f, i) => (
             <Bolha key={i} fala={f} atraso={i * 140} />
           ))}
-          <div className="entrada mt-1 flex items-center gap-3 self-start rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3" style={{ animationDelay: `${caso.fala.length * 140}ms` }}>
+          <div className="entrada flex items-center gap-3 self-start rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-2.5" style={{ animationDelay: `${caso.fala.length * 140}ms` }}>
             <span aria-hidden="true" className="flex h-9 w-9 items-center justify-center rounded-xl bg-acao-cheia/25 text-dado">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12l5 5L20 7" />
               </svg>
             </span>
             <span>
-              <span className="block text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-dado">{caso.resultado.rotulo}</span>
-              <span className="block font-semibold">{caso.resultado.titulo}</span>
+              <span className="block font-semibold">
+                <span className="mr-2 text-[0.8125rem] uppercase tracking-[0.14em] text-dado">{caso.resultado.rotulo}</span>
+                {caso.resultado.titulo}
+              </span>
               <span className="block text-sm text-mudo">{caso.resultado.detalhe}</span>
             </span>
           </div>
         </div>
 
-        <div className="flex border-t border-white/[0.08] px-5 py-4 sm:justify-end">
+        <div className="flex border-t border-white/[0.08] px-5 py-3 sm:justify-end">
           <Botao href="/diagnostico" posicao={`home_caso_${caso.id}`} seta className="w-full sm:w-auto">
             Fazer o diagnóstico gratuito
           </Botao>
