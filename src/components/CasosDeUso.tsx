@@ -46,14 +46,12 @@ function Cabeca({ olho, titulo, texto, direita }: { olho?: string; titulo: strin
 const contatos = [
   { nome: "Lead 1", previa: "Oi! Vocês fazem limpeza de ar-condicionado split?", etapa: "Novo Lead", ativo: true },
   { nome: "Paula", previa: "Vi sim! Pode ser na sexta?", etapa: "Em contato", ativo: false },
-  { nome: "Carlos", previa: "Quero sim! Pode ser de manhã?", etapa: "Novo Lead", ativo: false },
 ];
 
 const conversa = [
   { de: "cliente", texto: "Oi! Vocês fazem limpeza de ar-condicionado split?" },
   { de: "ia", texto: "Fazemos, sim! Para indicar o serviço certo, me diz: são quantos BTUs e em qual bairro?" },
   { de: "cliente", texto: "12 mil, no Centro." },
-  { de: "ia", texto: "Perfeito, atendemos o Centro. Já vou ver um horário para você." },
 ] as const;
 
 function Bolha({ de, texto, atraso }: { de: "cliente" | "ia"; texto: string; atraso: number }) {
@@ -257,10 +255,10 @@ function TelaFollowUp() {
 /* -------------------------------------------------------------------- Disparos */
 
 const numeros = [
-  { rotulo: "Total de campanhas", valor: "1", nota: "1 em andamento" },
-  { rotulo: "Contatos na fila", valor: "120", nota: "68% da fila processada" },
-  { rotulo: "Mensagens enviadas", valor: "82", nota: "0 campanhas concluídas" },
-  { rotulo: "Falhas", valor: "0", nota: "Nenhuma falha nos envios" },
+  { rotulo: "Total de campanhas", valor: "1" },
+  { rotulo: "Contatos na fila", valor: "120" },
+  { rotulo: "Mensagens enviadas", valor: "82" },
+  { rotulo: "Falhas", valor: "0" },
 ];
 
 function TelaDisparos() {
@@ -268,26 +266,24 @@ function TelaDisparos() {
     <div className="flex h-full flex-col gap-3">
       <Cabeca
         titulo="Campanhas de WhatsApp"
-        texto="Disparos segmentados, com janela de envio e respostas em tempo real."
         direita={<span className="rounded-lg bg-acao-cheia px-3 py-1.5 text-[0.8125rem] font-semibold text-white">+ Nova campanha</span>}
       />
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         {numeros.map((n) => (
-          <div key={n.rotulo} className={`${cartao} px-3.5 py-2.5`}>
+          <div key={n.rotulo} className={`${cartao} px-3.5 py-2`}>
             <p className="text-xs text-mudo">{n.rotulo}</p>
             <p className="text-2xl font-bold leading-tight tracking-tight">{n.valor}</p>
-            <p className="text-xs text-mudo">{n.nota}</p>
           </div>
         ))}
       </div>
       <div className="grid flex-1 gap-3 md:grid-cols-[minmax(0,1fr)_14rem]">
-        <div className={`${cartao} flex flex-col gap-2 p-4`}>
+        <div className={`${cartao} flex flex-col gap-2 p-3`}>
           <p className="text-sm font-semibold">
             Reativação de clientes <span className="font-normal text-mudo">· campanha em andamento</span>
           </p>
           <div className="entrada flex max-w-[92%] flex-col gap-0.5 self-end" style={entrada(0)}>
             <span className="text-right text-xs font-semibold text-acao">Campanha</span>
-            <p className="rounded-2xl rounded-tr-md border border-acao/40 bg-acao-cheia/25 px-3.5 py-2 text-[0.9375rem] leading-snug">Oi, Carlos! Faz um tempo que você não passa por aqui. Esta semana temos horários livres na quinta. Quer reservar o seu?</p>
+            <p className="rounded-2xl rounded-tr-md border border-acao/40 bg-acao-cheia/25 px-3.5 py-2 text-[0.9375rem] leading-snug">Oi, Carlos! Faz um tempo que você não vem. Temos horários livres na quinta. Quer reservar?</p>
           </div>
           <Bolha de="cliente" texto="Quero sim! Pode ser de manhã?" atraso={160} />
           <Bolha de="ia" texto="Claro! Quinta às 9h ou às 10h30. Qual fica melhor?" atraso={320} />
@@ -348,7 +344,7 @@ export function CasosDeUso() {
   };
 
   return (
-    <div>
+    <div className="lg:[zoom:0.85]">
       <div className="painel overflow-hidden bg-[rgb(var(--c-acao-cheia)/0.07)] lg:grid lg:grid-cols-[12.5rem_minmax(0,1fr)]">
         {/* Menu da plataforma: no celular vira uma grade de abas; no computador, a barra lateral */}
         <div className="border-b border-white/[0.08] bg-black/25 lg:border-b-0 lg:border-r">
@@ -390,13 +386,13 @@ export function CasosDeUso() {
         </div>
 
         {/* A chave refaz a animação de entrada a cada troca de tela */}
-        <div id="painel-caso" role="tabpanel" aria-labelledby={`aba-${item.id}`} className="min-w-0 p-3 lg:h-[29rem]">
+        <div id="painel-caso" role="tabpanel" aria-labelledby={`aba-${item.id}`} className="min-w-0 p-3 lg:h-[26rem]">
           <div key={item.id} className="h-full">
             <Tela />
           </div>
         </div>
       </div>
-      <p className="mt-2 text-sm text-mudo">Telas ilustrativas do WS3 Atendy. Conversas e números são exemplos, não clientes reais.</p>
+      <p className="mt-1.5 text-sm text-mudo">Telas ilustrativas do WS3 Atendy. Conversas e números são exemplos, não clientes reais.</p>
     </div>
   );
 }

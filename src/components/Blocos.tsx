@@ -88,6 +88,7 @@ export function Secao({
   children,
   fundo = "normal",
   lado = false,
+  compacto = false,
 }: {
   id?: string;
   titulo?: string;
@@ -97,10 +98,12 @@ export function Secao({
   fundo?: "normal" | "suave" | "escuro";
   /** Em telas grandes, o título fica à esquerda e a introdução à direita, sem vazio ao lado do título. */
   lado?: boolean;
+  /** Menos espaço em volta, em telas grandes, para a seção caber na tela. */
+  compacto?: boolean;
 }) {
   const cls = fundo === "suave" ? "bg-suave" : fundo === "escuro" ? "escuro bg-escuro text-sobre-escuro" : "";
   return (
-    <section id={id} className={`secao ${cls}`} aria-labelledby={titulo && id ? `${id}-t` : undefined}>
+    <section id={id} className={`secao ${compacto ? "lg:!py-7" : ""} ${cls}`} aria-labelledby={titulo && id ? `${id}-t` : undefined}>
       <div className="pagina">
         {olho && <p className="olho">{olho}</p>}
         <div className={lado ? "lg:grid lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-end lg:gap-12" : undefined}>
@@ -111,7 +114,7 @@ export function Secao({
           )}
           {intro && <p className={`mt-3 max-w-leitura text-lg ${lado ? "lg:mt-0 lg:justify-self-end" : ""} ${fundo === "escuro" ? "text-sobre-escuro/85" : "text-mudo"}`}>{intro}</p>}
         </div>
-        <div className={titulo || intro ? "mt-8" : ""}>{children}</div>
+        <div className={titulo || intro ? (compacto ? "mt-8 lg:mt-5" : "mt-8") : ""}>{children}</div>
       </div>
     </section>
   );

@@ -199,10 +199,10 @@ export default function Home() {
       </Secao>
 
       {/* 6. Produto: um dos sistemas da WS3, nos quatro recursos que mais atraem */}
-      <Secao id="produto" lado olho="Nosso sistema" titulo="WS3 Atendy: atendimento, agendamento, follow-up e disparos" intro="Um dos sistemas da WS3, feito para quem atende e vende pelo WhatsApp.">
+      <Secao id="produto" lado compacto olho="Nosso sistema" titulo="WS3 Atendy: atendimento, agendamento, follow-up e disparos" intro="Um dos sistemas da WS3, feito para quem atende e vende pelo WhatsApp.">
         <CasosDeUso />
 
-        <div className="mt-8 flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-7">
+        <div className="mt-6 flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6 lg:mt-4 lg:py-3">
           <p className="text-lg">
             <strong>Teste gratuito de 7 dias</strong> <span className="text-mudo">depois da demonstração.</span>
           </p>
