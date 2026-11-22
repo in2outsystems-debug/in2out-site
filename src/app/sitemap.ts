@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/metodo",
     "/servicos",
     "/produtos",
+    "/planos",
     "/diagnostico",
     "/materiais",
     "/conteudo",

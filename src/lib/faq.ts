@@ -4,7 +4,7 @@ export const perguntas: Pergunta[] = [
   {
     grupo: "Geral",
     p: "O que a WS3 Systems faz?",
-    r: "Ajudamos micro e pequenas empresas, MEIs e autônomos a organizar processos, automatizar o que é repetitivo e usar inteligência artificial onde ela realmente ajuda. Também oferecemos o WS3 Atendy, produto de atendimento pelo WhatsApp.",
+    r: "Trazemos clientes para pequenas empresas e autônomos com anúncios no Instagram, no Facebook e no Google, e cuidamos para que nenhum fique sem resposta com o WS3 Atendy, nosso sistema de atendimento com IA no WhatsApp. Também organizamos processos e automatizamos tarefas repetitivas.",
   },
   {
     grupo: "Geral",
@@ -14,7 +14,7 @@ export const perguntas: Pergunta[] = [
   {
     grupo: "Geral",
     p: "Quanto custa?",
-    r: "O valor depende do que será feito e é informado na conversa inicial, antes de qualquer contratação. No WS3 Atendy, o consumo de IA vai direto na conta da sua empresa, pela sua própria chave da OpenAI, sem intermediário.",
+    r: "A gestão de tráfego começa em R$ 497 por mês e o WS3 Atendy custa R$ 397 por mês. Juntos, nos combos, a partir de R$ 797. A verba dos anúncios é paga direto ao Meta ou ao Google, e o consumo de IA do Atendy vai direto na conta OpenAI da sua empresa, sem intermediário. Todos os valores estão na página de planos.",
   },
   {
     grupo: "Método",
@@ -58,6 +58,11 @@ export const perguntas: Pergunta[] = [
   },
   {
     grupo: "WS3 Atendy",
+    p: "Quanto custa o WS3 Atendy?",
+    r: "R$ 397 por mês, com implantação de R$ 397 (isenta nos combos com tráfego). O consumo de IA é pago direto na conta OpenAI da sua empresa, conforme o uso. Dá para testar por 7 dias antes de contratar.",
+  },
+  {
+    grupo: "WS3 Atendy",
     p: "O WS3 Atendy tem CRM?",
     r: "Sim. O CRM registra contatos, conversas e o andamento de cada cliente, e já vem junto com a IA e as automações.",
   },
@@ -74,12 +79,12 @@ export const perguntas: Pergunta[] = [
   {
     grupo: "Serviços",
     p: "Vocês gerenciam anúncios?",
-    r: "Sim. A gestão de tráfego pago cria e acompanha campanhas no Google Ads e no Meta Ads, nas contas da sua empresa. Antes, olhamos se o atendimento aguenta o volume, porque anúncio sem resposta rápida desperdiça verba.",
+    r: "Sim. Criamos e acompanhamos campanhas no Meta Ads e no Google Ads, nas contas da sua empresa. A partir do plano Crescimento, montamos os criativos como cortesia, com as fotos e vídeos que você envia. E olhamos se o atendimento aguenta o volume, porque anúncio sem resposta rápida desperdiça verba.",
   },
   {
     grupo: "WS3 Atendy",
     p: "Posso enviar mensagens em massa pelo WhatsApp?",
-    r: "Dá para fazer campanhas segmentadas por tags, com intervalo entre os envios e horário permitido. Envie apenas a quem autorizou receber e ofereça uma forma simples de sair da lista.",
+    r: "Não recomendamos. O WS3 Atendy conecta o WhatsApp por QR Code, que não é a conexão oficial da Meta, e envios em massa podem bloquear o número. Ele permite campanhas pequenas e segmentadas por tags, com intervalo entre os envios, só para quem autorizou receber.",
   },
   {
     grupo: "Dados e privacidade",

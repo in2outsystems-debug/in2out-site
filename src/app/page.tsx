@@ -10,12 +10,12 @@ import { HubIntegracoes } from "@/components/HubIntegracoes";
 import { IconeCaixa, type NomeIcone } from "@/components/Icone";
 import { perguntas, type Pergunta } from "@/lib/faq";
 import { pageMeta, faqLd } from "@/lib/seo";
-import { demonstracao, servicos, whatsappLink } from "@/lib/site";
+import { atendy, combos, demonstracao, planosTrafego, reais, servicos, whatsappLink } from "@/lib/site";
 
 export const metadata = pageMeta({
-  titulo: "Processos, automação e IA para quem atende pelo WhatsApp",
+  titulo: "Tráfego pago e atendimento com IA no WhatsApp",
   descricao:
-    "A WS3 Systems organiza o atendimento, cuida dos anúncios e entrega a tecnologia certa, como o sistema WS3 Atendy, para pequenas empresas e profissionais autônomos. Faça o diagnóstico gratuito.",
+    "A WS3 Systems traz clientes com anúncios no Instagram, no Facebook e no Google e garante que nenhum fique sem resposta com o WS3 Atendy, atendimento com IA no WhatsApp. Planos a partir de R$ 497.",
   caminho: "/",
 });
 
@@ -89,18 +89,18 @@ export default function Home() {
         <div className="pagina relative grid items-start gap-12 py-14 sm:py-16 lg:grid-cols-[minmax(0,1fr)_28rem] lg:gap-16 lg:py-14">
           <div>
             <h1 className="titulo-1 max-w-3xl !text-sobre-escuro">
-              Seu cliente chama no WhatsApp e fica <span className="destaque">esperando?</span>
+              Anúncios que <span className="text-acao">trazem clientes.</span> Atendimento que <span className="text-acao-forte">não deixa nenhum esperando.</span>
             </h1>
             <p className="mt-6 max-w-leitura text-lg text-sobre-escuro/80 sm:text-xl">
-              Agência de processos, automação, IA e tráfego pago para pequenas empresas e autônomos. Primeiro organizamos o atendimento, depois automatizamos.
+              Cuidamos do seu tráfego pago no Instagram, no Facebook e no Google, e o WS3 Atendy responde cada contato no WhatsApp na hora, com IA. Para pequenas empresas e autônomos.
             </p>
             <div className="mt-9">
               <Botao href="/diagnostico" tamanho="grande" posicao="home_hero" seta className="w-full sm:w-auto">
                 Fazer o diagnóstico gratuito
               </Botao>
             </div>
-            <Botao href="#servicos" variante="texto" posicao="home_hero_servicos" className="mt-4 text-sobre-escuro/90">
-              Ver o que fazemos
+            <Botao href="/planos" variante="texto" posicao="home_hero_planos" className="mt-4 text-sobre-escuro/90">
+              Ver planos e preços
             </Botao>
           </div>
 
@@ -109,7 +109,7 @@ export default function Home() {
       </section>
 
       {/* 2. Para quem é: o visitante se reconhece */}
-      <Secao id="publico" fundo="suave" olho="Para quem é" titulo="Feito para quem atende pelo WhatsApp">
+      <Secao id="publico" olho="Para quem é" titulo="Feito para quem atende pelo WhatsApp">
         <div className="grid gap-4 md:grid-cols-2">
           {publicos.map((pb) => (
             <div key={pb.id} className="painel vivo flex flex-col p-6 sm:p-8">
@@ -124,6 +124,60 @@ export default function Home() {
               </Link>
             </div>
           ))}
+        </div>
+      </Secao>
+
+      {/* 5b. Tráfego pago junto do atendimento: o caminho do anúncio ao relatório */}
+      <Secao id="trafego" fundo="suave" olho="Tráfego pago" titulo="Anúncio traz o contato. O atendimento transforma em cliente.">
+        <FluxoTrafego />
+        <div className="mt-10">
+          <Botao href="/servicos/trafego-pago" tamanho="grande" posicao="home_trafego" seta className="w-full sm:w-auto">
+            Ver a gestão de tráfego pago
+          </Botao>
+        </div>
+      </Secao>
+
+      {/* 6. Produto: um dos sistemas da WS3, nos quatro recursos que mais atraem */}
+      <Secao id="produto" lado compacto olho="Nosso sistema" titulo="WS3 Atendy: atendimento, agendamento, follow-up e campanhas" intro="Um dos sistemas da WS3, feito para quem atende e vende pelo WhatsApp.">
+        <CasosDeUso />
+
+        <div className="mt-6 flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6 lg:mt-4 lg:py-3">
+          <p className="text-lg">
+            <strong>R$ 397/mês, com 7 dias de teste grátis</strong> <span className="text-mudo">depois da demonstração.</span>
+          </p>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Botao href={demo.href} variante="secundario" posicao="home_produto_demonstracao">
+              {demo.rotulo}
+            </Botao>
+            <Botao href="/produtos/ws3-atendy" variante="texto" posicao="home_produto_saiba" className="text-acao">
+              Conhecer o WS3 Atendy
+            </Botao>
+          </div>
+        </div>
+      </Secao>
+
+      {/* 6b. Planos: preço à vista, sem pedir orçamento */}
+      <Secao id="planos" fundo="suave" olho="Planos" titulo="Tráfego, atendimento ou os dois juntos">
+        <ul className="grid gap-4 md:grid-cols-3">
+          {[
+            { nome: "Gestão de tráfego", preco: `a partir de ${reais(planosTrafego[0].preco)}`, texto: "Campanhas no Instagram, no Facebook e no Google, com textos e relatório." },
+            { nome: "WS3 Atendy", preco: reais(atendy.preco), texto: `Atendimento com IA no WhatsApp, com ${atendy.testeDias} dias de teste grátis.` },
+            { nome: "Combo tráfego + Atendy", preco: `a partir de ${reais(combos[0].preco)}`, texto: "O caminho completo, com desconto e taxas de implantação isentas." },
+          ].map((p) => (
+            <li key={p.nome} className="painel flex flex-col p-6 sm:p-7">
+              <h3 className="text-xl font-semibold">{p.nome}</h3>
+              <p className="mt-3 text-2xl font-semibold tracking-tight">
+                {p.preco}
+                <span className="text-base font-normal text-mudo">/mês</span>
+              </p>
+              <p className="texto-cartao mt-2 text-mudo">{p.texto}</p>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-8">
+          <Botao href="/planos" tamanho="grande" posicao="home_planos" seta className="w-full sm:w-auto">
+            Ver planos e preços
+          </Botao>
         </div>
       </Secao>
 
@@ -186,35 +240,6 @@ export default function Home() {
             </li>
           ))}
         </ul>
-      </Secao>
-
-      {/* 5b. Tráfego pago junto do atendimento: o caminho do anúncio ao relatório */}
-      <Secao id="trafego" fundo="suave" olho="Tráfego pago" titulo="Anúncio traz o contato. O atendimento transforma em cliente.">
-        <FluxoTrafego />
-        <div className="mt-10">
-          <Botao href="/servicos/trafego-pago" tamanho="grande" posicao="home_trafego" seta className="w-full sm:w-auto">
-            Ver a gestão de tráfego pago
-          </Botao>
-        </div>
-      </Secao>
-
-      {/* 6. Produto: um dos sistemas da WS3, nos quatro recursos que mais atraem */}
-      <Secao id="produto" lado compacto olho="Nosso sistema" titulo="WS3 Atendy: atendimento, agendamento, follow-up e disparos" intro="Um dos sistemas da WS3, feito para quem atende e vende pelo WhatsApp.">
-        <CasosDeUso />
-
-        <div className="mt-6 flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6 lg:mt-4 lg:py-3">
-          <p className="text-lg">
-            <strong>Teste gratuito de 7 dias</strong> <span className="text-mudo">depois da demonstração.</span>
-          </p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-            <Botao href={demo.href} variante="secundario" posicao="home_produto_demonstracao">
-              {demo.rotulo}
-            </Botao>
-            <Botao href="/produtos/ws3-atendy" variante="texto" posicao="home_produto_saiba" className="text-acao">
-              Conhecer o WS3 Atendy
-            </Botao>
-          </div>
-        </div>
       </Secao>
 
       {/* 7. Integrações do WS3 Atendy */}

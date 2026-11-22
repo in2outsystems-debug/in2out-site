@@ -4,9 +4,9 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://ws3systems
 
 export const site = {
   nome: "WS3 Systems",
-  slogan: "Processos, automação e IA para quem atende pelo WhatsApp.",
+  slogan: "Anúncios que trazem clientes e atendimento que não deixa nenhum sem resposta.",
   descricao:
-    "Agência de gestão de processos, automação, IA e tráfego pago para micro e pequenas empresas, MEIs e autônomos, com sistemas próprios como o WS3 Atendy. Primeiro organizar, depois automatizar.",
+    "Agência de tráfego pago e atendimento com IA no WhatsApp para pequenas empresas e autônomos. Os anúncios trazem o cliente, e o WS3 Atendy garante que nenhum fique sem resposta.",
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "5599984195490",
   email: "ws3.systems@gmail.com",
   instagram: { usuario: "ws3.systems", url: "https://instagram.com/ws3.systems" },
@@ -44,9 +44,10 @@ export function demonstracao() {
 }
 
 export const menu = [
-  { href: "/metodo", rotulo: "Método" },
   { href: "/servicos", rotulo: "Serviços" },
-  { href: "/produtos", rotulo: "Produtos" },
+  { href: "/produtos/ws3-atendy", rotulo: "WS3 Atendy" },
+  { href: "/planos", rotulo: "Planos" },
+  { href: "/metodo", rotulo: "Método" },
   { href: "/conteudo", rotulo: "Conteúdo" },
   { href: "/sobre", rotulo: "Sobre" },
 ];
@@ -67,6 +68,7 @@ export const rodape = {
     { href: "/servicos/trafego-pago", rotulo: "Gestão de tráfego pago" },
   ],
   empresa: [
+    { href: "/planos", rotulo: "Planos e preços" },
     { href: "/diagnostico", rotulo: "Diagnóstico gratuito" },
     { href: "/metodo", rotulo: "Método" },
     { href: "/sobre", rotulo: "Sobre" },
@@ -288,14 +290,14 @@ export const servicos: Servico[] = [
       },
       {
         p: "Existe um produto pronto para isso?",
-        r: "Sim, o WS3 Atendy, que reúne IA, CRM e automações no WhatsApp. Também montamos soluções sob medida quando faz sentido.",
+        r: "Sim, o WS3 Atendy, que reúne IA, CRM e automações no WhatsApp, por R$ 397 por mês. Também montamos soluções sob medida quando faz sentido.",
       },
     ],
   },
   {
     slug: "trafego-pago",
     nome: "Gestão de tráfego pago",
-    curto: "Criamos e acompanhamos anúncios no Google e no Meta (Instagram e Facebook) para trazer novos clientes até o seu atendimento.",
+    curto: "Criamos e acompanhamos anúncios no Instagram e no Facebook (e no Google, no plano Performance) que levam novos clientes direto para o seu WhatsApp.",
     dor: "Já tentou impulsionar posts ou rodar anúncios, o dinheiro saiu e ninguém sabe dizer quantos clientes vieram de lá.",
     paraQuem: [
       "Negócios com o atendimento já organizado que querem receber mais contatos.",
@@ -306,9 +308,11 @@ export const servicos: Servico[] = [
       "Anúncio traz gente para o atendimento. Se o atendimento ainda perde contatos ou demora a responder, o investimento vaza. Por isso olhamos primeiro se o processo de atendimento aguenta o volume.",
     entregamos: [
       "Plano de campanhas com objetivo, público e verba definidos.",
-      "Criação e configuração das campanhas no Google Ads e no Meta Ads.",
+      "Criação e configuração das campanhas no Meta Ads (e no Google Ads, no plano Performance).",
+      "Textos dos anúncios e briefing de criativos: dizemos o que fotografar e gravar.",
+      "Mensagem automática de boas-vindas no WhatsApp para quem chega pelo anúncio.",
       "Acompanhamento e ajustes periódicos dos anúncios.",
-      "Relatório mensal com os contatos gerados e o custo de cada um.",
+      "Relatório com os contatos gerados e o custo de cada um.",
     ],
     etapas: [
       "Conversa para definir objetivo, região e verba.",
@@ -324,7 +328,9 @@ export const servicos: Servico[] = [
       "Registro das mudanças feitas nas campanhas",
     ],
     limites: [
-      "Atuamos apenas no Google Ads e no Meta Ads.",
+      "Não vendemos criativos separadamente. A partir do plano Crescimento, montamos os criativos como cortesia, com as fotos e vídeos que a sua empresa envia. Não fazemos sessões de foto nem gravações.",
+      "Atuamos apenas no Meta Ads e no Google Ads.",
+      "Contrato mínimo de 3 meses, o tempo que as campanhas precisam para aprender.",
       "A verba dos anúncios é paga direto às plataformas, separada do valor do serviço.",
       "Não prometemos número de vendas. O resultado depende também da oferta, do preço e do atendimento.",
     ],
@@ -335,7 +341,11 @@ export const servicos: Servico[] = [
       },
       {
         p: "Quanto preciso investir em anúncios?",
-        r: "Depende do objetivo e da região. Combinamos a verba antes de começar, e dá para começar pequeno e aumentar conforme os números aparecem.",
+        r: "Recomendamos a partir de R$ 500 por mês, pagos direto ao Meta. Com menos que isso, os anúncios alcançam pouca gente e não dá para ter bons resultados. Dá para começar no mínimo e aumentar conforme os números aparecem.",
+      },
+      {
+        p: "Vocês fazem as artes e os vídeos?",
+        r: "Nos planos Crescimento e Performance, sim, como cortesia: você envia as fotos e vídeos do seu negócio e nós montamos as peças dos anúncios. No Essencial, você envia as peças prontas e nós orientamos o que produzir.",
       },
       {
         p: "Por que vocês olham o atendimento antes dos anúncios?",
@@ -392,3 +402,45 @@ export const glossario = {
     "O conjunto de informações da empresa que a IA pode consultar para responder, como preços, horários e regras.",
 } as const;
 export type Termo = keyof typeof glossario;
+
+// Planos e preços. A página /planos e as perguntas frequentes leem daqui.
+export type Plano = { nome: string; preco: number; resumo: string; itens: string[]; destaque?: boolean };
+
+export const planosTrafego: Plano[] = [
+  {
+    nome: "Essencial",
+    preco: 497,
+    resumo: "Para começar a anunciar com método.",
+    itens: ["Meta Ads (Instagram e Facebook)", "Investimento em mídia (pago ao Meta): a partir de R$ 500/mês", "Até 2 campanhas ativas", "Textos e briefing de criativos", "Relatório mensal"],
+  },
+  {
+    nome: "Crescimento",
+    preco: 897,
+    resumo: "Para quem quer volume constante de contatos.",
+    itens: ["Tudo do Essencial", "Investimento em mídia (pago ao Meta): a partir de R$ 1.000/mês", "Até 4 campanhas e remarketing", "Cortesia: até 8 criativos por mês", "Relatório semanal", "Reunião mensal de resultados"],
+    destaque: true,
+  },
+  {
+    nome: "Performance",
+    preco: 1497,
+    resumo: "Para escalar em mais de um canal.",
+    itens: ["Tudo do Crescimento", "Meta Ads e Google Ads", "Investimento em mídia (pago ao Meta e ao Google): a partir de R$ 1.500/mês", "Até 8 campanhas", "Cortesia: até 12 criativos por mês", "Reunião quinzenal"],
+  },
+];
+
+export const atendy = { preco: 397, implantacao: 397, testeDias: 7 };
+
+export const combos: { nome: string; preco: number; economia: number; destaque?: boolean }[] = [
+  { nome: "Essencial + WS3 Atendy", preco: 797, economia: 97 },
+  { nome: "Crescimento + WS3 Atendy", preco: 1097, economia: 197, destaque: true },
+  { nome: "Performance + WS3 Atendy", preco: 1697, economia: 197 },
+];
+
+export const configuracaoTrafego = 297;
+
+// Investimento mínimo em anúncios (pago pelo cliente direto ao Meta), igual para qualquer plano.
+export const verbaMinima = 500;
+
+// Criativos: cortesia a partir do plano Crescimento. Não são vendidos separadamente.
+
+export const reais = (v: number) => `R$ ${v.toLocaleString("pt-BR")}`;

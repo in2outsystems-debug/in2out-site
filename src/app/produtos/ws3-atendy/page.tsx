@@ -6,7 +6,7 @@ import { Passos } from "@/components/Composicoes";
 import { ConversaExemplo } from "@/components/ConversaExemplo";
 import { Termo } from "@/components/Termo";
 import { faqLd, pageMeta } from "@/lib/seo";
-import { SITE_URL, demonstracao, site } from "@/lib/site";
+import { SITE_URL, atendy, demonstracao, reais, site } from "@/lib/site";
 import { FormularioTardio } from "@/components/movimento/Tardios";
 
 export const metadata = pageMeta({
@@ -47,8 +47,8 @@ const grupos = [
     itens: ["Uma sequência para cada etapa do funil", "Texto, imagem, áudio ou vídeo", "Só envia nos horários permitidos", "Para quando o cliente agenda"],
   },
   {
-    titulo: "Disparos",
-    frase: "Campanhas para a sua base, no ritmo certo.",
+    titulo: "Campanhas",
+    frase: "Mensagens para a sua base, em pequena escala.",
     itens: ["Público escolhido por tags", "Intervalo natural entre os envios", "Respostas direto no chat", "Métricas de envio e resposta"],
   },
 ];
@@ -145,11 +145,22 @@ export default function Ws3Atendy() {
           ))}
         </div>
         <p className="mt-6 max-w-3xl text-sm text-mudo">
-          Campanhas e disparos são para quem autorizou receber as mensagens, com uma forma simples de sair da lista. E ainda: base de conhecimento com os seus PDFs, relatórios e automações visuais.
+          O WhatsApp é conectado por QR Code, pelo seu próprio número. Como não é a conexão oficial da Meta, campanhas são só para quem autorizou receber, sem envio em massa, que pode bloquear o número. E ainda: base de conhecimento com os seus PDFs, relatórios e automações visuais.
         </p>
       </Secao>
 
-      <Secao id="aplicacoes" fundo="suave" olho="Aplicações" titulo="Onde costuma ajudar">
+      <Secao id="preco" fundo="suave" olho="Preço" titulo={`${reais(atendy.preco)} por mês`} intro={`Implantação de ${reais(atendy.implantacao)}, feita pela WS3: conexão do WhatsApp, treinamento da IA com os materiais da sua empresa, funil e mensagens. Isenta nos combos com tráfego pago. O consumo de IA é pago direto na conta OpenAI da sua empresa, conforme o uso.`}>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <Botao href="#teste-gratuito" tamanho="grande" posicao="atendy_preco_teste" seta className="w-full sm:w-auto">
+            Testar {atendy.testeDias} dias grátis
+          </Botao>
+          <Botao href="/planos#combos" variante="texto" posicao="atendy_preco_combos" className="text-acao">
+            Ver combos com tráfego pago
+          </Botao>
+        </div>
+      </Secao>
+
+      <Secao id="aplicacoes" olho="Aplicações" titulo="Onde costuma ajudar">
         <ul className="grid gap-x-10 gap-y-6 md:grid-cols-2">
           {aplicacoes.map((a) => (
             <li key={a.nome} className="border-t border-white/[0.12] pt-5">
