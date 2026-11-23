@@ -1,7 +1,7 @@
 import { ChamadaFinal, JsonLd, Lista, Secao, TopoPagina } from "@/components/Blocos";
 import { Botao } from "@/components/Botao";
 import { faqLd, pageMeta } from "@/lib/seo";
-import { atendy, combos, configuracaoTrafego, verbaMinima, planosTrafego, reais, whatsappLink } from "@/lib/site";
+import { atendy, combos, verbaMinima, planosTrafego, reais, whatsappLink } from "@/lib/site";
 
 export const metadata = pageMeta({
   titulo: "Planos e preços: tráfego pago e WS3 Atendy",
@@ -15,7 +15,6 @@ const faq = [
   { p: "Vocês fazem os criativos?", r: "Como cortesia, nos planos Crescimento (até 8 por mês) e Performance (até 12): você envia as fotos e vídeos do seu negócio e nós montamos as peças. Não vendemos criativos separadamente nem fazemos sessões de foto ou gravações." },
   { p: "E no plano Essencial?", r: "No Essencial, você envia as peças prontas. Nós escrevemos os textos dos anúncios e mostramos quais peças funcionam." },
   { p: "Tem fidelidade?", r: "O contrato mínimo é de 3 meses, o tempo que as campanhas precisam para aprender e gerar dados confiáveis. Depois disso, segue mês a mês." },
-  { p: "O que é a taxa de configuração?", r: `É a montagem inicial: acessos, rastreamento, públicos e primeiras campanhas. Custa ${reais(configuracaoTrafego)}, uma vez, e é isenta nos combos ou no contrato de 6 meses.` },
   { p: "Quanto custa a IA do WS3 Atendy?", r: "O consumo de IA é pago direto na conta OpenAI da sua empresa, conforme o uso, sem intermediário. Mostramos uma estimativa antes de ativar." },
   { p: "As contas ficam no meu nome?", r: "Sim. Contas de anúncio, páginas e dados são da sua empresa. Se o contrato terminar, tudo continua com você." },
 ];
@@ -67,7 +66,7 @@ export default function Planos() {
           </p>
         </div>
         <p className="mt-6 max-w-3xl text-sm text-mudo">
-          Configuração inicial de {reais(configuracaoTrafego)}, isenta nos combos ou no contrato de 6 meses. Contrato mínimo de 3 meses. Criativos de cortesia no Crescimento e no Performance, a partir das fotos e vídeos que a sua empresa envia.
+          Contrato mínimo de 3 meses. Criativos de cortesia no Crescimento e no Performance, a partir das fotos e vídeos que a sua empresa envia.
         </p>
       </Secao>
 
@@ -95,7 +94,6 @@ export default function Planos() {
           <div>
             <h3 className="titulo-3">WS3 Atendy</h3>
             <Preco valor={atendy.preco} />
-            <p className="mt-2 text-mudo">Implantação de {reais(atendy.implantacao)}, isenta nos combos.</p>
             <p className="mt-2 text-mudo">{atendy.testeDias} dias de teste grátis.</p>
             <Botao href="/produtos/ws3-atendy" variante="secundario" posicao="planos_atendy" className="mt-6">
               Conhecer o WS3 Atendy
@@ -108,7 +106,7 @@ export default function Planos() {
               "CRM com funil de vendas e etiquetas",
               "Agendamentos com o Google Agenda",
               "Follow-up automático para quem não respondeu",
-              "Implantação feita pela WS3: conexão, treinamento da IA e funil",
+              "Conexão do WhatsApp, treinamento da IA e funil feitos pela WS3",
             ]}
           />
         </div>
@@ -117,14 +115,14 @@ export default function Planos() {
         </p>
       </Secao>
 
-      <Secao id="combos" fundo="suave" olho="Tráfego + Atendy" titulo="Combos: o caminho completo, com desconto" intro={`Implantação do Atendy e configuração do tráfego isentas. Criativos de cortesia nos combos Crescimento e Performance.`}>
+      <Secao id="combos" fundo="suave" olho="Tráfego + Atendy" titulo="Combos: o caminho completo, com desconto" intro="Criativos de cortesia nos combos Crescimento e Performance.">
         <div className="grid gap-4 lg:grid-cols-3">
           {combos.map((c) => (
             <div key={c.nome} className={`painel flex flex-col p-6 sm:p-8 ${c.destaque ? "ring-2 ring-acao" : ""}`}>
               {c.destaque && <p className="olho">Recomendado</p>}
               <h3 className="titulo-3 mt-1">{c.nome}</h3>
               <Preco valor={c.preco} />
-              <p className="mt-2 flex-1 text-mudo">Economia de {reais(c.economia)}/mês, mais {reais(configuracaoTrafego + atendy.implantacao)} de taxas isentas.</p>
+              <p className="mt-2 flex-1 text-mudo">Economia de {reais(c.economia)}/mês em relação a contratar separado.</p>
               <Botao
                 href={whatsappLink(`Olá! Vim pelo site da WS3 Systems e quero saber mais sobre o combo ${c.nome}.`)}
                 variante={c.destaque ? "primario" : "secundario"}

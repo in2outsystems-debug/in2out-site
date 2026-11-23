@@ -32,7 +32,7 @@ Processo antes de IA. A WS3 não implanta IA em cima de bagunça: o caminho é M
 - Next.js (App Router), TypeScript, Tailwind; deploy na Vercel (projeto `ws3systems`).
 - Português do Brasil, mobile-first.
 - Consentimento LGPD: GTM/GA4 só carregam após aceite; banner com "Recusar" e "Aceitar" de mesmo peso.
-- O produto se chama **WS3 Atendy** (nome provisório), na rota `/produtos/ws3-atendy`; `/produtos/raiptor-atende` redireciona para ela. A imagem `public/img/raiptor-painel.png` ainda mostra o nome antigo.
+- O produto se chama **WS3 Atendy** (nome provisório), na rota `/produtos/ws3-atendy`. Uma rota antiga ainda redireciona para ela (ver `redirects` em `next.config.mjs`; manter ou remover é decisão do Conselho).
 - Indefinidos: política de preços, link da agenda, dados legais da empresa (razão social, CNPJ, endereço), Instagram definitivo (`@ws3.systems` a confirmar).
 
 ### O que o WS3 Atendy faz (fonte: WS3-Systems-Guia-de-Funcionalidades.pdf, out/2026)
@@ -40,7 +40,7 @@ Processo antes de IA. A WS3 não implanta IA em cima de bagunça: o caminho é M
 - Conversas: todo o WhatsApp da empresa numa caixa de entrada única, em tempo real; indicador de quem atende ("IA atendendo" ou "Atendimento humano"); a equipe assume com um clique e devolve para a IA.
 - Funil (kanban), base de contatos única, tags, campos personalizados, tarefas e mensagens agendadas; importação de planilhas.
 - Agendamentos com várias agendas, sincronização opcional com Google Agenda e link do Google Meet; status "Não compareceu".
-- Follow-up automático por etapa do funil e disparos segmentados por tags, com cadência e horário controlados.
+- Follow-up automático por etapa do funil, com cadência e horário controlados.
 - Agentes de IA em equipes: atendem, qualificam, agendam, movem o lead no funil, fazem follow-up e transferem para uma pessoa com o contexto; treinados com PDFs, tom de voz e regras da empresa; guardrails e horários de atendimento.
 - Automações visuais sem código (gatilhos e ações ligados ao WhatsApp, CRM, agenda e IA); dashboard, relatórios, NPS; permissões por equipe.
 - A empresa usa a própria chave da OpenAI: o consumo de IA vai direto na conta dela.
@@ -62,7 +62,7 @@ Processo antes de IA. A WS3 não implanta IA em cima de bagunça: o caminho é M
 
 - **Não há clientes, depoimentos, casos nem números de resultado.** Nenhum deles pode ser inventado.
 - Os únicos dados usados são da pesquisa Sobrevivência de Empresas do Sebrae (2020), sempre com fonte via `DadoComFonte`.
-- Capturas de tela do produto ainda não são definitivas (`raiptor-painel.png` é do nome antigo); telas reais do Atendy precisam ser fornecidas.
+- As telas do Atendy no site são recriações em código (`CasosDeUso.tsx`), não capturas; telas reais precisam ser fornecidas.
 - Os seis artigos em `content/artigos` são exemplos com datas fictícias, pendentes de revisão.
 
 ## Product Principles

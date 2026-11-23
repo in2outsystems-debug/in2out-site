@@ -17,7 +17,6 @@ const itens: Item[] = [
   { id: "atendimento", menu: "Conversas", icone: "conversa" },
   { id: "agendamento", menu: "Agendamentos", icone: "calendario" },
   { id: "follow-up", menu: "Follow-up automático", icone: "retorno" },
-  { id: "disparos", menu: "Disparos", icone: "envio" },
 ];
 
 const cartao = "rounded-xl border border-white/[0.08] bg-white/[0.04]";
@@ -252,75 +251,9 @@ function TelaFollowUp() {
   );
 }
 
-/* -------------------------------------------------------------------- Disparos */
+const telas = [TelaConversas, TelaAgenda, TelaFollowUp];
 
-const numeros = [
-  { rotulo: "Total de campanhas", valor: "1" },
-  { rotulo: "Contatos na fila", valor: "120" },
-  { rotulo: "Mensagens enviadas", valor: "82" },
-  { rotulo: "Falhas", valor: "0" },
-];
-
-function TelaDisparos() {
-  return (
-    <div className="flex h-full flex-col gap-3">
-      <Cabeca
-        titulo="Campanhas de WhatsApp"
-        direita={<span className="rounded-lg bg-acao-cheia px-3 py-1.5 text-[0.8125rem] font-semibold text-white">+ Nova campanha</span>}
-      />
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        {numeros.map((n) => (
-          <div key={n.rotulo} className={`${cartao} px-3.5 py-2`}>
-            <p className="text-xs text-mudo">{n.rotulo}</p>
-            <p className="text-2xl font-bold leading-tight tracking-tight">{n.valor}</p>
-          </div>
-        ))}
-      </div>
-      <div className="grid flex-1 gap-3 md:grid-cols-[minmax(0,1fr)_14rem]">
-        <div className={`${cartao} flex flex-col gap-2 p-3`}>
-          <p className="text-sm font-semibold">
-            Reativação de clientes <span className="font-normal text-mudo">· campanha em andamento</span>
-          </p>
-          <div className="entrada flex max-w-[92%] flex-col gap-0.5 self-end" style={entrada(0)}>
-            <span className="text-right text-xs font-semibold text-acao">Campanha</span>
-            <p className="rounded-2xl rounded-tr-md border border-acao/40 bg-acao-cheia/25 px-3.5 py-2 text-[0.9375rem] leading-snug">Oi, Carlos! Faz um tempo que você não vem. Temos horários livres na quinta. Quer reservar?</p>
-          </div>
-          <Bolha de="cliente" texto="Quero sim! Pode ser de manhã?" atraso={160} />
-          <Bolha de="ia" texto="Claro! Quinta às 9h ou às 10h30. Qual fica melhor?" atraso={320} />
-        </div>
-        <div className={`${cartao} hidden flex-col gap-2 p-3 md:flex`}>
-          <p className="text-sm font-semibold">Fila operacional</p>
-          <div>
-            <p className="flex justify-between text-xs">
-              <span className="text-mudo">Processamento geral</span>
-              <span className="font-semibold">68%</span>
-            </p>
-            <span className="mt-1 block h-1.5 overflow-hidden rounded-full bg-white/10">
-              <span className="block h-full w-[68%] rounded-full bg-dado" />
-            </span>
-          </div>
-          {[
-            ["Em andamento", "1", "bg-ok"],
-            ["Pausadas", "0", "bg-yellow-300"],
-            ["Concluídas", "0", "bg-dado"],
-          ].map(([nome, n, cor]) => (
-            <p key={nome} className="flex items-center justify-between rounded-lg border border-white/[0.08] px-2.5 py-1.5 text-[0.8125rem]">
-              <span className="flex items-center gap-2">
-                <span aria-hidden="true" className={`h-2 w-2 rounded-full ${cor}`} />
-                {nome}
-              </span>
-              <span className="font-semibold">{n}</span>
-            </p>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const telas = [TelaConversas, TelaAgenda, TelaFollowUp, TelaDisparos];
-
-/** Janela do sistema com quatro telas: cada item do menu troca a tela. */
+/** Janela do sistema com três telas: cada item do menu troca a tela. */
 export function CasosDeUso() {
   const [ativo, setAtivo] = useState(0);
   const abas = useRef<(HTMLButtonElement | null)[]>([]);
@@ -356,7 +289,7 @@ export function CasosDeUso() {
             <span className="block py-1.5">Visão Geral</span>
             <span className="block py-1.5">Funil e Contatos</span>
           </div>
-          <div role="tablist" aria-label="Telas do WS3 Atendy" aria-orientation="vertical" className="grid grid-cols-2 gap-1 p-2 sm:grid-cols-4 lg:grid-cols-1">
+          <div role="tablist" aria-label="Telas do WS3 Atendy" aria-orientation="vertical" className="grid grid-cols-3 gap-1 p-2 lg:grid-cols-1">
             {itens.map((c, i) => {
               const sel = i === ativo;
               return (

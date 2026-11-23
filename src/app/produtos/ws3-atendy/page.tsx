@@ -46,11 +46,6 @@ const grupos = [
     frase: "Ninguém fica sem retorno.",
     itens: ["Uma sequência para cada etapa do funil", "Texto, imagem, áudio ou vídeo", "Só envia nos horários permitidos", "Para quando o cliente agenda"],
   },
-  {
-    titulo: "Campanhas",
-    frase: "Mensagens para a sua base, em pequena escala.",
-    itens: ["Público escolhido por tags", "Intervalo natural entre os envios", "Respostas direto no chat", "Métricas de envio e resposta"],
-  },
 ];
 
 const aplicacoes = [
@@ -125,8 +120,8 @@ export default function Ws3Atendy() {
         <p className="mt-8 max-w-leitura text-mudo">O que a IA faz em cada conversa depende da configuração e das informações autorizadas pela sua empresa.</p>
       </Secao>
 
-      <Secao id="funcionalidades" olho="Funcionalidades" titulo="O que mais ajuda no dia a dia" intro="Quatro frentes para atender, agendar, retomar e falar com a sua base pelo WhatsApp.">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <Secao id="funcionalidades" olho="Funcionalidades" titulo="O que mais ajuda no dia a dia" intro="Três frentes para atender, agendar e retomar conversas pelo WhatsApp.">
+        <div className="grid gap-4 md:grid-cols-3">
           {grupos.map((g) => (
             <div key={g.titulo} className="painel vivo-leve p-6">
               <h3 className="titulo-3">{g.titulo}</h3>
@@ -145,11 +140,11 @@ export default function Ws3Atendy() {
           ))}
         </div>
         <p className="mt-6 max-w-3xl text-sm text-mudo">
-          O WhatsApp é conectado por QR Code, pelo seu próprio número. Como não é a conexão oficial da Meta, campanhas são só para quem autorizou receber, sem envio em massa, que pode bloquear o número. E ainda: base de conhecimento com os seus PDFs, relatórios e automações visuais.
+          O WhatsApp é conectado por QR Code, pelo seu próprio número, que não é a conexão oficial da Meta. E ainda: base de conhecimento com os seus PDFs, relatórios e automações visuais.
         </p>
       </Secao>
 
-      <Secao id="preco" fundo="suave" olho="Preço" titulo={`${reais(atendy.preco)} por mês`} intro={`Implantação de ${reais(atendy.implantacao)}, feita pela WS3: conexão do WhatsApp, treinamento da IA com os materiais da sua empresa, funil e mensagens. Isenta nos combos com tráfego pago. O consumo de IA é pago direto na conta OpenAI da sua empresa, conforme o uso.`}>
+      <Secao id="preco" fundo="suave" olho="Preço" titulo={`${reais(atendy.preco)} por mês`} intro={`A WS3 faz a conexão do WhatsApp, o treinamento da IA com os materiais da sua empresa, o funil e as mensagens. O consumo de IA é pago direto na conta OpenAI da sua empresa, conforme o uso.`}>
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
           <Botao href="#teste-gratuito" tamanho="grande" posicao="atendy_preco_teste" seta className="w-full sm:w-auto">
             Testar {atendy.testeDias} dias grátis

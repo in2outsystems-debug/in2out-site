@@ -137,8 +137,8 @@ export default function Home() {
         </div>
       </Secao>
 
-      {/* 6. Produto: um dos sistemas da WS3, nos quatro recursos que mais atraem */}
-      <Secao id="produto" lado compacto olho="Nosso sistema" titulo="WS3 Atendy: atendimento, agendamento, follow-up e campanhas" intro="Um dos sistemas da WS3, feito para quem atende e vende pelo WhatsApp.">
+      {/* 6. Produto: um dos sistemas da WS3, nos três recursos que mais atraem */}
+      <Secao id="produto" lado compacto olho="Nosso sistema" titulo="WS3 Atendy: atendimento, agendamento e follow-up" intro="Um dos sistemas da WS3, feito para quem atende e vende pelo WhatsApp.">
         <CasosDeUso />
 
         <div className="mt-6 flex flex-col gap-4 rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6 lg:mt-4 lg:py-3">
@@ -162,7 +162,7 @@ export default function Home() {
           {[
             { nome: "Gestão de tráfego", preco: `a partir de ${reais(planosTrafego[0].preco)}`, texto: "Campanhas no Instagram, no Facebook e no Google, com textos e relatório." },
             { nome: "WS3 Atendy", preco: reais(atendy.preco), texto: `Atendimento com IA no WhatsApp, com ${atendy.testeDias} dias de teste grátis.` },
-            { nome: "Combo tráfego + Atendy", preco: `a partir de ${reais(combos[0].preco)}`, texto: "O caminho completo, com desconto e taxas de implantação isentas." },
+            { nome: "Combo tráfego + Atendy", preco: `a partir de ${reais(combos[0].preco)}`, texto: "O caminho completo, com desconto." },
           ].map((p) => (
             <li key={p.nome} className="painel flex flex-col p-6 sm:p-7">
               <h3 className="text-xl font-semibold">{p.nome}</h3>

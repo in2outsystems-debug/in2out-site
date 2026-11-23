@@ -428,15 +428,13 @@ export const planosTrafego: Plano[] = [
   },
 ];
 
-export const atendy = { preco: 397, implantacao: 397, testeDias: 7 };
+export const atendy = { preco: 397, testeDias: 7 };
 
 export const combos: { nome: string; preco: number; economia: number; destaque?: boolean }[] = [
   { nome: "Essencial + WS3 Atendy", preco: 797, economia: 97 },
   { nome: "Crescimento + WS3 Atendy", preco: 1097, economia: 197, destaque: true },
   { nome: "Performance + WS3 Atendy", preco: 1697, economia: 197 },
 ];
-
-export const configuracaoTrafego = 297;
 
 // Investimento mínimo em anúncios (pago pelo cliente direto ao Meta), igual para qualquer plano.
 export const verbaMinima = 500;

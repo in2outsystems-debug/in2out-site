@@ -59,7 +59,7 @@ export const perguntas: Pergunta[] = [
   {
     grupo: "WS3 Atendy",
     p: "Quanto custa o WS3 Atendy?",
-    r: "R$ 397 por mês, com implantação de R$ 397 (isenta nos combos com tráfego). O consumo de IA é pago direto na conta OpenAI da sua empresa, conforme o uso. Dá para testar por 7 dias antes de contratar.",
+    r: "R$ 397 por mês. O consumo de IA é pago direto na conta OpenAI da sua empresa, conforme o uso. Dá para testar por 7 dias antes de contratar.",
   },
   {
     grupo: "WS3 Atendy",
@@ -84,7 +84,7 @@ export const perguntas: Pergunta[] = [
   {
     grupo: "WS3 Atendy",
     p: "Posso enviar mensagens em massa pelo WhatsApp?",
-    r: "Não recomendamos. O WS3 Atendy conecta o WhatsApp por QR Code, que não é a conexão oficial da Meta, e envios em massa podem bloquear o número. Ele permite campanhas pequenas e segmentadas por tags, com intervalo entre os envios, só para quem autorizou receber.",
+    r: "Não. O WS3 Atendy conecta o WhatsApp por QR Code, que não é a conexão oficial da Meta, e envios em massa podem bloquear o número. Ele serve para atender e acompanhar quem já conversa com a sua empresa.",
   },
   {
     grupo: "Dados e privacidade",
