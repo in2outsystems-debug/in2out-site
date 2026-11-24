@@ -61,11 +61,11 @@ export const equipe: { nome: string; cargo: string; foto?: string }[] = [];
 // Rodapé em três colunas, como na referência: Soluções, Empresa e Legal.
 export const rodape = {
   solucoes: [
-    { href: "/produtos/ws3-atendy", rotulo: "WS3 Atendy" },
+    { href: "/servicos/trafego-pago", rotulo: "Gestão de tráfego pago" },
     { href: "/servicos/gestao-de-processos", rotulo: "Gestão de processos" },
+    { href: "/produtos/ws3-atendy", rotulo: "WS3 Atendy" },
     { href: "/servicos/automacao", rotulo: "Automação" },
     { href: "/servicos/ia-aplicada", rotulo: "IA aplicada" },
-    { href: "/servicos/trafego-pago", rotulo: "Gestão de tráfego pago" },
   ],
   empresa: [
     { href: "/planos", rotulo: "Planos e preços" },
@@ -140,9 +140,70 @@ export type Servico = {
   limites: string[];
   faq: { p: string; r: string }[];
   condicao?: string;
+  /** Serviço sob medida, oferecido depois do WS3 Atendy (etapa 3). */
+  sobMedida?: boolean;
 };
 
 export const servicos: Servico[] = [
+  {
+    slug: "trafego-pago",
+    nome: "Gestão de tráfego pago",
+    curto: "Criamos e acompanhamos anúncios no Instagram e no Facebook (e no Google, no plano Performance) que levam novos clientes direto para o seu WhatsApp.",
+    dor: "Já tentou impulsionar posts ou rodar anúncios, o dinheiro saiu e ninguém sabe dizer quantos clientes vieram de lá.",
+    paraQuem: [
+      "Negócios que querem receber mais contatos e organizar o atendimento ao mesmo tempo.",
+      "Comércio local e prestadores de serviço que querem aparecer para quem procura na região.",
+      "Empresas que já anunciam, mas não sabem dizer o que funciona e o que só gasta.",
+    ],
+    condicao:
+      "Processo e anúncio andam juntos. Anúncio traz gente para o atendimento, e se o atendimento perde contatos ou demora a responder, o investimento vaza. Por isso ajustamos o atendimento desde o início, enquanto as campanhas são montadas.",
+    entregamos: [
+      "Plano de campanhas com objetivo, público e verba definidos.",
+      "Criação e configuração das campanhas no Meta Ads (e no Google Ads, no plano Performance).",
+      "Textos dos anúncios e briefing de criativos: dizemos o que fotografar e gravar.",
+      "Mensagem automática de boas-vindas no WhatsApp para quem chega pelo anúncio.",
+      "Acompanhamento e ajustes periódicos dos anúncios.",
+      "Relatório com os contatos gerados e o custo de cada um.",
+    ],
+    etapas: [
+      "Conversa para definir objetivo, região e verba.",
+      "Revisar o atendimento e a forma de saber de onde veio cada contato.",
+      "Montar as campanhas e os anúncios.",
+      "Publicar e acompanhar de perto as primeiras semanas.",
+      "Relatório mensal e ajustes.",
+    ],
+    entregaveis: [
+      "Campanhas configuradas nas contas da empresa",
+      "Plano de campanhas documentado",
+      "Relatório mensal de desempenho",
+      "Registro das mudanças feitas nas campanhas",
+    ],
+    limites: [
+      "Não vendemos criativos separadamente. A partir do plano Crescimento, montamos os criativos como cortesia, com as fotos e vídeos que a sua empresa envia. Não fazemos sessões de foto nem gravações.",
+      "Atuamos apenas no Meta Ads e no Google Ads.",
+      "Contrato mínimo de 3 meses, o tempo que as campanhas precisam para aprender.",
+      "A verba dos anúncios é paga direto às plataformas, separada do valor do serviço.",
+      "Não prometemos número de vendas. O resultado depende também da oferta, do preço e do atendimento.",
+    ],
+    faq: [
+      {
+        p: "A conta de anúncios fica no meu nome?",
+        r: "Sim. As campanhas rodam nas contas da sua empresa e você dá acesso à WS3. Se o trabalho terminar, tudo continua com você.",
+      },
+      {
+        p: "Quanto preciso investir em anúncios?",
+        r: "Recomendamos a partir de R$ 500 por mês, pagos direto ao Meta. Com menos que isso, os anúncios alcançam pouca gente e não dá para ter bons resultados. Dá para começar no mínimo e aumentar conforme os números aparecem.",
+      },
+      {
+        p: "Vocês fazem as artes e os vídeos?",
+        r: "Nos planos Crescimento e Performance, sim, como cortesia: você envia as fotos e vídeos do seu negócio e nós montamos as peças dos anúncios. No Essencial, você envia as peças prontas e nós orientamos o que produzir.",
+      },
+      {
+        p: "Por que vocês cuidam do atendimento junto com os anúncios?",
+        r: "Porque anúncio sem atendimento organizado desperdiça verba. Se o contato chega e ninguém responde a tempo, o dinheiro foi embora. Por isso o processo de atendimento é ajustado desde o início, junto com as campanhas.",
+      },
+    ],
+  },
   {
     slug: "gestao-de-processos",
     nome: "Gestão de processos",
@@ -195,7 +256,8 @@ export const servicos: Servico[] = [
   {
     slug: "automacao",
     nome: "Automação",
-    curto: "Conectamos as ferramentas que você já usa para tirar o trabalho repetitivo da equipe.",
+    sobMedida: true,
+    curto: "Sob medida, depois do WS3 Atendy: conectamos as ferramentas que você já usa para tirar o trabalho repetitivo da equipe.",
     dor: "A equipe copia a mesma informação em três lugares, esquece de responder, e o tempo de quem poderia atender melhor vai embora em tarefa manual.",
     paraQuem: [
       "Empresas que já têm o processo definido, padronizado e medido.",
@@ -246,7 +308,8 @@ export const servicos: Servico[] = [
   {
     slug: "ia-aplicada",
     nome: "IA aplicada",
-    curto: "Agentes de IA que trabalham com informações autorizadas e passam o cliente para uma pessoa quando precisa.",
+    sobMedida: true,
+    curto: "Sob medida, depois do WS3 Atendy: agentes de IA que trabalham com informações autorizadas e passam o cliente para uma pessoa quando precisa.",
     dor: "O atendimento recebe as mesmas perguntas o dia todo, o cliente espera por resposta e a equipe não consegue olhar o que exige atenção de verdade.",
     paraQuem: [
       "Empresas com volume de conversas repetidas, principalmente no WhatsApp.",
@@ -294,65 +357,6 @@ export const servicos: Servico[] = [
       },
     ],
   },
-  {
-    slug: "trafego-pago",
-    nome: "Gestão de tráfego pago",
-    curto: "Criamos e acompanhamos anúncios no Instagram e no Facebook (e no Google, no plano Performance) que levam novos clientes direto para o seu WhatsApp.",
-    dor: "Já tentou impulsionar posts ou rodar anúncios, o dinheiro saiu e ninguém sabe dizer quantos clientes vieram de lá.",
-    paraQuem: [
-      "Negócios com o atendimento já organizado que querem receber mais contatos.",
-      "Comércio local e prestadores de serviço que querem aparecer para quem procura na região.",
-      "Empresas que já anunciam, mas não sabem dizer o que funciona e o que só gasta.",
-    ],
-    condicao:
-      "Anúncio traz gente para o atendimento. Se o atendimento ainda perde contatos ou demora a responder, o investimento vaza. Por isso olhamos primeiro se o processo de atendimento aguenta o volume.",
-    entregamos: [
-      "Plano de campanhas com objetivo, público e verba definidos.",
-      "Criação e configuração das campanhas no Meta Ads (e no Google Ads, no plano Performance).",
-      "Textos dos anúncios e briefing de criativos: dizemos o que fotografar e gravar.",
-      "Mensagem automática de boas-vindas no WhatsApp para quem chega pelo anúncio.",
-      "Acompanhamento e ajustes periódicos dos anúncios.",
-      "Relatório com os contatos gerados e o custo de cada um.",
-    ],
-    etapas: [
-      "Conversa para definir objetivo, região e verba.",
-      "Revisar o atendimento e a forma de saber de onde veio cada contato.",
-      "Montar as campanhas e os anúncios.",
-      "Publicar e acompanhar de perto as primeiras semanas.",
-      "Relatório mensal e ajustes.",
-    ],
-    entregaveis: [
-      "Campanhas configuradas nas contas da empresa",
-      "Plano de campanhas documentado",
-      "Relatório mensal de desempenho",
-      "Registro das mudanças feitas nas campanhas",
-    ],
-    limites: [
-      "Não vendemos criativos separadamente. A partir do plano Crescimento, montamos os criativos como cortesia, com as fotos e vídeos que a sua empresa envia. Não fazemos sessões de foto nem gravações.",
-      "Atuamos apenas no Meta Ads e no Google Ads.",
-      "Contrato mínimo de 3 meses, o tempo que as campanhas precisam para aprender.",
-      "A verba dos anúncios é paga direto às plataformas, separada do valor do serviço.",
-      "Não prometemos número de vendas. O resultado depende também da oferta, do preço e do atendimento.",
-    ],
-    faq: [
-      {
-        p: "A conta de anúncios fica no meu nome?",
-        r: "Sim. As campanhas rodam nas contas da sua empresa e você dá acesso à WS3. Se o trabalho terminar, tudo continua com você.",
-      },
-      {
-        p: "Quanto preciso investir em anúncios?",
-        r: "Recomendamos a partir de R$ 500 por mês, pagos direto ao Meta. Com menos que isso, os anúncios alcançam pouca gente e não dá para ter bons resultados. Dá para começar no mínimo e aumentar conforme os números aparecem.",
-      },
-      {
-        p: "Vocês fazem as artes e os vídeos?",
-        r: "Nos planos Crescimento e Performance, sim, como cortesia: você envia as fotos e vídeos do seu negócio e nós montamos as peças dos anúncios. No Essencial, você envia as peças prontas e nós orientamos o que produzir.",
-      },
-      {
-        p: "Por que vocês olham o atendimento antes dos anúncios?",
-        r: "Porque anúncio sem atendimento organizado desperdiça verba. Se o contato chega e ninguém responde a tempo, o dinheiro foi embora.",
-      },
-    ],
-  },
 ];
 
 export type Produto = {
@@ -370,9 +374,9 @@ export const produtos: Produto[] = [
   {
     slug: "ws3-atendy",
     nome: "WS3 Atendy",
-    chamada: "Atendimento com IA, CRM e automações no WhatsApp.",
+    chamada: "Software de gestão comercial com IA no WhatsApp.",
     descricao:
-      "Atenda novos interessados e clientes atuais pelo WhatsApp, organize as informações e dê continuidade às conversas. A equipe fica no controle do que precisa de atenção humana.",
+      "A etapa seguinte aos anúncios e à organização do atendimento: atenda novos interessados e clientes atuais pelo WhatsApp, organize as informações e dê continuidade às conversas. A equipe fica no controle do que precisa de atenção humana.",
     href: "/produtos/ws3-atendy",
     cta: demonstracao().rotulo,
     ctaHref: demonstracao().href,

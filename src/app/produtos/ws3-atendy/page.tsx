@@ -10,9 +10,9 @@ import { SITE_URL, atendy, demonstracao, reais, site } from "@/lib/site";
 import { FormularioTardio } from "@/components/movimento/Tardios";
 
 export const metadata = pageMeta({
-  titulo: "WS3 Atendy: atendimento com IA, CRM e automações no WhatsApp",
+  titulo: "WS3 Atendy: software de gestão comercial com IA no WhatsApp",
   descricao:
-    "Atenda novos interessados e clientes atuais pelo WhatsApp, organize as informações e dê continuidade às conversas. Agende uma demonstração de 30 minutos.",
+    "Software de gestão comercial da WS3, a etapa seguinte aos anúncios e à organização do atendimento: IA no WhatsApp, CRM, agendamento e follow-up. R$ 397 por mês, com 7 dias de teste.",
   caminho: "/produtos/ws3-atendy",
 });
 
@@ -58,6 +58,7 @@ const aplicacoes = [
 const faq = [
   { p: "O WS3 Atendy substitui funcionários?", r: "Não. Ele combina automação e atendimento humano. A equipe fica no controle do que precisa de atenção humana." },
   { p: "A IA responde qualquer pergunta?", r: "Não. As respostas dependem da configuração e das informações autorizadas pela empresa." },
+  { p: "Preciso contratar tráfego pago ou gestão de processos antes?", r: "Não é obrigatório: o WS3 Atendy pode ser contratado sozinho. Mas ele foi pensado como a etapa seguinte: quando os anúncios trazem contatos e o atendimento já está organizado, o Atendy garante que cada contato seja respondido e acompanhado. Existem combos de tráfego com Atendy." },
   { p: "Tem CRM?", r: "Sim. O CRM registra contatos, conversas e o andamento de cada cliente." },
   { p: "Faz agendamento?", r: "Sim. Os agentes de IA consultam os horários livres, marcam, remarcam e cancelam pela conversa. A agenda pode ser sincronizada com o Google Agenda e gerar o link do Google Meet." },
 ];
@@ -75,7 +76,7 @@ export default function Ws3Atendy() {
             applicationCategory: "BusinessApplication",
             operatingSystem: "Web",
             description:
-              "Atendimento com IA, CRM e automações no WhatsApp para atender interessados e clientes, organizar informações e dar continuidade às conversas.",
+              "Software de gestão comercial com IA no WhatsApp: atendimento, CRM, agendamento e follow-up para atender interessados e clientes e dar continuidade às conversas.",
             url: `${SITE_URL}/produtos/ws3-atendy`,
             publisher: { "@type": "Organization", name: site.nome, url: SITE_URL },
           },
@@ -86,11 +87,11 @@ export default function Ws3Atendy() {
           { nome: "Produtos", caminho: "/produtos" },
           { nome: "WS3 Atendy", caminho: "/produtos/ws3-atendy" },
         ]}
-        olho="WS3 Atendy"
-        titulo="Cada conversa do WhatsApp em movimento, sem perder ninguém."
+        olho="Etapa 2 · WS3 Atendy"
+        titulo="O software de gestão comercial com IA no WhatsApp."
         texto={
           <>
-            O WS3 Atendy reúne IA, <Termo nome="CRM">CRM</Termo> e automações para atender novos interessados e clientes atuais pelo WhatsApp. A equipe fica no controle do que precisa de atenção humana.
+            Com os anúncios trazendo clientes e o atendimento organizado, o próximo passo é o WS3 Atendy, o software de gestão comercial da WS3. Ele reúne IA, <Termo nome="CRM">CRM</Termo>, agendamento e follow-up para que cada conversa do WhatsApp vire atendimento, sem perder ninguém. A equipe fica no controle do que precisa de atenção humana.
           </>
         }
         lado={<ConversaExemplo />}

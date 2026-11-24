@@ -48,7 +48,7 @@ export default async function Servico({ params }: Props) {
           { nome: "Serviços", caminho: "/servicos" },
           { nome: s.nome, caminho: `/servicos/${s.slug}` },
         ]}
-        olho="Serviço"
+        olho={s.sobMedida ? "Sob medida · depois do WS3 Atendy" : "Serviço"}
         titulo={s.nome}
         texto={s.curto}
         lado={
@@ -84,7 +84,7 @@ export default async function Servico({ params }: Props) {
           <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="max-w-leitura text-lg text-mudo">
               <p>
-                Antes de gastar verba, olhamos se o seu atendimento responde a tempo e se dá para saber de onde veio cada contato. É aí que o tráfego pago e o WS3 Atendy se encontram: o sistema registra a origem, a IA responde em segundos e o relatório mostra o que funciona.
+                Enquanto montamos as campanhas, ajustamos o seu atendimento: se ele responde a tempo e se dá para saber de onde veio cada contato. Depois, o WS3 Atendy é o próximo degrau: o sistema registra a origem, a IA responde em segundos e o relatório mostra o que funciona.
               </p>
               <p className="mt-4">
                 Quer só os anúncios? Também fazemos. Mas recomendamos começar pelo diagnóstico, para ver se o atendimento aguenta o volume.
@@ -132,6 +132,11 @@ export default async function Servico({ params }: Props) {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/produtos/ws3-atendy" className="alvo inline-flex items-center rounded-full border border-white/15 px-5 font-semibold transition-colors hover:border-white/40 hover:bg-white/[0.05]">
+                WS3 Atendy
+              </Link>
+            </li>
           </ul>
         </div>
       </Secao>
