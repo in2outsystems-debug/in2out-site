@@ -405,30 +405,10 @@ main > article.pagina:first-of-type > :nth-child(n + 3) { --i: 2; }
   }
 }
 /*
- * Palco do topo (PalcoHero): o fluxo do atendimento. As linhas aparecem, a luz percorre cada uma
- * quando o dado passa, e o núcleo pulsa o tempo todo. Com movimento reduzido, a regra global
+ * Palco do topo (PalcoHero): o anúncio, a conversa e a resposta do Atendy. A luz desce pelo trilho
+ * ligando as etapas e o anel do botão do anúncio pulsa. Com movimento reduzido, a regra global
  * deixa a cena pronta e parada (uma volta só, sem duração).
  */
-.fluxo-linha {
-  animation: fluxo-aparece 600ms ease-out var(--chega, 0ms) backwards;
-}
-@keyframes fluxo-aparece {
-  from {
-    opacity: 0;
-  }
-}
-.fluxo-luz {
-  stroke-dasharray: 0.14 2;
-  animation: fluxo-luz 1100ms ease-in-out var(--luz, 0ms) both;
-}
-@keyframes fluxo-luz {
-  from {
-    stroke-dashoffset: 0.14;
-  }
-  to {
-    stroke-dashoffset: -1;
-  }
-}
 .fluxo-anel {
   animation: fluxo-anel 3200ms ease-out infinite;
 }
@@ -440,6 +420,29 @@ main > article.pagina:first-of-type > :nth-child(n + 3) { --i: 2; }
   100% {
     opacity: 0;
     scale: 1.25;
+  }
+}
+
+/* Trilho do palco: traço tracejado vertical e uma luz ciano que desce uma vez, do anúncio à resposta. */
+.fluxo-trilho {
+  overflow: hidden;
+  background-image: linear-gradient(rgb(255 255 255 / 0.22) 50%, transparent 50%);
+  background-size: 2px 8px;
+}
+.fluxo-trilho::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 28%;
+  background: linear-gradient(transparent, rgb(var(--c-dado)), transparent);
+  animation: fluxo-desce var(--luz-dur, 3000ms) ease-in-out var(--luz, 0ms) both;
+}
+@keyframes fluxo-desce {
+  from {
+    translate: 0 -100%;
+  }
+  to {
+    translate: 0 380%;
   }
 }
 

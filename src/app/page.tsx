@@ -90,7 +90,7 @@ export default function Home() {
         <div className="pagina relative grid items-start gap-12 py-14 sm:py-16 lg:grid-cols-[minmax(0,1fr)_28rem] lg:gap-16 lg:py-14">
           <div>
             <h1 className="titulo-1 max-w-3xl !text-sobre-escuro">
-              Anúncios que <span className="text-acao">trazem clientes.</span> Atendimento que <span className="text-acao-forte">não deixa nenhum esperando.</span>
+              Anúncios que <span className="text-dado">trazem clientes.</span> Atendimento que <span className="text-dado">não deixa nenhum esperando.</span>
             </h1>
             <p className="mt-6 max-w-leitura text-lg text-sobre-escuro/80 sm:text-xl">
               Cuidamos do seu tráfego pago no Instagram, no Facebook e no Google e organizamos o seu atendimento. Depois, o WS3 Atendy responde cada contato no WhatsApp na hora, com IA. Para pequenas empresas e autônomos.
